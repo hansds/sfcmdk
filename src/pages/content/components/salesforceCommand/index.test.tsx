@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import App from "@pages/content/components/Demo/app";
+import App from "@src/pages/content/components/salesforceCommand";
 
 describe("appTest", () => {
   test("render text", () => {
