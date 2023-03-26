@@ -17,12 +17,20 @@ export default function SalesforceCommand() {
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const listRef = React.useRef(null);
 
+  const containerElement = React.useRef(null);
+
+  React.useEffect(() => {
+    document.addEventListener("salesforce-command-palette-opened", () => {
+      inputRef?.current?.focus();
+    });
+  }, []);
+
   React.useEffect(() => {
     inputRef?.current?.focus();
   }, []);
 
   return (
-    <div className="raycast">
+    <div className="raycast" ref={containerElement}>
       <Command value={value} onValueChange={(v) => setValue(v)}>
         <div cmdk-raycast-top-shine="" />
         <Command.Input
@@ -35,46 +43,34 @@ export default function SalesforceCommand() {
           <Command.Empty>No results found.</Command.Empty>
           <Command.Group heading="Suggestions">
             <Item value="Linear">
-              <Logo>
-                <LinearIcon
-                  style={{
-                    width: 12,
-                    height: 12,
-                  }}
-                />
-              </Logo>
+              <LinearIcon
+                style={{
+                  width: 12,
+                  height: 12,
+                }}
+              />
               Linear
             </Item>
             <Item value="Figma">
-              <Logo>
-                <FigmaIcon />
-              </Logo>
+              <FigmaIcon />
               Figma
             </Item>
             <Item value="Slack">
-              <Logo>
-                <SlackIcon />
-              </Logo>
+              <SlackIcon />
               Slack
             </Item>
             <Item value="YouTube">
-              <Logo>
-                <YouTubeIcon />
-              </Logo>
+              <YouTubeIcon />
               YouTube
             </Item>
             <Item value="Raycast">
-              <Logo>
-                <RaycastIcon />
-              </Logo>
+              <RaycastIcon />
               Raycast
             </Item>
           </Command.Group>
           <Command.Group heading="Commands">
             <Item isCommand value="Clipboard History">
-              <Logo>
-                <ClipboardIcon />
-              </Logo>
+              <ClipboardIcon />
               Clipboard History
             </Item>
             <Item isCommand value="Import Extension">
@@ -139,7 +135,7 @@ function SubCommand({
 
   React.useEffect(() => {
     function listener(e: KeyboardEvent) {
-      if (e.key === "k" && e.metaKey) {
+      if (e.key === "j" && e.metaKey) {
         e.preventDefault();
         setOpen((o) => !o);
       }
