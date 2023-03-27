@@ -1,5 +1,6 @@
 {
   "name": "salesforce-command-palette",
+  "long_name": "Salesforce Command Palette",
   "version": "0.0.1",
   "description": "Salesforce Command Palette",
   "license": "private",
