@@ -1,7 +1,7 @@
 import React from "react";
 // import { useTheme } from "next-themes";
 import * as Popover from "@radix-ui/react-popover";
-import { Command } from "cmdk";
+import { Command, useCommandState } from "cmdk";
 import {
   Logo,
   LinearIcon,
@@ -81,6 +81,9 @@ export default function SalesforceCommand() {
               <HammerIcon />
               Manage Extensions
             </Item>
+            <Command.Item>Change theme…</Command.Item>
+            <SubItem2>Change theme to dark</SubItem2>
+            <SubItem2>Change theme to light</SubItem2>
           </Command.Group>
         </Command.List>
 
@@ -228,6 +231,12 @@ function SubItem({
     </Command.Item>
   );
 }
+
+const SubItem2 = (props) => {
+  const search = useCommandState((state) => state.search);
+  if (!search) return null;
+  return <Command.Item {...props} />;
+};
 
 function TerminalIcon() {
   return (
