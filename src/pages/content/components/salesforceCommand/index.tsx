@@ -13,6 +13,7 @@ import {
 
 export default function SalesforceCommand() {
   // const { resolvedTheme: theme } = useTheme();
+  const ref = React.useRef<HTMLDivElement | null>(null);
   const [value, setValue] = React.useState("linear");
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const listRef = React.useRef(null);
@@ -29,9 +30,41 @@ export default function SalesforceCommand() {
     inputRef?.current?.focus();
   }, []);
 
+  function bounce() {
+    if (ref.current) {
+      ref.current.style.transform = "scale(0.96)";
+      setTimeout(() => {
+        if (ref.current) {
+          ref.current.style.transform = "";
+        }
+      }, 100);
+
+      // setInputValue("");
+    }
+  }
+
   return (
     <div className="raycast" ref={containerElement}>
-      <Command value={value} onValueChange={(v) => setValue(v)}>
+      <Command
+        ref={ref}
+        value={value}
+        onValueChange={(v) => setValue(v)}
+        onKeyDown={(e: React.KeyboardEvent) => {
+          if (e.key === "Enter") {
+            bounce();
+          }
+
+          // if (isHome || inputValue.length) {
+          //   return;
+          // }
+
+          // if (e.key === "Backspace") {
+          //   e.preventDefault();
+          //   popPage();
+          //   bounce();
+          // }
+        }}
+      >
         <div cmdk-raycast-top-shine="" />
         <Command.Input
           ref={inputRef}
