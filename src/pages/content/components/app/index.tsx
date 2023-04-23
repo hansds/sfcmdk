@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import SalesforceCommand from "@src/pages/content/components/salesforceCommand";
 import refreshOnUpdate from "virtual:reload-on-update-in-view";
+import * as Messaging from "@src/shared/messaging";
 
 refreshOnUpdate("pages/content");
 init();
@@ -8,6 +9,17 @@ init();
 document.addEventListener("keydown", function (event) {
   if (event.key === "k" && event.metaKey) {
     togglePalette();
+
+    // const getSessionIdRequest: Messaging.Request = {
+    //   type: "getSessionId",
+    // };
+    // chrome.runtime.sendMessage(getSessionIdRequest, function (response) {
+    //   console.log(response);
+    // });
+
+    Messaging.getSessionId().then((sessionId) => {
+      console.log(sessionId);
+    });
   }
   if (event.key === "Escape") {
     const paletteElement = document.getElementById(

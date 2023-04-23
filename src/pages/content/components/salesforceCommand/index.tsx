@@ -10,6 +10,7 @@ import {
   YouTubeIcon,
   RaycastIcon,
 } from "../icons";
+import { doSalesforceCall, getOrgId } from "@src/shared/utils";
 
 export default function SalesforceCommand() {
   // const { resolvedTheme: theme } = useTheme();
@@ -28,6 +29,11 @@ export default function SalesforceCommand() {
 
   React.useEffect(() => {
     inputRef?.current?.focus();
+  }, []);
+
+  React.useEffect(() => {
+    const sessionId = prompt("Enter your Salesforce session ID");
+    doSalesforceCall(sessionId);
   }, []);
 
   function bounce() {

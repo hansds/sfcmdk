@@ -1,3 +1,4 @@
+import * as Messaging from "@src/shared/messaging";
 import reloadOnUpdate from "virtual:reload-on-update-in-background-script";
 
 reloadOnUpdate("pages/background");
@@ -8,4 +9,7 @@ reloadOnUpdate("pages/background");
  */
 reloadOnUpdate("pages/content/style.scss");
 
-console.log("background loaded");
+/**
+ * Receive messages from the extension
+ */
+chrome.runtime.onMessage.addListener(Messaging.receiveMessages);
