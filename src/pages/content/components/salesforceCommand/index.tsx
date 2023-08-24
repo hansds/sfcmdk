@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import { useTheme } from "next-themes";
 import * as Popover from "@radix-ui/react-popover";
 import { Command, useCommandState } from "cmdk";
@@ -10,7 +10,9 @@ import {
   YouTubeIcon,
   RaycastIcon,
 } from "../icons";
-import { doSalesforceCall, getOrgId } from "@src/shared/utils";
+import { getOrgId, getSessionId } from "@src/shared/background/utils";
+import { getLoginAsUsers } from "@src/shared/background/messaging";
+import { getDocumentSessionId } from "@src/shared/content/utils";
 
 export default function SalesforceCommand() {
   // const { resolvedTheme: theme } = useTheme();
@@ -21,9 +23,13 @@ export default function SalesforceCommand() {
 
   const containerElement = React.useRef(null);
 
+  // let loginAsUsers;
+  const [loginAsUsers, setLoginAsUsers] = useState([]);
+
   React.useEffect(() => {
     document.addEventListener("salesforce-command-palette-opened", () => {
       inputRef?.current?.focus();
+      console.log(loginAsUsers);
     });
   }, []);
 
@@ -32,8 +38,30 @@ export default function SalesforceCommand() {
   }, []);
 
   React.useEffect(() => {
-    const sessionId = prompt("Enter your Salesforce session ID");
-    doSalesforceCall(sessionId);
+    // // doSalesforceCall(sessionId);
+    // const sessionId = getDocumentSessionId(document);
+    // const orgId = sessionId.substring(0, 15);
+    // // loginAsUsers = getLoginAsUsers(orgId);
+    // getLoginAsUsers(orgId).then((response) => {
+    //   loginAsUsers = response;
+    //   console.log("loginAsUsers async", loginAsUsers);
+    // });
+    // console.log("loginAsUsers", loginAsUsers);
+    const fetchLoginAsUsers = async () => {
+      const sessionId = getDocumentSessionId(document);
+      const orgId = sessionId.substring(0, 15);
+
+      const response = (await getLoginAsUsers(orgId)) as any;
+      const records = response.records;
+      setLoginAsUsers(records);
+      //   .then((response) => {
+      //   loginAsUsers = response;
+      //   console.log("loginAsUsers async", loginAsUsers);
+      // });
+      console.log("loginAsUsers", response.records);
+    };
+
+    fetchLoginAsUsers();
   }, []);
 
   function bounce() {
@@ -123,6 +151,19 @@ export default function SalesforceCommand() {
             <Command.Item>Change theme…</Command.Item>
             <SubItem2>Change theme to dark</SubItem2>
             <SubItem2>Change theme to light</SubItem2>
+          </Command.Group>
+          <Command.Group heading="Commands">
+            <Command.Item>
+              <UserIcon />
+              Login as…
+            </Command.Item>
+            {loginAsUsers.map((loginAsUser, index) => {
+              return (
+                <LoginAsItem key={index} value={`Login as ${loginAsUser.Name}`}>
+                  Login as {loginAsUser.Name}
+                </LoginAsItem>
+              );
+            })}
           </Command.Group>
         </Command.List>
 
@@ -272,6 +313,12 @@ function SubItem({
 }
 
 const SubItem2 = (props) => {
+  const search = useCommandState((state) => state.search);
+  if (!search) return null;
+  return <Command.Item {...props} />;
+};
+
+const LoginAsItem = (props) => {
   const search = useCommandState((state) => state.search);
   if (!search) return null;
   return <Command.Item {...props} />;
@@ -433,6 +480,93 @@ function HammerIcon() {
           strokeLinejoin="round"
         />
       </svg>
+    </div>
+  );
+}
+
+function UserIcon() {
+  return (
+    <div cmdk-raycast-user-icon="">
+      <svg
+        width="512"
+        height="512"
+        viewBox="0 0 512 512"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          id="r4"
+          width="512"
+          height="512"
+          x="0"
+          y="0"
+          rx="128"
+          fill="url(#r5)"
+          stroke="#FFFFFF"
+          strokeWidth="0"
+          strokeOpacity="100%"
+          paintOrder="stroke"
+        ></rect>
+        <clipPath id="clip">
+          <use xlinkHref="#r4"></use>
+        </clipPath>
+        <defs>
+          <linearGradient
+            id="r5"
+            gradientUnits="userSpaceOnUse"
+            gradientTransform="rotate(45)"
+            style={{ transformOrigin: "center center" }}
+          >
+            <stop stopColor="#8E2DE2"></stop>
+            <stop offset="1" stopColor="#4A00E0"></stop>
+          </linearGradient>
+          <radialGradient
+            id="r6"
+            cx="0"
+            cy="0"
+            r="1"
+            gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(256) rotate(90) scale(512)"
+          >
+            <stop stopColor="white"></stop>
+            <stop offset="1" stopColor="white" stopOpacity="0"></stop>
+          </radialGradient>
+        </defs>
+        <svg
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          width="352"
+          height="352"
+          x="80"
+          y="80"
+          alignmentBaseline="middle"
+          style={{ color: "white" }}
+        >
+          <path
+            d="M10.5 4.25a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM8 9.25c-2.245 0-4.318 1.055-5.134 3.046-.419 1.022.529 1.954 1.633 1.954h7.002c1.104 0 2.052-.932 1.633-1.954C12.318 10.305 10.245 9.25 8 9.25Z"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          ></path>
+        </svg>
+      </svg>
+      {/* <svg
+        width="32"
+        height="32"
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M6.73762 6.19288L2.0488 11.2217C1.6504 11.649 1.6504 12.3418 2.0488 12.769L3.13083 13.9295C3.52923 14.3568 4.17515 14.3568 4.57355 13.9295L9.26238 8.90071M6.73762 6.19288L7.0983 5.80605C7.4967 5.37877 7.4967 4.686 7.0983 4.25872L6.01627 3.09822L6.37694 2.71139C7.57213 1.42954 9.50991 1.42954 10.7051 2.71139L13.9512 6.19288C14.3496 6.62017 14.3496 7.31293 13.9512 7.74021L12.8692 8.90071C12.4708 9.328 11.8248 9.328 11.4265 8.90071L11.0658 8.51388C10.6674 8.0866 10.0215 8.0866 9.62306 8.51388L9.26238 8.90071M6.73762 6.19288L9.26238 8.90071"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg> */}
     </div>
   );
 }

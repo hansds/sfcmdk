@@ -1,7 +1,6 @@
 import { createRoot } from "react-dom/client";
 import SalesforceCommand from "@src/pages/content/components/salesforceCommand";
 import refreshOnUpdate from "virtual:reload-on-update-in-view";
-import * as Messaging from "@src/shared/messaging";
 
 refreshOnUpdate("pages/content");
 init();
@@ -17,8 +16,12 @@ document.addEventListener("keydown", function (event) {
     //   console.log(response);
     // });
 
-    Messaging.getSessionId().then((sessionId) => {
-      console.log(sessionId);
+    // Messaging.getSessionId().then((sessionId) => {
+    //   console.log(sessionId);
+    // });
+
+    chrome.storage.local.get("salesforce-command-palette").then((result) => {
+      console.log(result);
     });
   }
   if (event.key === "Escape") {
@@ -60,7 +63,9 @@ function createApp() {
 }
 
 function isSalesforceDomain() {
-  return !!document.URL.match("https?://([a-z0-9]+[.])*force[.]com");
+  return !!document.URL.match(
+    "https?://([a-z0-9]+[-]*[a-z0-9]*[.])*force[.]com"
+  );
 }
 
 function togglePalette() {

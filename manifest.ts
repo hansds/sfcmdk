@@ -43,8 +43,8 @@ const manifest: chrome.runtime.ManifestV3 = {
       matches: ["*://*/*"],
     },
   ],
-  host_permissions: ["*://*.force.com/"],
-  permissions: ["cookies"],
+  host_permissions: ["*://*.force.com/", "*://*.salesforce.com/"],
+  permissions: ["cookies", "storage"],
 };
 
 export default manifest;

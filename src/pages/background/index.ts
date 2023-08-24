@@ -1,4 +1,4 @@
-import * as Messaging from "@src/shared/messaging";
+import * as Messaging from "@src/shared/background/messaging";
 import reloadOnUpdate from "virtual:reload-on-update-in-background-script";
 
 reloadOnUpdate("pages/background");
