@@ -44,7 +44,7 @@ const manifest: chrome.runtime.ManifestV3 = {
     },
   ],
   host_permissions: ["*://*.force.com/", "*://*.salesforce.com/"],
-  permissions: ["cookies", "storage"],
+  permissions: ["cookies", "storage", "tabs", "activeTab"],
 };
 
 export default manifest;
