@@ -1,24 +1,10 @@
 import { storeForOrg } from "../storage";
-import { fetchAuthenticatedSalesforce } from "./utils";
+import { fetchAuthenticatedSalesforce } from "../background/utils";
+import { GenericRequest, MessageRequest, MessageResponse } from "./types";
 
 export enum MessageType {
   GetUsers,
   GetCustomObjects,
-}
-
-export interface GenericRequest {
-  orgId: string;
-}
-
-// types.ts
-export interface Request<T extends keyof RequestMap> {
-  type: T;
-  data: RequestMap[T]["request"];
-}
-
-export interface Response<T extends keyof RequestMap> {
-  type: T;
-  data: RequestMap[T]["response"];
 }
 
 export interface RequestMap {
@@ -44,7 +30,7 @@ export interface CustomObject {
 }
 
 export function receiveMessages(
-  message: Request<keyof RequestMap>,
+  message: MessageRequest<keyof RequestMap>,
   sender,
   sendResponse: (response) => void
 ) {
@@ -59,14 +45,14 @@ export function receiveMessages(
       const json = await users.json();
       storeForOrg(message.data.orgId, { users: json });
 
-      const response: Response<MessageType.GetUsers> = {
+      const response: MessageResponse<MessageType.GetUsers> = {
         type: MessageType.GetUsers,
         data: json,
       };
 
       sendResponse(response);
     } else if (requestType == MessageType.GetCustomObjects) {
-      const response: Response<MessageType.GetCustomObjects> = {
+      const response: MessageResponse<MessageType.GetCustomObjects> = {
         type: MessageType.GetCustomObjects,
         data: [],
       };
@@ -76,27 +62,4 @@ export function receiveMessages(
   })();
 
   return true;
-}
-
-// TODO: move this into shared
-export function sendTypedMessage<T extends keyof RequestMap>(
-  type: T,
-  data: RequestMap[T]["request"]
-): Promise<Response<T>> {
-  const message: Request<T> = {
-    type: type,
-    data: data,
-  };
-
-  return new Promise((resolve, reject) => {
-    chrome.runtime.sendMessage(message, (response: Response<T> | undefined) => {
-      console.log("response", response);
-
-      if (response) {
-        resolve(response);
-      } else {
-        reject();
-      }
-    });
-  });
 }

@@ -10,11 +10,7 @@ import {
   FinderIcon,
   StarIcon,
 } from "../icons";
-import {
-  MessageType,
-  User,
-  sendTypedMessage,
-} from "@src/shared/background/messaging";
+import { MessageType, User, sendTypedMessage } from "@src/shared/messaging";
 
 export default function SalesforceCommand() {
   // const { resolvedTheme: theme } = useTheme();
