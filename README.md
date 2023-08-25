@@ -4,6 +4,7 @@ Started from [chrome-extension-boilerplate-react-vite](https://github.com/Jongha
 
 ## TODO's
 
+- Add localstorage caching to reduce salesforce requests
 - Add integration with Salesforce inspector: allowing you to inspect records by pasting the id: chrome-extension://aodjmnfhjibkcdimpodiifdjnnncaafh/inspect.html?host=[inject]&objectType=[inject]&recordId=xxx
 
 ## Structure

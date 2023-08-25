@@ -18,10 +18,8 @@ export default function SalesforceCommand() {
   const [value, setValue] = React.useState("linear");
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const listRef = React.useRef(null);
-
   const containerElement = React.useRef(null);
 
-  // let loginAsUsers;
   const [loginAsUsers, setLoginAsUsers] = useState([]);
 
   React.useEffect(() => {
@@ -144,8 +142,15 @@ export default function SalesforceCommand() {
             </Command.Item>
             {loginAsUsers.map((loginAsUser, index) => {
               return (
-                <LoginAsItem key={index} value={`Login as ${loginAsUser.Name}`}>
-                  Login as {loginAsUser.Name}
+                <LoginAsItem
+                  key={index}
+                  value={`Login as ${loginAsUser.Name} (${loginAsUser.Username})`}
+                  onSelect={() => {
+                    alert(`Hello there ${loginAsUser.Name}`);
+                  }}
+                >
+                  <UserIcon />
+                  Login as {loginAsUser.Name} ({loginAsUser.Username})
                 </LoginAsItem>
               );
             })}
