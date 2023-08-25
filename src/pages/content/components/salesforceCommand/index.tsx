@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 // import { useTheme } from "next-themes";
 import * as Popover from "@radix-ui/react-popover";
+import { getLoginAsUsers } from "@src/shared/background/messaging";
+import { getOrgIdFromDocument } from "@src/shared/content/utils";
 import { Command, useCommandState } from "cmdk";
 import {
-  Logo,
-  LinearIcon,
   FigmaIcon,
+  LinearIcon,
+  RaycastIcon,
   SlackIcon,
   YouTubeIcon,
-  RaycastIcon,
 } from "../icons";
-import { getOrgId, getSessionId } from "@src/shared/background/utils";
-import { getLoginAsUsers } from "@src/shared/background/messaging";
-import { getDocumentSessionId } from "@src/shared/content/utils";
 
 export default function SalesforceCommand() {
   // const { resolvedTheme: theme } = useTheme();
@@ -38,27 +36,14 @@ export default function SalesforceCommand() {
   }, []);
 
   React.useEffect(() => {
-    // // doSalesforceCall(sessionId);
-    // const sessionId = getDocumentSessionId(document);
-    // const orgId = sessionId.substring(0, 15);
-    // // loginAsUsers = getLoginAsUsers(orgId);
-    // getLoginAsUsers(orgId).then((response) => {
-    //   loginAsUsers = response;
-    //   console.log("loginAsUsers async", loginAsUsers);
-    // });
-    // console.log("loginAsUsers", loginAsUsers);
     const fetchLoginAsUsers = async () => {
-      const sessionId = getDocumentSessionId(document);
-      const orgId = sessionId.substring(0, 15);
+      const orgId = getOrgIdFromDocument(document);
 
-      const response = (await getLoginAsUsers(orgId)) as any;
-      const records = response.records;
+      // TODO: Fix any
+      const response = await getLoginAsUsers(orgId);
+      const records = (response as any).records;
+
       setLoginAsUsers(records);
-      //   .then((response) => {
-      //   loginAsUsers = response;
-      //   console.log("loginAsUsers async", loginAsUsers);
-      // });
-      console.log("loginAsUsers", response.records);
     };
 
     fetchLoginAsUsers();

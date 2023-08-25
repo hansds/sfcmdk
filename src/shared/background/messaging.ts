@@ -1,7 +1,6 @@
-import { fetchAuthenticated } from "../salesforce";
 import { storeForOrg } from "../storage";
-import { GetLoginAsUsersResponse, fetchLoginAsUsers } from "./core";
-import { getSessionId } from "./utils";
+import { GetLoginAsUsersResponse } from "./core";
+import { fetchAuthenticatedSalesforce } from "./utils";
 
 enum MessageType {
   GetLoginAsUsers = "getLoginAsUsers",
@@ -16,22 +15,17 @@ export interface Request {
 export function receiveMessages(
   request: Request,
   sender,
-  sendResponse: (response?: any) => void
+  sendResponse: (response) => void
 ) {
+  console.log("request from background", request);
   (async () => {
     if (request.type == MessageType.GetLoginAsUsers) {
-      // const loginAsUsers = await fetchLoginAsUsers(request.sessionId);
-
-      const sessionId = await getSessionId(request.orgId);
-
-      console.log("got me sessionid", sessionId);
-
-      const response = await fetchAuthenticated(
-        "https://***REMOVED***.lightning.force.com/services/data/v50.0/query/?q=SELECT+Id,Name,Profile.Name+FROM+User+WHERE+IsActive+=+true",
-        sessionId
+      const response = await fetchAuthenticatedSalesforce(
+        "services/data/v50.0/query/?q=SELECT+Id,Name,Profile.Name+FROM+User+WHERE+IsActive+=+true",
+        request.orgId
       );
       const json = await response.json();
-
+      console.log("json", json);
       storeForOrg(request.orgId, { loginAsUsers: json });
 
       sendResponse(json);

@@ -1,15 +1,7 @@
-import { doAuthenticatedSalesforceRequest } from "./utils";
-
-export interface GetLoginAsUsersResponse {
-  loginAsUsers: Record<string, string>;
+export interface Response {
+  error?: string;
 }
 
-export function fetchLoginAsUsers(
-  sessionId: string
-): Promise<GetLoginAsUsersResponse> {
-  const url = `https://na1.salesforce.com/services/data/v50.0/query/?q=SELECT+Id,Name,Profile.Name+FROM+User+WHERE+IsActive+=+true`;
-  const req = doAuthenticatedSalesforceRequest(sessionId, url);
-
-  console.log("req", req);
-  return req;
+export interface GetLoginAsUsersResponse extends Response {
+  loginAsUsers: any;
 }
