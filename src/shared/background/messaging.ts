@@ -1,14 +1,14 @@
 import { storeForOrg } from "../storage";
-import { GetLoginAsUsersResponse } from "./core";
+import { GetUsersResponse } from "./core";
 import { fetchAuthenticatedSalesforce } from "./utils";
 
 enum MessageType {
-  GetLoginAsUsers = "getLoginAsUsers",
-  FetchCustomObjects = "fetchCustomObjects",
+  GetUsers = "getUsers",
+  GetCustomObjects = "getCustomObjects",
 }
 
 export interface Request {
-  type: MessageType.GetLoginAsUsers;
+  type: MessageType.GetUsers;
   orgId: string;
 }
 
@@ -18,16 +18,16 @@ export function receiveMessages(
   sendResponse: (response) => void
 ) {
   (async () => {
-    if (request.type == MessageType.GetLoginAsUsers) {
+    if (request.type == MessageType.GetUsers) {
       const response = await fetchAuthenticatedSalesforce(
         "services/data/v50.0/query/?q=SELECT+Id,Name,Username,Profile.Name+FROM+User+WHERE+IsActive+=+true",
         request.orgId
       );
       const json = await response.json();
-      storeForOrg(request.orgId, { loginAsUsers: json });
+      storeForOrg(request.orgId, { users: json });
 
       sendResponse(json);
-    } else if (request.type == MessageType.FetchCustomObjects) {
+    } else if (request.type == MessageType.GetCustomObjects) {
       sendResponse([]);
     }
   })();
@@ -35,12 +35,10 @@ export function receiveMessages(
   return true;
 }
 
-export async function getLoginAsUsers(
-  orgId: string
-): Promise<GetLoginAsUsersResponse> {
+export async function getUsers(orgId: string): Promise<GetUsersResponse> {
   return new Promise((resolve, reject) => {
     chrome.runtime.sendMessage(
-      { type: MessageType.GetLoginAsUsers, orgId },
+      { type: MessageType.GetUsers, orgId },
       (response) => {
         console.log("response", response);
 

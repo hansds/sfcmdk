@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { useTheme } from "next-themes";
 import * as Popover from "@radix-ui/react-popover";
-import { getLoginAsUsers } from "@src/shared/background/messaging";
+import { getUsers } from "@src/shared/background/messaging";
 import { getOrgIdFromDocument } from "@src/shared/content/utils";
 import { Command, useCommandState } from "cmdk";
 import {
@@ -20,12 +20,12 @@ export default function SalesforceCommand() {
   const listRef = React.useRef(null);
   const containerElement = React.useRef(null);
 
-  const [loginAsUsers, setLoginAsUsers] = useState([]);
+  const [users, setUsers] = useState([]);
 
   React.useEffect(() => {
     document.addEventListener("salesforce-command-palette-opened", () => {
       inputRef?.current?.focus();
-      console.log(loginAsUsers);
+      console.log(users);
     });
   }, []);
 
@@ -34,17 +34,17 @@ export default function SalesforceCommand() {
   }, []);
 
   React.useEffect(() => {
-    const fetchLoginAsUsers = async () => {
+    const fetchUsers = async () => {
       const orgId = getOrgIdFromDocument(document);
 
       // TODO: Fix any
-      const response = await getLoginAsUsers(orgId);
+      const response = await getUsers(orgId);
       const records = (response as any).records;
 
-      setLoginAsUsers(records);
+      setUsers(records);
     };
 
-    fetchLoginAsUsers();
+    fetchUsers();
   }, []);
 
   function bounce() {
@@ -96,17 +96,17 @@ export default function SalesforceCommand() {
               <UserIcon />
               Login as…
             </Command.Item>
-            {loginAsUsers.map((loginAsUser, index) => {
+            {users.map((user, index) => {
               return (
                 <LoginAsItem
                   key={index}
-                  value={`Login as ${loginAsUser.Name} (${loginAsUser.Username})`}
+                  value={`Login as ${user.Name} (${user.Username})`}
                   onSelect={() => {
-                    alert(`Hello there ${loginAsUser.Name}`);
+                    alert(`Hello there ${user.Name}`);
                   }}
                 >
                   <UserIcon />
-                  Login as {loginAsUser.Name} ({loginAsUser.Username})
+                  Login as {user.Name} ({user.Username})
                 </LoginAsItem>
               );
             })}
