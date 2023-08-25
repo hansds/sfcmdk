@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 // import { useTheme } from "next-themes";
 import * as Popover from "@radix-ui/react-popover";
-import { getUsers } from "@src/shared/background/messaging";
 import { getOrgIdFromDocument } from "@src/shared/content/utils";
 import { Command, useCommandState } from "cmdk";
 import {
@@ -11,6 +10,11 @@ import {
   FinderIcon,
   StarIcon,
 } from "../icons";
+import {
+  MessageType,
+  User,
+  sendTypedMessage,
+} from "@src/shared/background/messaging";
 
 export default function SalesforceCommand() {
   // const { resolvedTheme: theme } = useTheme();
@@ -38,8 +42,13 @@ export default function SalesforceCommand() {
       const orgId = getOrgIdFromDocument(document);
 
       // TODO: Fix any
-      const response = await getUsers(orgId);
-      const records = (response as any).records;
+      const response = await sendTypedMessage(MessageType.GetUsers, {
+        orgId,
+      });
+
+      console.log(response);
+
+      const records = (response.data as any).records;
 
       setUsers(records);
     };
