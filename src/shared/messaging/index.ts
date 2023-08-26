@@ -1,10 +1,14 @@
 import { storeForOrg } from "../storage";
-import { fetchAuthenticatedSalesforce } from "../background/utils";
+import {
+  fetchAuthenticatedSalesforce,
+  getSalesforceEnvironment,
+} from "../background/utils";
 import { GenericRequest, MessageRequest, MessageResponse } from "./types";
 
 export enum MessageType {
   GetUsers,
   GetCustomObjects,
+  LoginAsUser,
 }
 
 export interface RequestMap {
@@ -16,7 +20,10 @@ export interface RequestMap {
     request: GenericRequest;
     response: CustomObject[];
   };
-  // Add more request/response types as needed
+  [MessageType.LoginAsUser]: {
+    request: GenericRequest & { userId: string };
+    response: string;
+  };
 }
 
 export interface User {
@@ -56,6 +63,33 @@ export function receiveMessages(
         type: MessageType.GetCustomObjects,
         data: [],
       };
+
+      sendResponse(response);
+    } else if (requestType == MessageType.LoginAsUser) {
+      const response: MessageResponse<MessageType.LoginAsUser> = {
+        type: MessageType.LoginAsUser,
+        data: "this is a userid",
+      };
+
+      const typedMessage = message as MessageRequest<MessageType.LoginAsUser>;
+      const environment = await getSalesforceEnvironment(
+        typedMessage.data.orgId
+      );
+
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        const activeTab = tabs[0];
+        const url = new URL(activeTab.url);
+        const path = url.pathname;
+        chrome.tabs.update(activeTab.id, {
+          url: `https://${environment.domain}/servlet/servlet.su?oid=${
+            typedMessage.data.orgId
+          }&suorgadminid=${
+            typedMessage.data.userId
+          }&retURL=${encodeURIComponent(path)}&targetURL=${encodeURIComponent(
+            path
+          )}`,
+        });
+      });
 
       sendResponse(response);
     }

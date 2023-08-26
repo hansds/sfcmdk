@@ -10,7 +10,8 @@ import {
   FinderIcon,
   StarIcon,
 } from "../icons";
-import { MessageType, User, sendTypedMessage } from "@src/shared/messaging";
+import { MessageType, User } from "@src/shared/messaging";
+import { sendTypedMessage } from "@src/shared/messaging/content";
 
 export default function SalesforceCommand() {
   // const { resolvedTheme: theme } = useTheme();
@@ -19,6 +20,7 @@ export default function SalesforceCommand() {
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const listRef = React.useRef(null);
   const containerElement = React.useRef(null);
+  const orgId = getOrgIdFromDocument(document);
 
   const [users, setUsers] = useState([]);
 
@@ -35,8 +37,6 @@ export default function SalesforceCommand() {
 
   React.useEffect(() => {
     const fetchUsers = async () => {
-      const orgId = getOrgIdFromDocument(document);
-
       // TODO: Fix any
       const response = await sendTypedMessage(MessageType.GetUsers, {
         orgId,
@@ -107,7 +107,10 @@ export default function SalesforceCommand() {
                   key={index}
                   value={`Login as ${user.Name} (${user.Username})`}
                   onSelect={() => {
-                    alert(`Hello there ${user.Name}`);
+                    sendTypedMessage(MessageType.LoginAsUser, {
+                      orgId,
+                      userId: user.Id,
+                    });
                   }}
                 >
                   <UserIcon />
