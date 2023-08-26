@@ -59,6 +59,19 @@ function createApp() {
 
   document.body.prepend(root);
 
+  // Fixes UX where Salesforce steals focus when opening command palette very quickly on page load
+  root.addEventListener("focusout", () => {
+    const paletteElement = document.getElementById(
+      "salesforce-command-palette-content-view-root"
+    );
+
+    if (!paletteElement) return;
+
+    if (paletteElement.style.display !== "none") {
+      document.dispatchEvent(new Event("salesforce-command-palette-opened"));
+    }
+  });
+
   createRoot(root).render(<SalesforceCommand />);
 }
 
