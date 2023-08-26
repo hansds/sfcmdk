@@ -1,17 +1,10 @@
 import React, { useState } from "react";
 // import { useTheme } from "next-themes";
-import * as Popover from "@radix-ui/react-popover";
 import { getOrgIdFromDocument } from "@src/shared/content/utils";
-import { Command, useCommandState } from "cmdk";
-import {
-  UserIcon,
-  RaycastLightIcon,
-  WindowIcon,
-  FinderIcon,
-  StarIcon,
-} from "../icons";
-import { MessageType, User } from "@src/shared/messaging";
+import { MessageType } from "@src/shared/messaging";
 import { sendTypedMessage } from "@src/shared/messaging/content";
+import { Command, useCommandState } from "cmdk";
+import { RaycastLightIcon, UserIcon } from "../icons";
 
 export default function SalesforceCommand() {
   // const { resolvedTheme: theme } = useTheme();

@@ -8,21 +8,6 @@ init();
 document.addEventListener("keydown", function (event) {
   if (event.key === "k" && event.metaKey) {
     togglePalette();
-
-    // const getSessionIdRequest: Messaging.Request = {
-    //   type: "getSessionId",
-    // };
-    // chrome.runtime.sendMessage(getSessionIdRequest, function (response) {
-    //   console.log(response);
-    // });
-
-    // Messaging.getSessionId().then((sessionId) => {
-    //   console.log(sessionId);
-    // });
-
-    chrome.storage.local.get("salesforce-command-palette").then((result) => {
-      console.log(result);
-    });
   }
   if (event.key === "Escape") {
     const paletteElement = document.getElementById(
@@ -37,7 +22,6 @@ document.addEventListener("keydown", function (event) {
 export function init() {
   if (isSalesforceDomain()) {
     createApp();
-    console.log("Salesforce Command Palette: Content View Loaded");
   }
 }
 
@@ -54,8 +38,6 @@ function createApp() {
   root.style.justifyContent = "center";
   root.style.alignItems = "center";
   root.style.pointerEvents = "none";
-
-  // root.style.display = "none";
 
   document.body.prepend(root);
 
