@@ -4,7 +4,7 @@ import { getOrgIdFromDocument } from "@src/shared/content/utils";
 import { MessageType } from "@src/shared/messaging";
 import { sendTypedMessage } from "@src/shared/messaging/content";
 import { Command, useCommandState } from "cmdk";
-import { RaycastLightIcon, UserIcon } from "../icons";
+import { RaycastLightIcon, ToolIcon, UserIcon } from "../icons";
 
 export default function SalesforceCommand() {
   // const { resolvedTheme: theme } = useTheme();
@@ -84,12 +84,12 @@ export default function SalesforceCommand() {
         <Command.Input
           ref={inputRef}
           autoFocus
-          placeholder="Search for apps and commands..."
+          placeholder="Search for commands..."
         />
         <hr cmdk-raycast-loader="" />
         <Command.List ref={listRef}>
           <Command.Empty>No results found.</Command.Empty>
-          <Command.Group heading="Commands">
+          <Command.Group heading="Users">
             <Command.Item>
               <UserIcon />
               Login as…
@@ -111,6 +111,12 @@ export default function SalesforceCommand() {
                 </LoginAsItem>
               );
             })}
+          </Command.Group>
+          <Command.Group heading="Setup">
+            <Command.Item>
+              <ToolIcon />
+              Manage object…
+            </Command.Item>
           </Command.Group>
         </Command.List>
 
