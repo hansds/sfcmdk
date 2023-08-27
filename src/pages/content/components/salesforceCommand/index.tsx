@@ -4,7 +4,7 @@ import { getOrgIdFromDocument } from "@src/shared/content/utils";
 import { MessageType } from "@src/shared/messaging";
 import { sendTypedMessage } from "@src/shared/messaging/content";
 import { Command, useCommandState } from "cmdk";
-import { RaycastLightIcon, ToolIcon, UserIcon } from "../icons";
+import { DatabaseIcon, RaycastLightIcon, ToolIcon, UserIcon } from "../icons";
 
 export default function SalesforceCommand() {
   // const { resolvedTheme: theme } = useTheme();
@@ -114,8 +114,12 @@ export default function SalesforceCommand() {
           </Command.Group>
           <Command.Group heading="Setup">
             <Command.Item>
-              <ToolIcon />
+              <DatabaseIcon />
               Manage object…
+            </Command.Item>
+            <Command.Item>
+              <ToolIcon />
+              Setup…
             </Command.Item>
           </Command.Group>
         </Command.List>

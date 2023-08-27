@@ -38,7 +38,7 @@ _Command Palette_
 
 The extension works by extracting the `orgId` from the current environment document's cookie. The metadata is then requested from the background script by finding the correct `sessionId` for the `orgId` in the cookies.
 
-All separate environemnts' metadata is stored and cached in localstorage.
+All separate environments' metadata is stored and cached in localstorage.
 
 ## Acknowledgements
 
