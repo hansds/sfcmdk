@@ -14,3 +14,18 @@ export interface MessageResponse<T extends keyof RequestMap> {
   type: T;
   data: RequestMap[T]["response"];
 }
+
+export interface SalesforceReponse {
+  totalSize: number;
+  done: boolean;
+  records: JSONArray;
+}
+
+type JSONValue = string | number | boolean | JSONObject | JSONArray;
+
+interface JSONObject {
+  [x: string]: JSONValue;
+  Id: string;
+}
+
+export type JSONArray = Array<JSONObject>;

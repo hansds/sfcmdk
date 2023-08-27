@@ -3,7 +3,12 @@ import {
   fetchAuthenticatedSalesforce,
   getSalesforceEnvironment,
 } from "../background/utils";
-import { GenericRequest, MessageRequest, MessageResponse } from "./types";
+import {
+  GenericRequest,
+  MessageRequest,
+  MessageResponse,
+  SalesforceReponse,
+} from "./types";
 
 export enum MessageType {
   GetUsers,
@@ -14,26 +19,16 @@ export enum MessageType {
 export interface RequestMap {
   [MessageType.GetUsers]: {
     request: GenericRequest;
-    response: User[];
+    response: SalesforceReponse;
   };
   [MessageType.GetCustomObjects]: {
     request: GenericRequest;
-    response: CustomObject[];
+    response: SalesforceReponse;
   };
   [MessageType.LoginAsUser]: {
     request: GenericRequest & { userId: string };
     response: string;
   };
-}
-
-export interface User {
-  id: number;
-  name: string;
-}
-
-export interface CustomObject {
-  id: number;
-  name: string;
 }
 
 export function receiveMessages(
@@ -61,7 +56,7 @@ export function receiveMessages(
     } else if (requestType == MessageType.GetCustomObjects) {
       const response: MessageResponse<MessageType.GetCustomObjects> = {
         type: MessageType.GetCustomObjects,
-        data: [],
+        data: null,
       };
 
       sendResponse(response);

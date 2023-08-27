@@ -5,6 +5,7 @@ import { MessageType } from "@src/shared/messaging";
 import { sendTypedMessage } from "@src/shared/messaging/content";
 import { Command, useCommandState } from "cmdk";
 import { DatabaseIcon, RaycastLightIcon, ToolIcon, UserIcon } from "../icons";
+import { JSONArray } from "@src/shared/messaging/types";
 
 export default function SalesforceCommand() {
   // const { resolvedTheme: theme } = useTheme();
@@ -15,7 +16,7 @@ export default function SalesforceCommand() {
   const containerElement = React.useRef(null);
   const orgId = getOrgIdFromDocument(document);
 
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<JSONArray>([]);
 
   React.useEffect(() => {
     document.addEventListener("salesforce-command-palette-opened", () => {
@@ -30,16 +31,11 @@ export default function SalesforceCommand() {
 
   React.useEffect(() => {
     const fetchUsers = async () => {
-      // TODO: Fix any
       const response = await sendTypedMessage(MessageType.GetUsers, {
         orgId,
       });
 
-      console.log(response);
-
-      const records = (response.data as any).records;
-
-      setUsers(records);
+      setUsers(response.data.records);
     };
 
     fetchUsers();
