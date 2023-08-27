@@ -17,6 +17,7 @@ export default function SalesforceCommand() {
   const orgId = getOrgIdFromDocument(document);
 
   const [users, setUsers] = useState<JSONArray>([]);
+  const [customObjects, setCustomObjects] = useState<JSONArray>([]);
 
   React.useEffect(() => {
     document.addEventListener("salesforce-command-palette-opened", () => {
@@ -39,6 +40,18 @@ export default function SalesforceCommand() {
     };
 
     fetchUsers();
+  }, []);
+
+  React.useEffect(() => {
+    const fetchCustomObjects = async () => {
+      const response = await sendTypedMessage(MessageType.GetCustomObjects, {
+        orgId,
+      });
+
+      setCustomObjects(response.data.records);
+    };
+
+    fetchCustomObjects();
   }, []);
 
   function bounce() {
@@ -113,6 +126,23 @@ export default function SalesforceCommand() {
               <DatabaseIcon />
               Manage object…
             </Command.Item>
+            {customObjects.map((customObject, index) => {
+              return (
+                <CustomObjectItem
+                  key={index}
+                  value={`Manage ${customObject.Label}`}
+                  onSelect={() => {
+                    // sendTypedMessage(MessageType.LoginAsUser, {
+                    //   orgId,
+                    //   userId: customObject.Id,
+                    // });
+                  }}
+                >
+                  <DatabaseIcon />
+                  Manage {customObject.Label}
+                </CustomObjectItem>
+              );
+            })}
             <Command.Item>
               <ToolIcon />
               Setup…
@@ -141,6 +171,12 @@ export default function SalesforceCommand() {
 }
 
 const LoginAsItem = (props) => {
+  const search = useCommandState((state) => state.search);
+  if (!search) return null;
+  return <Command.Item {...props} />;
+};
+
+const CustomObjectItem = (props) => {
   const search = useCommandState((state) => state.search);
   if (!search) return null;
   return <Command.Item {...props} />;

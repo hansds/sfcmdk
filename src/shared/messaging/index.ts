@@ -45,7 +45,7 @@ export function receiveMessages(
         message.data.orgId
       );
       const json = await users.json();
-      storeForOrg(message.data.orgId, { users: json });
+      // storeForOrg(message.data.orgId, { users: json });
 
       const response: MessageResponse<MessageType.GetUsers> = {
         type: MessageType.GetUsers,
@@ -54,9 +54,16 @@ export function receiveMessages(
 
       sendResponse(response);
     } else if (requestType == MessageType.GetCustomObjects) {
+      const customObjects = await fetchAuthenticatedSalesforce(
+        "services/data/v50.0/query/?q=SELECT+DurableId,NamespacePrefix,Label+FROM+EntityDefinition+WHERE+IsCustomizable=true+ORDER+BY+QualifiedApiName+ASC",
+        message.data.orgId
+      );
+      const json = await customObjects.json();
+      // storeForOrg(message.data.orgId, { users: json });
+
       const response: MessageResponse<MessageType.GetCustomObjects> = {
         type: MessageType.GetCustomObjects,
-        data: null,
+        data: json,
       };
 
       sendResponse(response);
