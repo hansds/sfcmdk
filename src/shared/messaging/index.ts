@@ -14,6 +14,7 @@ export enum MessageType {
   GetUsers,
   GetCustomObjects,
   LoginAsUser,
+  ManageObject,
 }
 
 export interface RequestMap {
@@ -27,7 +28,11 @@ export interface RequestMap {
   };
   [MessageType.LoginAsUser]: {
     request: GenericRequest & { userId: string };
-    response: string;
+    response: void;
+  };
+  [MessageType.ManageObject]: {
+    request: GenericRequest & { objectId: string };
+    response: void;
   };
 }
 
@@ -68,11 +73,6 @@ export function receiveMessages(
 
       sendResponse(response);
     } else if (requestType == MessageType.LoginAsUser) {
-      const response: MessageResponse<MessageType.LoginAsUser> = {
-        type: MessageType.LoginAsUser,
-        data: "this is a userid",
-      };
-
       const typedMessage = message as MessageRequest<MessageType.LoginAsUser>;
       const environment = await getSalesforceEnvironment(
         typedMessage.data.orgId
@@ -92,8 +92,18 @@ export function receiveMessages(
           )}`,
         });
       });
+    } else if (requestType == MessageType.ManageObject) {
+      const typedMessage = message as MessageRequest<MessageType.ManageObject>;
+      const environment = await getSalesforceEnvironment(
+        typedMessage.data.orgId
+      );
 
-      sendResponse(response);
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        const activeTab = tabs[0];
+        chrome.tabs.update(activeTab.id, {
+          url: `https://${environment.domain}/lightning/setup/ObjectManager/${typedMessage.data.objectId}/Details/view`,
+        });
+      });
     }
   })();
 

@@ -132,10 +132,10 @@ export default function SalesforceCommand() {
                   key={index}
                   value={`Manage ${customObject.Label}`}
                   onSelect={() => {
-                    // sendTypedMessage(MessageType.LoginAsUser, {
-                    //   orgId,
-                    //   userId: customObject.Id,
-                    // });
+                    sendTypedMessage(MessageType.ManageObject, {
+                      orgId,
+                      objectId: customObject.DurableId as string,
+                    });
                   }}
                 >
                   <DatabaseIcon />
