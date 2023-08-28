@@ -1,4 +1,4 @@
-import { storeForOrg } from "../storage";
+import { cacheInStorage } from "../storage";
 import {
   fetchAuthenticatedSalesforce,
   getSalesforceEnvironment,
@@ -45,30 +45,40 @@ export function receiveMessages(
 
   (async () => {
     if (requestType == MessageType.GetUsers) {
-      const users = await fetchAuthenticatedSalesforce(
-        "services/data/v50.0/query/?q=SELECT+Id,Name,Username,Profile.Name+FROM+User+WHERE+IsActive+=+true",
-        message.data.orgId
+      const data = await cacheInStorage(
+        MessageType.GetUsers,
+        message.data.orgId,
+        async () => {
+          const users = await fetchAuthenticatedSalesforce(
+            "services/data/v50.0/query/?q=SELECT+Id,Name,Username,Profile.Name+FROM+User+WHERE+IsActive+=+true",
+            message.data.orgId
+          );
+          return await users.json();
+        }
       );
-      const json = await users.json();
-      // storeForOrg(message.data.orgId, { users: json });
 
       const response: MessageResponse<MessageType.GetUsers> = {
         type: MessageType.GetUsers,
-        data: json,
+        data,
       };
 
       sendResponse(response);
     } else if (requestType == MessageType.GetCustomObjects) {
-      const customObjects = await fetchAuthenticatedSalesforce(
-        "services/data/v50.0/query/?q=SELECT+DurableId,NamespacePrefix,Label+FROM+EntityDefinition+WHERE+IsCustomizable=true+ORDER+BY+QualifiedApiName+ASC",
-        message.data.orgId
+      const data = await cacheInStorage(
+        MessageType.GetCustomObjects,
+        message.data.orgId,
+        async () => {
+          const customObjects = await fetchAuthenticatedSalesforce(
+            "services/data/v50.0/query/?q=SELECT+DurableId,NamespacePrefix,Label+FROM+EntityDefinition+WHERE+IsCustomizable=true+ORDER+BY+QualifiedApiName+ASC",
+            message.data.orgId
+          );
+          return await customObjects.json();
+        }
       );
-      const json = await customObjects.json();
-      // storeForOrg(message.data.orgId, { users: json });
 
       const response: MessageResponse<MessageType.GetCustomObjects> = {
         type: MessageType.GetCustomObjects,
-        data: json,
+        data,
       };
 
       sendResponse(response);
