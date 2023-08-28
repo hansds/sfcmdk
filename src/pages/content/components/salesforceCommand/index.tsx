@@ -107,7 +107,8 @@ export default function SalesforceCommand() {
               return (
                 <LoginAsItem
                   key={index}
-                  value={`Login as ${user.Name} (${user.Username})`}
+                  value={`Login as ${user.Name}`}
+                  className="cmdk-item--with-aside"
                   onSelect={() => {
                     sendTypedMessage(MessageType.LoginAsUser, {
                       orgId,
@@ -115,8 +116,11 @@ export default function SalesforceCommand() {
                     });
                   }}
                 >
-                  <UserIcon />
-                  Login as {user.Name} ({user.Username})
+                  <div cmdk-item-main="">
+                    <UserIcon />
+                    Login as {user.Name as string}
+                  </div>
+                  <div cmdk-item-aside="">{user.Username as string}</div>
                 </LoginAsItem>
               );
             })}

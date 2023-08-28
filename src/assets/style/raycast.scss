@@ -131,7 +131,6 @@
 
     [cmdk-item] {
         content-visibility: auto;
-
         cursor: pointer;
         height: 40px;
         border-radius: 8px;
@@ -173,6 +172,24 @@
             width: 18px;
             height: 18px;
         }
+
+        &.cmdk-item--with-aside {
+            justify-content: space-between;
+        }
+    }
+
+    [cmdk-item-main] {
+        display: flex;
+        gap: 8px;
+        white-space: nowrap;
+    }
+
+    [cmdk-item-aside] {
+        font-size: .7rem;
+        color: var(--gray9);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     [cmdk-raycast-meta] {
