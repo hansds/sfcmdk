@@ -135,6 +135,7 @@ export default function SalesforceCommand() {
                 <CustomObjectItem
                   key={index}
                   value={`Manage ${customObject.Label}`}
+                  className="cmdk-item--with-aside"
                   onSelect={() => {
                     sendTypedMessage(MessageType.ManageObject, {
                       orgId,
@@ -142,8 +143,13 @@ export default function SalesforceCommand() {
                     });
                   }}
                 >
-                  <DatabaseIcon />
-                  Manage {customObject.Label}
+                  <div cmdk-item-main="">
+                    <DatabaseIcon />
+                    Manage {customObject.Label as string}
+                  </div>
+                  <div cmdk-item-aside="">
+                    {customObject.NamespacePrefix as string}
+                  </div>
                 </CustomObjectItem>
               );
             })}
