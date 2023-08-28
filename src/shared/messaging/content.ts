@@ -14,8 +14,6 @@ export function sendTypedMessage<T extends keyof RequestMap>(
     chrome.runtime.sendMessage(
       message,
       (response: MessageResponse<T> | undefined) => {
-        console.log("response", response);
-
         if (response) {
           resolve(response);
         } else {
