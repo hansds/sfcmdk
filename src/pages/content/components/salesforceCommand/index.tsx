@@ -4,7 +4,13 @@ import { getOrgIdFromDocument } from "@src/shared/content/utils";
 import { MessageType } from "@src/shared/messaging";
 import { sendTypedMessage } from "@src/shared/messaging/content";
 import { Command, useCommandState } from "cmdk";
-import { DatabaseIcon, RaycastLightIcon, ToolIcon, UserIcon } from "../icons";
+import {
+  DatabaseIcon,
+  RaycastLightIcon,
+  RefreshIcon,
+  ToolIcon,
+  UserIcon,
+} from "../icons";
 import { JSONArray } from "@src/shared/messaging/types";
 
 export default function SalesforceCommand() {
@@ -156,6 +162,18 @@ export default function SalesforceCommand() {
             <Command.Item>
               <ToolIcon />
               Setup…
+            </Command.Item>
+          </Command.Group>
+          <Command.Group heading="Command Palette">
+            <Command.Item
+              onSelect={() => {
+                sendTypedMessage(MessageType.RefreshMetadata, {
+                  orgId,
+                });
+              }}
+            >
+              <RefreshIcon />
+              Refresh metadata
             </Command.Item>
           </Command.Group>
         </Command.List>

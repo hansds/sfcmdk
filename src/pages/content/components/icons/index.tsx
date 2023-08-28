@@ -241,7 +241,7 @@ export function DatabaseIcon() {
           x="0"
           y="0"
           rx="128"
-          fill="url(#r5)"
+          fill="url(#gradient-blue)"
           stroke="#FFFFFF"
           stroke-width="0"
           stroke-opacity="100%"
@@ -252,7 +252,7 @@ export function DatabaseIcon() {
         </clipPath>
         <defs>
           <linearGradient
-            id="r5"
+            id="gradient-blue"
             gradientUnits="userSpaceOnUse"
             gradientTransform="rotate(45)"
             style={{ transformOrigin: "center center" }}
@@ -285,6 +285,79 @@ export function DatabaseIcon() {
         >
           <path
             d="M1.75 6v4c0 1.243 2.798 2.25 6.25 2.25s6.25-1.007 6.25-2.25V6M1.75 6c0 1.243 2.798 2.25 6.25 2.25S14.25 7.243 14.25 6M1.75 6c0-1.243 2.798-2.25 6.25-2.25S14.25 4.757 14.25 6"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+      </svg>
+    </div>
+  );
+}
+
+export function RefreshIcon() {
+  return (
+    <div cmdk-raycast-refresh-icon="">
+      <svg
+        width="512"
+        height="512"
+        viewBox="0 0 512 512"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+      >
+        <rect
+          id="r4"
+          width="512"
+          height="512"
+          x="0"
+          y="0"
+          rx="128"
+          fill="url(#gradient-green)"
+          stroke="#FFFFFF"
+          stroke-width="0"
+          stroke-opacity="100%"
+          paint-order="stroke"
+        ></rect>
+        <clipPath id="clip">
+          <use xlinkHref="#r4"></use>
+        </clipPath>
+        <defs>
+          <linearGradient
+            id="gradient-green"
+            gradientUnits="userSpaceOnUse"
+            gradientTransform="rotate(45)"
+            style={{ transformOrigin: "center center" }}
+          >
+            <stop stop-color="#43cea2"></stop>
+            <stop offset="1" stop-color="#185a9d"></stop>
+          </linearGradient>
+          <radialGradient
+            id="r6"
+            cx="0"
+            cy="0"
+            r="1"
+            gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(256) rotate(90) scale(512)"
+          >
+            <stop stop-color="white"></stop>
+            <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+          </radialGradient>
+        </defs>
+        <svg
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          width="352"
+          height="352"
+          x="80"
+          y="80"
+          alignment-baseline="middle"
+          style={{ color: "white" }}
+        >
+          <path
+            d="M7.75 1.75 10.25 4m0 0-2.5 2.25M10.25 4h-4.5a4 4 0 0 0-4 4v1.25m6.5 5L5.75 12m0 0 2.5-2.25M5.75 12h4.5a4 4 0 0 0 4-4V6.75"
             stroke="currentColor"
             stroke-width="1.5"
             stroke-linecap="round"

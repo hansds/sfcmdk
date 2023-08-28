@@ -11,6 +11,7 @@ import {
 } from "./types";
 
 export enum MessageType {
+  RefreshMetadata,
   GetUsers,
   GetCustomObjects,
   LoginAsUser,
@@ -18,6 +19,10 @@ export enum MessageType {
 }
 
 export interface RequestMap {
+  [MessageType.RefreshMetadata]: {
+    request: GenericRequest;
+    response: void;
+  };
   [MessageType.GetUsers]: {
     request: GenericRequest;
     response: SalesforceReponse;
@@ -44,7 +49,9 @@ export function receiveMessages(
   const requestType = message.type;
 
   (async () => {
-    if (requestType == MessageType.GetUsers) {
+    if (requestType == MessageType.RefreshMetadata) {
+      chrome.storage.local.clear();
+    } else if (requestType == MessageType.GetUsers) {
       const data = await cacheInStorage(
         MessageType.GetUsers,
         message.data.orgId,
