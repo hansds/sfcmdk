@@ -147,7 +147,7 @@
         transition-property: none;
 
         &[aria-selected='true'] {
-            background: var(--gray4);
+            background: rgb(103 103 103 / 6%);
             color: var(--gray12);
         }
 

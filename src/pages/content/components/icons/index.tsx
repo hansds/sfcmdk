@@ -257,8 +257,8 @@ export function DatabaseIcon() {
             gradientTransform="rotate(45)"
             style={{ transformOrigin: "center center" }}
           >
-            <stop stop-color="#99F2C8"></stop>
-            <stop offset="1" stop-color="#1F4037"></stop>
+            <stop stop-color="#396afc"></stop>
+            <stop offset="1" stop-color="#2948ff"></stop>
           </linearGradient>
           <radialGradient
             id="r6"

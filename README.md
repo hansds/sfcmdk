@@ -45,4 +45,4 @@ All separate environments' metadata is stored and cached in localstorage.
 
 - Functionality was heaviliy inspired by [Salesforce Navigator for Lightning
   ](https://github.com/dannysummerlin/force-navigator)
-- Icons were generated from [Icon by Raycast](https://icon.ray.so/?q=pers)
+- Icons were generated from [Icon by Raycast](https://icon.ray.so/?q=pers) along with gradients from [UIGradients](https://uigradients.com/)
