@@ -40,6 +40,74 @@ The extension works by extracting the `orgId` from the current environment docum
 
 All separate environments' metadata is stored and cached in localstorage.
 
+### Setup items
+
+We get the setup items with the following script. The commands are not parsed live.
+
+```javascript
+const openAllParents = () => {
+  const parents = document.querySelectorAll(
+    ".onesetupSetupNavTree .parent[aria-expanded='false'] .slds-tree__item-label"
+  );
+
+  parents.forEach((e, i) => {
+    setTimeout(() => {
+      console.log("opening", e);
+      e.click();
+
+      console.log(i + 1, parents.length);
+      if (parents.length == i + 1) {
+        openAllParents();
+      }
+    }, i * 500);
+  });
+};
+
+openAllParents();
+
+const setupItems = [];
+const headersByLevel = {};
+const menuItems = document.querySelectorAll(
+  ".onesetupSetupNavTree li.tree-node"
+);
+
+const getLabels = (level) => {
+  let labels = [];
+
+  for (let i = level; i >= 0; i--) {
+    if (headersByLevel[i]) {
+      labels = [headersByLevel[i], ...labels];
+    }
+  }
+
+  return labels;
+};
+
+menuItems.forEach((e) => {
+  const anchor = e.querySelector(".slds-tree__item > .slds-tree__item-label");
+
+  // Manage header sections
+  if (anchor) {
+    headersByLevel[e.ariaLevel] = anchor.innerText;
+  } else {
+    headersByLevel[e.ariaLevel - 1] = e
+      .querySelector(".section-header")
+      .innerText.toLowerCase()
+      .replace(/\b\w/g, (match) => match.toUpperCase());
+  }
+
+  const labels = getLabels(e.ariaLevel);
+  const label = labels.join(" > ");
+
+  if (anchor) {
+    setupItems.push({
+      label: label,
+      path: anchor.href.split("/").slice(3).join("/"),
+    });
+  }
+});
+```
+
 ## Acknowledgements
 
 - Functionality was heaviliy inspired by [Salesforce Navigator for Lightning

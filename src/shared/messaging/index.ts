@@ -16,6 +16,7 @@ export enum MessageType {
   GetCustomObjects,
   LoginAsUser,
   ManageObject,
+  NavigateToSalesforcePath,
 }
 
 export interface RequestMap {
@@ -37,6 +38,10 @@ export interface RequestMap {
   };
   [MessageType.ManageObject]: {
     request: GenericRequest & { objectId: string };
+    response: void;
+  };
+  [MessageType.NavigateToSalesforcePath]: {
+    request: GenericRequest & { path: string };
     response: void;
   };
 }
@@ -119,6 +124,19 @@ export function receiveMessages(
         const activeTab = tabs[0];
         chrome.tabs.update(activeTab.id, {
           url: `https://${environment.domain}/lightning/setup/ObjectManager/${typedMessage.data.objectId}/Details/view`,
+        });
+      });
+    } else if (requestType == MessageType.NavigateToSalesforcePath) {
+      const typedMessage =
+        message as MessageRequest<MessageType.NavigateToSalesforcePath>;
+      const environment = await getSalesforceEnvironment(
+        typedMessage.data.orgId
+      );
+
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        const activeTab = tabs[0];
+        chrome.tabs.update(activeTab.id, {
+          url: `https://${environment.domain}/${typedMessage.data.path}`,
         });
       });
     }

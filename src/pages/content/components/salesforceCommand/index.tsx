@@ -12,6 +12,7 @@ import {
   UserIcon,
 } from "../icons";
 import { JSONArray } from "@src/shared/messaging/types";
+import { SALESFORCE_COMMANDS } from "@src/shared/salesforce";
 
 export default function SalesforceCommand() {
   // const { resolvedTheme: theme } = useTheme();
@@ -163,6 +164,23 @@ export default function SalesforceCommand() {
               <ToolIcon />
               Setup…
             </Command.Item>
+            {SALESFORCE_COMMANDS.map((setupItem, index) => {
+              return (
+                <SetupItem
+                  key={index}
+                  value={`Manage ${setupItem.label}`}
+                  onSelect={() => {
+                    sendTypedMessage(MessageType.NavigateToSalesforcePath, {
+                      orgId,
+                      path: setupItem.path,
+                    });
+                  }}
+                >
+                  <ToolIcon />
+                  Manage {setupItem.label as string}
+                </SetupItem>
+              );
+            })}
           </Command.Group>
           <Command.Group heading="Command Palette">
             <Command.Item
@@ -205,6 +223,12 @@ const LoginAsItem = (props) => {
 };
 
 const CustomObjectItem = (props) => {
+  const search = useCommandState((state) => state.search);
+  if (!search) return null;
+  return <Command.Item {...props} />;
+};
+
+const SetupItem = (props) => {
   const search = useCommandState((state) => state.search);
   if (!search) return null;
   return <Command.Item {...props} />;
