@@ -109,6 +109,7 @@ export default function SalesforceCommand() {
             <Command.Item>
               <UserIcon />
               Login as…
+              <div cmdk-item-shortcut="">log</div>
             </Command.Item>
             {users.map((user, index) => {
               return (
@@ -136,12 +137,13 @@ export default function SalesforceCommand() {
             <Command.Item>
               <DatabaseIcon />
               Manage object…
+              <div cmdk-item-shortcut="">obj</div>
             </Command.Item>
             {customObjects.map((customObject, index) => {
               return (
                 <CustomObjectItem
                   key={index}
-                  value={`Manage ${customObject.Label}`}
+                  value={`Manage object ${customObject.Label}`}
                   className="cmdk-item--with-aside"
                   onSelect={() => {
                     sendTypedMessage(MessageType.ManageObject, {
@@ -152,7 +154,7 @@ export default function SalesforceCommand() {
                 >
                   <div cmdk-item-main="">
                     <DatabaseIcon />
-                    Manage {customObject.Label as string}
+                    Manage object {customObject.Label as string}
                   </div>
                   <div cmdk-item-aside="">
                     {customObject.NamespacePrefix as string}
@@ -163,12 +165,13 @@ export default function SalesforceCommand() {
             <Command.Item>
               <ToolIcon />
               Setup…
+              <div cmdk-item-shortcut="">set</div>
             </Command.Item>
             {SALESFORCE_COMMANDS.map((setupItem, index) => {
               return (
                 <SetupItem
                   key={index}
-                  value={`Manage ${setupItem.label}`}
+                  value={`Setup ${setupItem.label}`}
                   onSelect={() => {
                     sendTypedMessage(MessageType.NavigateToSalesforcePath, {
                       orgId,
@@ -177,7 +180,7 @@ export default function SalesforceCommand() {
                   }}
                 >
                   <ToolIcon />
-                  Manage {setupItem.label as string}
+                  Setup {setupItem.label as string}
                 </SetupItem>
               );
             })}
@@ -218,18 +221,18 @@ export default function SalesforceCommand() {
 
 const LoginAsItem = (props) => {
   const search = useCommandState((state) => state.search);
-  if (!search) return null;
+  if (!search || !search.startsWith("log")) return null;
   return <Command.Item {...props} />;
 };
 
 const CustomObjectItem = (props) => {
   const search = useCommandState((state) => state.search);
-  if (!search) return null;
+  if (!search || !search.startsWith("obj")) return null;
   return <Command.Item {...props} />;
 };
 
 const SetupItem = (props) => {
   const search = useCommandState((state) => state.search);
-  if (!search) return null;
+  if (!search || !search.startsWith("set")) return null;
   return <Command.Item {...props} />;
 };

@@ -192,6 +192,26 @@
         text-overflow: ellipsis;
     }
 
+    [cmdk-item-shortcut] {
+        font-family: ui-monospace,
+            SFMono-Regular,
+            "SF Mono",
+            Menlo,
+            Consolas,
+            "Liberation Mono",
+            monospace !important;
+        color: var(--gray11);
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        font-size: .7rem;
+        padding: 0.65rem 0.45rem;
+        background: none;
+        border: 1px solid var(--gray7);
+    }
+
     [cmdk-raycast-meta] {
         margin-left: auto;
         color: var(--gray11);
