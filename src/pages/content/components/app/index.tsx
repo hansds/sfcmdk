@@ -10,12 +10,7 @@ document.addEventListener("keydown", function (event) {
     togglePalette();
   }
   if (event.key === "Escape") {
-    const paletteElement = document.getElementById(
-      "salesforce-command-palette-content-view-root"
-    );
-    if (paletteElement && paletteElement.style.display !== "none") {
-      setPaletteVisible(paletteElement, false);
-    }
+    setPaletteVisibility(false);
   }
 });
 
@@ -68,16 +63,20 @@ function togglePalette() {
     "salesforce-command-palette-content-view-root"
   );
 
-  if (!paletteElement) return;
-
   if (paletteElement.style.display === "none") {
-    setPaletteVisible(paletteElement, true);
+    setPaletteVisibility(true);
   } else {
-    setPaletteVisible(paletteElement, false);
+    setPaletteVisibility(false);
   }
 }
 
-function setPaletteVisible(paletteElement: HTMLElement, visible: boolean) {
+function setPaletteVisibility(visible: boolean) {
+  const paletteElement = document.getElementById(
+    "salesforce-command-palette-content-view-root"
+  );
+
+  if (!paletteElement) return;
+
   if (visible) {
     paletteElement.style.display = "flex";
     paletteElement.style.pointerEvents = "auto";

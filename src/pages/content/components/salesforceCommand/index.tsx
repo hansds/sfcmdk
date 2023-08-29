@@ -17,7 +17,7 @@ import { SALESFORCE_COMMANDS } from "@src/shared/salesforce";
 export default function SalesforceCommand() {
   // const { resolvedTheme: theme } = useTheme();
   const ref = React.useRef<HTMLDivElement | null>(null);
-  const [value, setValue] = React.useState("linear");
+  const [value, setValue] = React.useState("");
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const listRef = React.useRef(null);
   const containerElement = React.useRef(null);
@@ -29,7 +29,6 @@ export default function SalesforceCommand() {
   React.useEffect(() => {
     document.addEventListener("salesforce-command-palette-opened", () => {
       inputRef?.current?.focus();
-      console.log(users);
     });
   }, []);
 
@@ -70,7 +69,7 @@ export default function SalesforceCommand() {
         }
       }, 100);
 
-      // setInputValue("");
+      setValue("");
     }
   }
 
@@ -84,16 +83,6 @@ export default function SalesforceCommand() {
           if (e.key === "Enter") {
             bounce();
           }
-
-          // if (isHome || inputValue.length) {
-          //   return;
-          // }
-
-          // if (e.key === "Backspace") {
-          //   e.preventDefault();
-          //   popPage();
-          //   bounce();
-          // }
         }}
       >
         <div cmdk-raycast-top-shine="" />
