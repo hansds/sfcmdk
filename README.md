@@ -5,7 +5,6 @@ Started from [chrome-extension-boilerplate-react-vite](https://github.com/Jongha
 ## TODO's
 
 - Add integration with Salesforce inspector: allowing you to inspect records by pasting the id: chrome-extension://aodjmnfhjibkcdimpodiifdjnnncaafh/inspect.html?host=[inject]&objectType=[inject]&recordId=xxx
-- Add open in new tab
 
 ## Structure
 

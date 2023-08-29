@@ -48,3 +48,22 @@ export async function fetchAuthenticatedSalesforce(
     },
   });
 }
+
+async function getActiveOrNewTab(newTab: boolean) {
+  if (newTab) {
+    return await chrome.tabs.create({});
+  } else {
+    const tabs = await chrome.tabs.query({
+      active: true,
+      currentWindow: true,
+    });
+
+    return tabs[0];
+  }
+}
+
+export async function openInActiveOrNewTab(url: string, newTab: boolean) {
+  const tab = await getActiveOrNewTab(newTab);
+
+  return await chrome.tabs.update(tab.id, { url });
+}

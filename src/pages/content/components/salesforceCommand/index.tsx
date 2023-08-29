@@ -17,13 +17,16 @@ import { setPaletteVisibility } from "../app";
 
 export default function SalesforceCommand() {
   // const { resolvedTheme: theme } = useTheme();
+  const orgId = getOrgIdFromDocument(document);
+
   const ref = React.useRef<HTMLDivElement | null>(null);
-  const [value, setValue] = React.useState("");
-  const [search, setSearch] = React.useState("");
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const listRef = React.useRef(null);
   const containerElement = React.useRef(null);
-  const orgId = getOrgIdFromDocument(document);
+
+  const [value, setValue] = React.useState("");
+  const [search, setSearch] = React.useState("");
+  const [isMetaKeyActive, setIsMetaKeyActive] = React.useState(false);
 
   const [users, setUsers] = useState<JSONArray>([]);
   const [customObjects, setCustomObjects] = useState<JSONArray>([]);
@@ -83,9 +86,13 @@ export default function SalesforceCommand() {
         value={value}
         onValueChange={(v) => setValue(v)}
         onKeyDown={(e: React.KeyboardEvent) => {
+          setIsMetaKeyActive(e.metaKey);
           if (e.key === "Enter") {
             bounce();
           }
+        }}
+        onKeyUp={(e: React.KeyboardEvent) => {
+          setIsMetaKeyActive(e.metaKey);
         }}
       >
         <div cmdk-raycast-top-shine="" />
@@ -139,10 +146,13 @@ export default function SalesforceCommand() {
                   key={index}
                   value={`Manage object ${customObject.Label}`}
                   className="cmdk-item--with-aside"
-                  onSelect={() => {
+                  onSelect={(e) => {
+                    console.log(isMetaKeyActive);
+
                     sendTypedMessage(MessageType.ManageObject, {
                       orgId,
                       objectId: customObject.DurableId as string,
+                      newTab: isMetaKeyActive,
                     });
                   }}
                 >
@@ -170,6 +180,7 @@ export default function SalesforceCommand() {
                     sendTypedMessage(MessageType.NavigateToSalesforcePath, {
                       orgId,
                       path: setupItem.path,
+                      newTab: isMetaKeyActive,
                     });
                   }}
                 >
@@ -204,7 +215,7 @@ export default function SalesforceCommand() {
           <hr />
           <button cmdk-raycast-subcommand-trigger="">
             Open in new tab
-            <kbd>⌥</kbd>
+            <kbd>⌘</kbd>
             <kbd>↵</kbd>
           </button>
         </div>

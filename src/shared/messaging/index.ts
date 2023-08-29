@@ -2,6 +2,7 @@ import { cacheInStorage } from "../storage";
 import {
   fetchAuthenticatedSalesforce,
   getSalesforceEnvironment,
+  openInActiveOrNewTab,
 } from "../background/utils";
 import {
   GenericRequest,
@@ -37,11 +38,11 @@ export interface RequestMap {
     response: void;
   };
   [MessageType.ManageObject]: {
-    request: GenericRequest & { objectId: string };
+    request: GenericRequest & { objectId: string; newTab: boolean };
     response: void;
   };
   [MessageType.NavigateToSalesforcePath]: {
-    request: GenericRequest & { path: string };
+    request: GenericRequest & { path: string; newTab: boolean };
     response: void;
   };
 }
@@ -120,12 +121,10 @@ export function receiveMessages(
         typedMessage.data.orgId
       );
 
-      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        const activeTab = tabs[0];
-        chrome.tabs.update(activeTab.id, {
-          url: `https://${environment.domain}/lightning/setup/ObjectManager/${typedMessage.data.objectId}/Details/view`,
-        });
-      });
+      openInActiveOrNewTab(
+        `https://${environment.domain}/lightning/setup/ObjectManager/${typedMessage.data.objectId}/Details/view`,
+        typedMessage.data.newTab
+      );
     } else if (requestType == MessageType.NavigateToSalesforcePath) {
       const typedMessage =
         message as MessageRequest<MessageType.NavigateToSalesforcePath>;
@@ -133,12 +132,10 @@ export function receiveMessages(
         typedMessage.data.orgId
       );
 
-      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        const activeTab = tabs[0];
-        chrome.tabs.update(activeTab.id, {
-          url: `https://${environment.domain}/${typedMessage.data.path}`,
-        });
-      });
+      openInActiveOrNewTab(
+        `https://${environment.domain}/${typedMessage.data.path}`,
+        typedMessage.data.newTab
+      );
     }
   })();
 
