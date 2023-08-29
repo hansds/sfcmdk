@@ -70,7 +70,7 @@ function togglePalette() {
   }
 }
 
-function setPaletteVisibility(visible: boolean) {
+export function setPaletteVisibility(visible: boolean) {
   const paletteElement = document.getElementById(
     "salesforce-command-palette-content-view-root"
   );

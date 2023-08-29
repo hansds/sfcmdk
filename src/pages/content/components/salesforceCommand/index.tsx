@@ -13,11 +13,13 @@ import {
 } from "../icons";
 import { JSONArray } from "@src/shared/messaging/types";
 import { SALESFORCE_COMMANDS } from "@src/shared/salesforce";
+import { setPaletteVisibility } from "../app";
 
 export default function SalesforceCommand() {
   // const { resolvedTheme: theme } = useTheme();
   const ref = React.useRef<HTMLDivElement | null>(null);
   const [value, setValue] = React.useState("");
+  const [search, setSearch] = React.useState("");
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const listRef = React.useRef(null);
   const containerElement = React.useRef(null);
@@ -69,7 +71,8 @@ export default function SalesforceCommand() {
         }
       }, 100);
 
-      setValue("");
+      setSearch("");
+      setPaletteVisibility(false);
     }
   }
 
@@ -89,6 +92,8 @@ export default function SalesforceCommand() {
         <Command.Input
           ref={inputRef}
           autoFocus
+          value={search}
+          onValueChange={setSearch}
           placeholder="Search for commands..."
         />
         <hr cmdk-raycast-loader="" />
