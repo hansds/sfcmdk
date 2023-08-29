@@ -241,30 +241,6 @@
         letter-spacing: -0.25px;
     }
 
-    [cmdk-raycast-clipboard-icon],
-    [cmdk-raycast-hammer-icon] {
-        width: 20px;
-        height: 20px;
-        border-radius: 6px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #ffffff;
-
-        svg {
-            width: 14px;
-            height: 14px;
-        }
-    }
-
-    [cmdk-raycast-clipboard-icon] {
-        background: linear-gradient(to bottom, #f55354, #eb4646);
-    }
-
-    [cmdk-raycast-hammer-icon] {
-        background: linear-gradient(to bottom, #6cb9a3, #2c6459);
-    }
-
     [cmdk-raycast-open-trigger] {
         display: flex;
         align-items: center;
