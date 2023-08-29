@@ -6,7 +6,7 @@ import { sendTypedMessage } from "@src/shared/messaging/content";
 import { Command, useCommandState } from "cmdk";
 import {
   DatabaseIcon,
-  RaycastLightIcon,
+  EnshiftIcon,
   RefreshIcon,
   ToolIcon,
   UserIcon,
@@ -200,7 +200,7 @@ export default function SalesforceCommand() {
         </Command.List>
 
         <div cmdk-raycast-footer="">
-          <RaycastLightIcon />
+          <EnshiftIcon />
 
           <button cmdk-raycast-open-trigger="">
             Open

@@ -1,20 +1,174 @@
 // import styles from "./icons.module.scss";
 
-export function RaycastLightIcon() {
+export function EnshiftIcon() {
   return (
     <svg
-      width="1024"
-      height="1024"
-      viewBox="0 0 1024 1024"
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M934.302 511.971L890.259 556.017L723.156 388.902V300.754L934.302 511.971ZM511.897 89.5373L467.854 133.583L634.957 300.698H723.099L511.897 89.5373ZM417.334 184.275L373.235 228.377L445.776 300.923H533.918L417.334 184.275ZM723.099 490.061V578.209L795.641 650.755L839.74 606.652L723.099 490.061ZM697.868 653.965L723.099 628.732H395.313V300.754L370.081 325.987L322.772 278.675L278.56 322.833L325.869 370.146L300.638 395.379V446.071L228.097 373.525L183.997 417.627L300.638 534.275V634.871L133.59 467.925L89.4912 512.027L511.897 934.461L555.996 890.359L388.892 723.244H489.875L606.516 839.892L650.615 795.79L578.074 723.244H628.762L653.994 698.011L701.303 745.323L745.402 701.221L697.868 653.965Z"
-        fill="#FF6363"
-      />
+      <g clip-path="url(#clip0_1_9)">
+        <circle cx="16" cy="16" r="16" fill="url(#paint0_radial_1_9)" />
+        <circle cx="16" cy="16" r="16" fill="url(#paint1_linear_1_9)" />
+        <circle cx="16" cy="16" r="16" fill="url(#paint2_radial_1_9)" />
+        <mask
+          id="mask0_1_9"
+          style={{ maskType: "alpha" }}
+          maskUnits="userSpaceOnUse"
+          x="0"
+          y="0"
+          width="32"
+          height="32"
+        >
+          <circle cx="16" cy="16" r="16" fill="#C4C4C4" />
+        </mask>
+        <g mask="url(#mask0_1_9)">
+          <rect
+            x="-61.7143"
+            y="94.0458"
+            width="125.671"
+            height="111.45"
+            transform="rotate(-81.2761 -61.7143 94.0458)"
+            fill="#473DF6"
+          />
+          <g filter="url(#filter0_f_1_9)">
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M12.3015 39.0652C8.12199 42.3387 7.17882 48.114 10.1948 51.9648C13.2109 55.8156 19.044 56.2835 23.2235 53.01C27.403 49.7365 28.3462 43.9612 25.3301 40.1104C22.3141 36.2597 16.481 35.7917 12.3015 39.0652Z"
+              stroke="url(#paint3_radial_1_9)"
+              stroke-width="26.0155"
+            />
+          </g>
+          <g opacity="0.7" filter="url(#filter1_f_1_9)">
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M14.6001 52.7178C18.4285 51.2615 18.6717 42.5611 15.1432 33.2847C11.6147 24.0084 5.65079 17.669 1.82234 19.1252C-2.00611 20.5815 -2.24929 29.2819 1.27918 38.5583C4.80766 47.8346 10.7716 54.174 14.6001 52.7178Z"
+              stroke="url(#paint4_radial_1_9)"
+              stroke-width="18.6986"
+            />
+          </g>
+          <path
+            d="M14.7183 23.1853L21.4877 16.5153L21.4877 20.5307L14.6055 27.2007L14.7183 23.1853Z"
+            fill="white"
+          />
+          <path
+            d="M8.95211 14.187L17.5516 5.68699L17.5516 9.7024L8.83934 18.2025L8.95211 14.187Z"
+            fill="white"
+          />
+          <path
+            d="M15.2229 15.3403L23.8223 6.84022L23.8223 10.8556L15.1101 19.3557L15.2229 15.3403Z"
+            fill="white"
+          />
+        </g>
+      </g>
+      <defs>
+        <filter
+          id="filter0_f_1_9"
+          x="-11.8962"
+          y="16.5974"
+          width="59.3174"
+          height="58.8803"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="3.64636"
+            result="effect1_foregroundBlur_1_9"
+          />
+        </filter>
+        <filter
+          id="filter1_f_1_9"
+          x="-17.858"
+          y="2.27246"
+          width="52.1384"
+          height="67.2981"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="3.64636"
+            result="effect1_foregroundBlur_1_9"
+          />
+        </filter>
+        <radialGradient
+          id="paint0_radial_1_9"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(16 16) rotate(105.68) scale(15.7875 18.1358)"
+        >
+          <stop offset="0.640625" stop-color="#2E7FFF" />
+          <stop offset="1" stop-color="#473DF6" />
+        </radialGradient>
+        <linearGradient
+          id="paint1_linear_1_9"
+          x1="16"
+          y1="0"
+          x2="16"
+          y2="32"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#923CFF" stop-opacity="0.69" />
+          <stop offset="1" stop-color="#2200F5" stop-opacity="0" />
+        </linearGradient>
+        <radialGradient
+          id="paint2_radial_1_9"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(-5.6 39.4667) rotate(-48.3019) scale(39.2861)"
+        >
+          <stop stop-color="#00FFC2" />
+          <stop offset="1" stop-color="white" stop-opacity="0" />
+        </radialGradient>
+        <radialGradient
+          id="paint3_radial_1_9"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(23.2235 53.01) rotate(-97.8933) scale(21.0922 22.0187)"
+        >
+          <stop stop-color="#C9C9C9" />
+          <stop offset="0.302083" stop-color="#F5D2B3" />
+          <stop offset="1" stop-color="#9D6FFF" />
+        </radialGradient>
+        <radialGradient
+          id="paint4_radial_1_9"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(1.82234 19.1252) rotate(69.1745) scale(35.6987 14.7333)"
+        >
+          <stop stop-color="#CAC9FF" />
+          <stop offset="0.703125" stop-color="#E8ECF7" />
+          <stop offset="1" stop-color="#473DF6" stop-opacity="0.38" />
+        </radialGradient>
+        <clipPath id="clip0_1_9">
+          <rect width="32" height="32" fill="white" />
+        </clipPath>
+      </defs>
     </svg>
   );
 }

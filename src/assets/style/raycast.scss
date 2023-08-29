@@ -334,10 +334,16 @@
         border-radius: 0 0 12px 12px;
 
         svg {
-            width: 20px;
-            height: 20px;
+            width: 17px;
+            height: 17px;
             filter: grayscale(1);
+            opacity: 0.5;
             margin-right: auto;
+
+            &:hover {
+                opacity: 1;
+                filter: grayscale(0);
+            }
         }
 
         hr {
