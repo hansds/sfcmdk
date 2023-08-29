@@ -147,8 +147,6 @@ export default function SalesforceCommand() {
                   value={`Manage object ${customObject.Label}`}
                   className="cmdk-item--with-aside"
                   onSelect={(e) => {
-                    console.log(isMetaKeyActive);
-
                     sendTypedMessage(MessageType.ManageObject, {
                       orgId,
                       objectId: customObject.DurableId as string,
