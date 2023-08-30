@@ -26,5 +26,9 @@
   "globals": {
     "chrome": "readonly"
   },
-  "ignorePatterns": ["watch.js", "dist/**"]
+  "ignorePatterns": [
+    "watch.js",
+    "dist/**",
+    "src/shared/content/command-score.ts"
+  ]
 }

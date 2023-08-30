@@ -462,3 +462,76 @@ export function RefreshIcon() {
     </div>
   );
 }
+
+export function BookmarkIcon() {
+  return (
+    <div cmdk-raycast-bookmark-icon="">
+      <svg
+        width="512"
+        height="512"
+        viewBox="0 0 512 512"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+      >
+        <rect
+          id="r4"
+          width="512"
+          height="512"
+          x="0"
+          y="0"
+          rx="128"
+          fill="url(#r5)"
+          stroke="#FFFFFF"
+          stroke-width="0"
+          stroke-opacity="100%"
+          paint-order="stroke"
+        ></rect>
+        <clipPath id="clip">
+          <use xlinkHref="#r4"></use>
+        </clipPath>
+        <defs>
+          <linearGradient
+            id="r5"
+            gradientUnits="userSpaceOnUse"
+            gradientTransform="rotate(45)"
+            style={{ transformOrigin: "center center" }}
+          >
+            <stop stop-color="#FF9068"></stop>
+            <stop offset="1" stop-color="#FD746C"></stop>
+          </linearGradient>
+          <radialGradient
+            id="r6"
+            cx="0"
+            cy="0"
+            r="1"
+            gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(256) rotate(90) scale(512)"
+          >
+            <stop stop-color="white"></stop>
+            <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+          </radialGradient>
+        </defs>
+        <svg
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          width="352"
+          height="352"
+          x="80"
+          y="80"
+          alignment-baseline="middle"
+          style={{ color: "white" }}
+        >
+          <path
+            d="M3.75 14.25V3.75a2 2 0 0 1 2-2h4.5a2 2 0 0 1 2 2v10.5L8 10.75l-4.25 3.5Z"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+      </svg>
+    </div>
+  );
+}

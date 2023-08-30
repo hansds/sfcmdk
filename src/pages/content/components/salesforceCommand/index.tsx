@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 // import { useTheme } from "next-themes";
-import { getOrgIdFromDocument } from "@src/shared/content/utils";
+import {
+  getOrgIdFromDocument,
+  isSalesforceIdFormat,
+} from "@src/shared/content/utils";
 import { MessageType } from "@src/shared/messaging";
 import { sendTypedMessage } from "@src/shared/messaging/content";
 import { Command, useCommandState } from "cmdk";
 import {
+  BookmarkIcon,
   DatabaseIcon,
   EnshiftIcon,
   RefreshIcon,
@@ -14,6 +18,7 @@ import {
 import { JSONArray } from "@src/shared/messaging/types";
 import { SALESFORCE_COMMANDS } from "@src/shared/salesforce";
 import { setPaletteVisibility } from "../app";
+import { commandScore } from "@src/shared/content/command-score";
 
 export default function SalesforceCommand() {
   // const { resolvedTheme: theme } = useTheme();
@@ -79,11 +84,21 @@ export default function SalesforceCommand() {
     }
   }
 
+  function filter(value: string, search: string): number {
+    // If a record id is entered, we want to make sure it's the first result
+    if (value === "open record" && isSalesforceIdFormat(search)) {
+      return 9999999;
+    }
+
+    return commandScore(value, search);
+  }
+
   return (
     <div className="raycast" ref={containerElement}>
       <Command
         ref={ref}
         value={value}
+        filter={filter}
         onValueChange={(v) => setValue(v)}
         onKeyDown={(e: React.KeyboardEvent) => {
           setIsMetaKeyActive(e.metaKey);
@@ -107,7 +122,7 @@ export default function SalesforceCommand() {
         <Command.List ref={listRef}>
           <Command.Empty>No results found.</Command.Empty>
           <Command.Group heading="Users">
-            <Command.Item>
+            <Command.Item value="login as">
               <UserIcon />
               Login as…
               <div cmdk-item-shortcut="">log</div>
@@ -134,8 +149,15 @@ export default function SalesforceCommand() {
               );
             })}
           </Command.Group>
+          <Command.Group heading="Data">
+            <OpenRecordItem value="open record">
+              <BookmarkIcon />
+              Open record…
+              <div cmdk-item-shortcut="">rec</div>
+            </OpenRecordItem>
+          </Command.Group>
           <Command.Group heading="Setup">
-            <Command.Item>
+            <Command.Item value="manage object">
               <DatabaseIcon />
               Manage object…
               <div cmdk-item-shortcut="">obj</div>
@@ -164,7 +186,7 @@ export default function SalesforceCommand() {
                 </CustomObjectItem>
               );
             })}
-            <Command.Item>
+            <Command.Item value="setup">
               <ToolIcon />
               Setup…
               <div cmdk-item-shortcut="">set</div>
@@ -190,6 +212,7 @@ export default function SalesforceCommand() {
           </Command.Group>
           <Command.Group heading="Command Palette">
             <Command.Item
+              value="refresh metadata"
               onSelect={() => {
                 sendTypedMessage(MessageType.RefreshMetadata, {
                   orgId,
@@ -237,5 +260,12 @@ const CustomObjectItem = (props) => {
 const SetupItem = (props) => {
   const search = useCommandState((state) => state.search);
   if (!search || !search.startsWith("set")) return null;
+  return <Command.Item {...props} />;
+};
+
+const OpenRecordItem = (props) => {
+  const search = useCommandState((state) => state.search);
+  // if (!search || !search.startsWith("rec")) return null;
+
   return <Command.Item {...props} />;
 };

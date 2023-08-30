@@ -7,3 +7,7 @@ export function getOrgIdFromDocument(document: Document): string {
 
   return contentSessionId?.substring(0, 15);
 }
+
+export function isSalesforceIdFormat(id: string): boolean {
+  return id.match(/[a-zA-Z0-9]{18}|[a-zA-Z0-9]{15}/) !== null;
+}
