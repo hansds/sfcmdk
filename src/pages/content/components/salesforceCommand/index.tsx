@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import { useTheme } from "next-themes";
 import {
   getOrgIdFromDocument,
-  isSalesforceIdFormat,
+  isProbablySalesforceId,
 } from "@src/shared/content/utils";
 import { MessageType } from "@src/shared/messaging";
 import { sendTypedMessage } from "@src/shared/messaging/content";
@@ -30,6 +30,7 @@ export default function SalesforceCommand() {
   const containerElement = React.useRef(null);
 
   const [value, setValue] = React.useState("");
+  const [recordId, setRecordId] = React.useState("");
   const [search, setSearch] = React.useState("");
   const [isMetaKeyActive, setIsMetaKeyActive] = React.useState(false);
 
@@ -84,9 +85,16 @@ export default function SalesforceCommand() {
     }
   }
 
+  function setRecordIdFromSearch(search: string): void {
+    const last18chars = search.substring(search.length - 18);
+    const newRecordId = isProbablySalesforceId(last18chars) ? last18chars : "";
+
+    setRecordId(newRecordId);
+  }
+
   function filter(value: string, search: string): number {
     // If a record id is entered, we want to make sure it's the first result
-    if (value === "open record" && isSalesforceIdFormat(search)) {
+    if (value === "rec open record" && recordId) {
       return 9999999;
     }
 
@@ -115,7 +123,10 @@ export default function SalesforceCommand() {
           ref={inputRef}
           autoFocus
           value={search}
-          onValueChange={setSearch}
+          onValueChange={(v) => {
+            setSearch(v);
+            setRecordIdFromSearch(v);
+          }}
           placeholder="Search for commands..."
         />
         <hr cmdk-raycast-loader="" />
@@ -150,11 +161,21 @@ export default function SalesforceCommand() {
             })}
           </Command.Group>
           <Command.Group heading="Data">
-            <OpenRecordItem value="open record">
+            <Command.Item
+              value="rec open record"
+              onSelect={() => {
+                sendTypedMessage(MessageType.OpenRecord, {
+                  orgId,
+                  recordId: search,
+                  newTab: isMetaKeyActive,
+                });
+              }}
+            >
               <BookmarkIcon />
               Open record…
+              {recordId && <span cmdk-item-match="">{recordId}</span>}
               <div cmdk-item-shortcut="">rec</div>
-            </OpenRecordItem>
+            </Command.Item>
           </Command.Group>
           <Command.Group heading="Setup">
             <Command.Item value="manage object">
@@ -260,12 +281,5 @@ const CustomObjectItem = (props) => {
 const SetupItem = (props) => {
   const search = useCommandState((state) => state.search);
   if (!search || !search.startsWith("set")) return null;
-  return <Command.Item {...props} />;
-};
-
-const OpenRecordItem = (props) => {
-  const search = useCommandState((state) => state.search);
-  // if (!search || !search.startsWith("rec")) return null;
-
   return <Command.Item {...props} />;
 };

@@ -1,3 +1,6 @@
+import { MessageType } from "../messaging";
+import { cacheInStorage } from "../storage";
+
 export function getOrgId(document: Document): string {
   return document.cookie.match(/(?<=sid=)[A-Za-z0-9]{15}/)?.[0] || "";
 }
@@ -66,4 +69,29 @@ export async function openInActiveOrNewTab(url: string, newTab: boolean) {
   const tab = await getActiveOrNewTab(newTab);
 
   return await chrome.tabs.update(tab.id, { url });
+}
+
+export async function getObjectTypeFromId(
+  recordId: string,
+  orgId: string
+): Promise<string> {
+  const customObjects = await cacheInStorage(
+    MessageType.GetCustomObjects,
+    orgId,
+    async () => {
+      const customObjects = await fetchAuthenticatedSalesforce(
+        "services/data/v50.0/query/?q=SELECT+DurableId,NamespacePrefix,Label,KeyPrefix+FROM+EntityDefinition+WHERE+IsCustomizable=true+ORDER+BY+QualifiedApiName+ASC",
+        orgId
+      );
+      return await customObjects.json();
+    }
+  );
+
+  const customObject = customObjects.records.find((obj) => {
+    if (recordId.slice(0, 3) == obj.KeyPrefix) {
+      return obj;
+    }
+  });
+
+  return customObject?.QualifiedApiName;
 }

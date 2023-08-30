@@ -4,7 +4,9 @@ Started from [chrome-extension-boilerplate-react-vite](https://github.com/Jongha
 
 ## TODO's
 
-- Add integration with Salesforce inspector: allowing you to inspect records by pasting the id: chrome-extension://aodjmnfhjibkcdimpodiifdjnnncaafh/inspect.html?host=[inject]&objectType=[inject]&recordId=xxx
+- Add some type of messaging system informing the user of errors
+- Add this error handling to open salesforce record
+- Open Salesforce Record: determine if the Salesforce inspector is available. Maybe differentiate between Open Salesforce Record and Inspect Salesforce Record
 
 ## Structure
 

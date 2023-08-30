@@ -1,6 +1,7 @@
 import { cacheInStorage } from "../storage";
 import {
   fetchAuthenticatedSalesforce,
+  getObjectTypeFromId,
   getSalesforceEnvironment,
   openInActiveOrNewTab,
 } from "../background/utils";
@@ -18,6 +19,7 @@ export enum MessageType {
   LoginAsUser,
   ManageObject,
   NavigateToSalesforcePath,
+  OpenRecord,
 }
 
 export interface RequestMap {
@@ -43,6 +45,10 @@ export interface RequestMap {
   };
   [MessageType.NavigateToSalesforcePath]: {
     request: GenericRequest & { path: string; newTab: boolean };
+    response: void;
+  };
+  [MessageType.OpenRecord]: {
+    request: GenericRequest & { recordId: string; newTab: boolean };
     response: void;
   };
 }
@@ -82,7 +88,7 @@ export function receiveMessages(
         message.data.orgId,
         async () => {
           const customObjects = await fetchAuthenticatedSalesforce(
-            "services/data/v50.0/query/?q=SELECT+DurableId,NamespacePrefix,Label+FROM+EntityDefinition+WHERE+IsCustomizable=true+ORDER+BY+QualifiedApiName+ASC",
+            "services/data/v50.0/query/?q=SELECT+DurableId,NamespacePrefix,Label,KeyPrefix,QualifiedApiName+FROM+EntityDefinition+WHERE+IsCustomizable=true+ORDER+BY+QualifiedApiName+ASC",
             message.data.orgId
           );
           return await customObjects.json();
@@ -134,6 +140,23 @@ export function receiveMessages(
 
       openInActiveOrNewTab(
         `https://${environment.domain}/${typedMessage.data.path}`,
+        typedMessage.data.newTab
+      );
+    } else if (requestType == MessageType.OpenRecord) {
+      const typedMessage = message as MessageRequest<MessageType.OpenRecord>;
+      const environment = await getSalesforceEnvironment(
+        typedMessage.data.orgId
+      );
+
+      // TODO: alert the user if the recordId is not in the correct format OR if the objectType is not found
+
+      const objectType = await getObjectTypeFromId(
+        typedMessage.data.recordId,
+        typedMessage.data.orgId
+      );
+
+      openInActiveOrNewTab(
+        `chrome-extension://aodjmnfhjibkcdimpodiifdjnnncaafh/inspect.html?host=${environment.domain}&objectType=${objectType}&recordId=${typedMessage.data.recordId}`,
         typedMessage.data.newTab
       );
     }
