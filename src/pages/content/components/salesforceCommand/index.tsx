@@ -33,6 +33,7 @@ export default function SalesforceCommand() {
   const [recordId, setRecordId] = React.useState("");
   const [search, setSearch] = React.useState("");
   const [isMetaKeyActive, setIsMetaKeyActive] = React.useState(false);
+  const [notification, setNotification] = React.useState("");
 
   const [users, setUsers] = useState<JSONArray>([]);
   const [customObjects, setCustomObjects] = useState<JSONArray>([]);
@@ -247,19 +248,31 @@ export default function SalesforceCommand() {
         </Command.List>
 
         <div cmdk-raycast-footer="">
-          <EnshiftIcon />
+          {(notification && (
+            <div cmdk-raycast-notification="">
+              <div cmdk-raycast-notification-message="error">
+                <div
+                  cmdk-raycast-notification-bubble=""
+                  className="temporary"
+                ></div>
+                There was an error fetching the data
+              </div>
+            </div>
+          )) || <EnshiftIcon />}
 
-          <button cmdk-raycast-open-trigger="">
-            Open
-            <kbd>↵</kbd>
-          </button>
+          <div cmdk-raycast-footer-actions="">
+            <button cmdk-raycast-open-trigger="">
+              Open
+              <kbd>↵</kbd>
+            </button>
 
-          <hr />
-          <button cmdk-raycast-subcommand-trigger="">
-            Open in new tab
-            <kbd>⌘</kbd>
-            <kbd>↵</kbd>
-          </button>
+            <hr />
+            <button cmdk-raycast-subcommand-trigger="">
+              Open in new tab
+              <kbd>⌘</kbd>
+              <kbd>↵</kbd>
+            </button>
+          </div>
         </div>
       </Command>
     </div>
