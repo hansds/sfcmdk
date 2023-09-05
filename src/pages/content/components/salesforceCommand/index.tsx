@@ -15,7 +15,7 @@ import {
   ToolIcon,
   UserIcon,
 } from "../icons";
-import { JSONArray } from "@src/shared/messaging/types";
+import { JSONArray, MessageResponse } from "@src/shared/messaging/types";
 import { SALESFORCE_COMMANDS } from "@src/shared/salesforce";
 import { setPaletteVisibility } from "../app";
 import { commandScore } from "@src/shared/content/command-score";
@@ -29,6 +29,7 @@ export default function SalesforceCommand() {
   const listRef = React.useRef(null);
   const containerElement = React.useRef(null);
 
+  const [loading, setLoading] = React.useState(false);
   const [value, setValue] = React.useState("");
   const [recordId, setRecordId] = React.useState("");
   const [search, setSearch] = React.useState("");
@@ -81,8 +82,8 @@ export default function SalesforceCommand() {
         }
       }, 100);
 
-      setSearch("");
-      setPaletteVisibility(false);
+      // setSearch("");
+      // setPaletteVisibility(false);
     }
   }
 
@@ -100,6 +101,14 @@ export default function SalesforceCommand() {
     }
 
     return commandScore(value, search);
+  }
+
+  function handleError(response: MessageResponse<any>) {
+    if (response.error) {
+      setNotification(response.error);
+      setPaletteVisibility(true);
+      setLoading(false);
+    }
   }
 
   return (
@@ -127,10 +136,11 @@ export default function SalesforceCommand() {
           onValueChange={(v) => {
             setSearch(v);
             setRecordIdFromSearch(v);
+            setNotification("");
           }}
           placeholder="Search for commands..."
         />
-        <hr cmdk-raycast-loader="" />
+        <hr cmdk-raycast-loader="" className={loading ? "loading" : ""} />
         <Command.List ref={listRef}>
           <Command.Empty>No results found.</Command.Empty>
           <Command.Group heading="Users">
@@ -145,11 +155,17 @@ export default function SalesforceCommand() {
                   key={index}
                   value={`Login as ${user.Name}`}
                   className="cmdk-item--with-aside"
-                  onSelect={() => {
-                    sendTypedMessage(MessageType.LoginAsUser, {
-                      orgId,
-                      userId: user.Id,
-                    });
+                  onSelect={async () => {
+                    setLoading(true);
+                    const response = await sendTypedMessage(
+                      MessageType.LoginAsUser,
+                      {
+                        orgId,
+                        userId: user.Id,
+                      }
+                    );
+
+                    handleError(response);
                   }}
                 >
                   <div cmdk-item-main="">
@@ -164,12 +180,19 @@ export default function SalesforceCommand() {
           <Command.Group heading="Data">
             <Command.Item
               value="rec open record"
-              onSelect={() => {
-                sendTypedMessage(MessageType.OpenRecord, {
-                  orgId,
-                  recordId: search,
-                  newTab: isMetaKeyActive,
-                });
+              onSelect={async () => {
+                if (recordId === "") return;
+
+                const response = await sendTypedMessage(
+                  MessageType.OpenRecord,
+                  {
+                    orgId,
+                    recordId: recordId,
+                    newTab: isMetaKeyActive,
+                  }
+                );
+
+                handleError(response);
               }}
             >
               <BookmarkIcon />
@@ -255,7 +278,7 @@ export default function SalesforceCommand() {
                   cmdk-raycast-notification-bubble=""
                   className="temporary"
                 ></div>
-                There was an error fetching the data
+                {notification}
               </div>
             </div>
           )) || <EnshiftIcon />}

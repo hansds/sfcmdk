@@ -60,7 +60,25 @@ export function receiveMessages(
 ) {
   const requestType = message.type;
 
-  (async () => {
+  handleMessages(message, sender, sendResponse).catch((error) => {
+    const response: MessageResponse<keyof RequestMap> = {
+      type: requestType,
+      error: error.message,
+    };
+
+    sendResponse(response);
+  });
+
+  return true;
+}
+
+async function handleMessages(
+  message: MessageRequest<keyof RequestMap>,
+  sender,
+  sendResponse: (response) => void
+) {
+  const requestType = message.type;
+  {
     if (requestType == MessageType.RefreshMetadata) {
       chrome.storage.local.clear();
     } else if (requestType == MessageType.GetUsers) {
@@ -148,19 +166,21 @@ export function receiveMessages(
         typedMessage.data.orgId
       );
 
-      // TODO: alert the user if the recordId is not in the correct format OR if the objectType is not found
-
       const objectType = await getObjectTypeFromId(
         typedMessage.data.recordId,
         typedMessage.data.orgId
       );
+
+      if (!typedMessage.data.recordId) {
+        throw new Error("You must pass a record id");
+      }
+      if (!objectType)
+        throw new Error("Could not determine object type from record id");
 
       openInActiveOrNewTab(
         `chrome-extension://aodjmnfhjibkcdimpodiifdjnnncaafh/inspect.html?host=${environment.domain}&objectType=${objectType}&recordId=${typedMessage.data.recordId}`,
         typedMessage.data.newTab
       );
     }
-  })();
-
-  return true;
+  }
 }

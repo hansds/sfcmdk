@@ -12,7 +12,8 @@ export interface MessageRequest<T extends keyof RequestMap> {
 
 export interface MessageResponse<T extends keyof RequestMap> {
   type: T;
-  data: RequestMap[T]["response"];
+  data?: RequestMap[T]["response"];
+  error?: string;
 }
 
 export interface SalesforceReponse {
