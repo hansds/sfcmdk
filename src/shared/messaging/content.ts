@@ -10,16 +10,5 @@ export function sendTypedMessage<T extends keyof RequestMap>(
     data: data,
   };
 
-  return new Promise((resolve, reject) => {
-    chrome.runtime.sendMessage(
-      message,
-      (response: MessageResponse<T> | undefined) => {
-        if (response) {
-          resolve(response);
-        } else {
-          reject();
-        }
-      }
-    );
-  });
+  return chrome.runtime.sendMessage(message);
 }
