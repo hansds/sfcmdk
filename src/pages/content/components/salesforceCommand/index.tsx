@@ -41,6 +41,7 @@ export default function SalesforceCommand() {
 
   const CommandValue = {
     INSPECT_RECORD: "ins inspect record",
+    LIST_OBJECT: "lis list object",
   };
 
   React.useEffect(() => {
@@ -180,6 +181,36 @@ export default function SalesforceCommand() {
               {recordId && <span cmdk-item-match="">{recordId}</span>}
               <div cmdk-item-shortcut="">ins</div>
             </Command.Item>
+
+            <Command.Item value={CommandValue.LIST_OBJECT}>
+              <DatabaseIcon />
+              List object…
+              <div cmdk-item-shortcut="">lis</div>
+            </Command.Item>
+            {customObjects.map((customObject, index) => {
+              return (
+                <ListObjectItem
+                  key={index}
+                  value={`List ${customObject.PluralLabel}`}
+                  className="cmdk-item--with-aside"
+                  onSelect={(e) => {
+                    sendTypedMessage(MessageType.OpenObjectList, {
+                      orgId,
+                      apiName: customObject.QualifiedApiName as string,
+                      newTab: isMetaKeyActive,
+                    });
+                  }}
+                >
+                  <div cmdk-item-main="">
+                    <DatabaseIcon />
+                    List {customObject.PluralLabel as string}
+                  </div>
+                  <div cmdk-item-aside="">
+                    {customObject.NamespacePrefix as string}
+                  </div>
+                </ListObjectItem>
+              );
+            })}
           </Command.Group>
 
           {/* Users */}
@@ -331,6 +362,12 @@ const LoginAsItem = (props) => {
 const CustomObjectItem = (props) => {
   const search = useCommandState((state) => state.search);
   if (!search || !search.startsWith("obj")) return null;
+  return <Command.Item {...props} />;
+};
+
+const ListObjectItem = (props) => {
+  const search = useCommandState((state) => state.search);
+  if (!search || !search.startsWith("lis")) return null;
   return <Command.Item {...props} />;
 };
 

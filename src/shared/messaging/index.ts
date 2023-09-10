@@ -20,6 +20,7 @@ export enum MessageType {
   ManageObject,
   NavigateToSalesforcePath,
   OpenRecord,
+  OpenObjectList,
 }
 
 export interface RequestMap {
@@ -49,6 +50,10 @@ export interface RequestMap {
   };
   [MessageType.OpenRecord]: {
     request: GenericRequest & { recordId: string; newTab: boolean };
+    response: void;
+  };
+  [MessageType.OpenObjectList]: {
+    request: GenericRequest & { apiName: string; newTab: boolean };
     response: void;
   };
 }
@@ -106,7 +111,7 @@ async function handleMessages(
         message.data.orgId,
         async () => {
           const customObjects = await fetchAuthenticatedSalesforce(
-            "services/data/v50.0/query/?q=SELECT+DurableId,NamespacePrefix,Label,KeyPrefix,QualifiedApiName+FROM+EntityDefinition+WHERE+IsCustomizable=true+ORDER+BY+QualifiedApiName+ASC",
+            "services/data/v50.0/query/?q=SELECT+DurableId,NamespacePrefix,Label,PluralLabel,KeyPrefix,QualifiedApiName+FROM+EntityDefinition+WHERE+IsCustomizable=true+ORDER+BY+QualifiedApiName+ASC",
             message.data.orgId
           );
           return await customObjects.json();
@@ -179,6 +184,17 @@ async function handleMessages(
 
       openInActiveOrNewTab(
         `chrome-extension://aodjmnfhjibkcdimpodiifdjnnncaafh/inspect.html?host=${environment.domain}&objectType=${objectType}&recordId=${typedMessage.data.recordId}`,
+        typedMessage.data.newTab
+      );
+    } else if (requestType == MessageType.OpenObjectList) {
+      const typedMessage =
+        message as MessageRequest<MessageType.OpenObjectList>;
+      const environment = await getSalesforceEnvironment(
+        typedMessage.data.orgId
+      );
+
+      openInActiveOrNewTab(
+        `https://${environment.domain}/lightning/o/${typedMessage.data.apiName}/list`,
         typedMessage.data.newTab
       );
     }
