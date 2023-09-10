@@ -8,7 +8,7 @@ Started from [chrome-extension-boilerplate-react-vite](https://github.com/Jongha
 - Add this error handling to open salesforce record
 - Open Salesforce Record: determine if the Salesforce inspector is available. Maybe differentiate between Open Salesforce Record and Inspect Salesforce Record
 - Feature: Delete items in current list
-- Feature: inspect current record (auto fill if Id is detected in URL)
+- Feature: View Object (eg view accounts)
 - Open source and add monorepo with statically generated documentation
 
 ## Structure

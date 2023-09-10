@@ -39,14 +39,15 @@ export default function SalesforceCommand() {
   const [users, setUsers] = useState<JSONArray>([]);
   const [customObjects, setCustomObjects] = useState<JSONArray>([]);
 
-  React.useEffect(() => {
-    document.addEventListener("salesforce-command-palette-opened", () => {
-      inputRef?.current?.focus();
-    });
-  }, []);
+  const CommandValue = {
+    INSPECT_RECORD: "ins inspect record",
+  };
 
   React.useEffect(() => {
-    inputRef?.current?.focus();
+    document.addEventListener(
+      "salesforce-command-palette-opened",
+      paletteOpened
+    );
   }, []);
 
   React.useEffect(() => {
@@ -87,6 +88,17 @@ export default function SalesforceCommand() {
     }
   }
 
+  function paletteOpened() {
+    inputRef?.current?.focus();
+
+    const recordId =
+      window.location.pathname.split("/").pop() === "view"
+        ? window.location.pathname.split("/").slice(-2)[0]
+        : "";
+
+    setRecordId(recordId);
+  }
+
   function setRecordIdFromSearch(search: string): void {
     const last18chars = search.substring(search.length - 18);
     const newRecordId = isProbablySalesforceId(last18chars) ? last18chars : "";
@@ -96,7 +108,7 @@ export default function SalesforceCommand() {
 
   function filter(value: string, search: string): number {
     // If a record id is entered, we want to make sure it's the first result
-    if (value === "rec open record" && recordId) {
+    if (value === CommandValue.INSPECT_RECORD && recordId) {
       return 9999999;
     }
 
@@ -143,6 +155,34 @@ export default function SalesforceCommand() {
         <hr cmdk-raycast-loader="" className={loading ? "loading" : ""} />
         <Command.List ref={listRef}>
           <Command.Empty>No results found.</Command.Empty>
+
+          {/* Data */}
+          <Command.Group heading="Data">
+            <Command.Item
+              value={CommandValue.INSPECT_RECORD}
+              onSelect={async () => {
+                if (recordId === "") return;
+
+                const response = await sendTypedMessage(
+                  MessageType.OpenRecord,
+                  {
+                    orgId,
+                    recordId: recordId,
+                    newTab: isMetaKeyActive,
+                  }
+                );
+
+                handleError(response);
+              }}
+            >
+              <BookmarkIcon />
+              Inspect record…
+              {recordId && <span cmdk-item-match="">{recordId}</span>}
+              <div cmdk-item-shortcut="">ins</div>
+            </Command.Item>
+          </Command.Group>
+
+          {/* Users */}
           <Command.Group heading="Users">
             <Command.Item value="login as">
               <UserIcon />
@@ -177,30 +217,8 @@ export default function SalesforceCommand() {
               );
             })}
           </Command.Group>
-          <Command.Group heading="Data">
-            <Command.Item
-              value="rec open record"
-              onSelect={async () => {
-                if (recordId === "") return;
 
-                const response = await sendTypedMessage(
-                  MessageType.OpenRecord,
-                  {
-                    orgId,
-                    recordId: recordId,
-                    newTab: isMetaKeyActive,
-                  }
-                );
-
-                handleError(response);
-              }}
-            >
-              <BookmarkIcon />
-              Open record…
-              {recordId && <span cmdk-item-match="">{recordId}</span>}
-              <div cmdk-item-shortcut="">rec</div>
-            </Command.Item>
-          </Command.Group>
+          {/* Setup */}
           <Command.Group heading="Setup">
             <Command.Item value="manage object">
               <DatabaseIcon />
@@ -255,6 +273,8 @@ export default function SalesforceCommand() {
               );
             })}
           </Command.Group>
+
+          {/* Command Palette */}
           <Command.Group heading="Command Palette">
             <Command.Item
               value="refresh metadata"
