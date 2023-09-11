@@ -1,13 +1,5 @@
 # Salesforce Command Palette
 
-Started from [chrome-extension-boilerplate-react-vite](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite)
-
-## TODO's
-
-- Open Salesforce Record: determine if the Salesforce inspector is available. Maybe differentiate between Open Salesforce Record and Inspect Salesforce Record
-- Feature: Delete items in current list
-- Open source and add monorepo with statically generated documentation
-
 ## Structure
 
 _Users_
@@ -114,3 +106,4 @@ menuItems.forEach((e) => {
 - Functionality was heaviliy inspired by [Salesforce Navigator for Lightning
   ](https://github.com/dannysummerlin/force-navigator)
 - Icons were generated from [Icon by Raycast](https://icon.ray.so/?q=pers) along with gradients from [UIGradients](https://uigradients.com/)
+- Started from [chrome-extension-boilerplate-react-vite](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite)
