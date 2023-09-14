@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import App from "@src/pages/content/components/salesforceCommand";
+import { sendTypedMessage } from "@src/shared/messaging/content";
 
 describe("appTest", () => {
   test("render text", () => {
@@ -7,7 +8,9 @@ describe("appTest", () => {
     const text = "content view";
 
     // when
-    render(<App users={[]} customObjects={[]} />);
+    render(
+      <App users={[]} customObjects={[]} sendTypedMessage={sendTypedMessage} />
+    );
 
     // then
     screen.getByText(text);

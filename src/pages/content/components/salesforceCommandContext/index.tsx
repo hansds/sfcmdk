@@ -6,19 +6,7 @@ import {
 } from "@src/shared/content/utils";
 import { MessageType } from "@src/shared/messaging";
 import { sendTypedMessage } from "@src/shared/messaging/content";
-import { Command, useCommandState } from "cmdk";
-import {
-  BookmarkIcon,
-  DatabaseIcon,
-  EnshiftIcon,
-  RefreshIcon,
-  ToolIcon,
-  UserIcon,
-} from "../icons";
-import { JSONArray, MessageResponse } from "@src/shared/messaging/types";
-import { SALESFORCE_COMMANDS } from "@src/shared/salesforce";
-import { setPaletteVisibility } from "../app";
-import { commandScore } from "@src/shared/content/command-score";
+import { JSONArray } from "@src/shared/messaging/types";
 import SalesforceCommand from "../salesforceCommand";
 
 export default function SalesforceCommandContext() {
@@ -71,5 +59,11 @@ export default function SalesforceCommandContext() {
     setRecordId(newRecordId);
   }
 
-  return <SalesforceCommand users={users} customObjects={customObjects} />;
+  return (
+    <SalesforceCommand
+      users={users}
+      customObjects={customObjects}
+      sendTypedMessage={sendTypedMessage}
+    />
+  );
 }

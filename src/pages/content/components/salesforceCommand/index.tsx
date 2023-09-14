@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import { KeyboardEvent, useEffect, useRef, useState } from "react";
 // import { useTheme } from "next-themes";
+import { commandScore } from "@src/shared/content/command-score";
 import {
   getOrgIdFromDocument,
   isProbablySalesforceId,
 } from "@src/shared/content/utils";
 import { MessageType } from "@src/shared/messaging";
 import { sendTypedMessage } from "@src/shared/messaging/content";
+import { JSONArray, MessageResponse } from "@src/shared/messaging/types";
+import { SALESFORCE_COMMANDS } from "@src/shared/salesforce";
 import { Command, useCommandState } from "cmdk";
+import { setPaletteVisibility } from "../app";
 import {
   BookmarkIcon,
   DatabaseIcon,
@@ -15,38 +19,39 @@ import {
   ToolIcon,
   UserIcon,
 } from "../icons";
-import { JSONArray, MessageResponse } from "@src/shared/messaging/types";
-import { SALESFORCE_COMMANDS } from "@src/shared/salesforce";
-import { setPaletteVisibility } from "../app";
-import { commandScore } from "@src/shared/content/command-score";
 
 type Props = {
   users: JSONArray;
   customObjects: JSONArray;
+  sendTypedMessage: typeof sendTypedMessage;
 };
 
-export default function SalesforceCommand({ users, customObjects }: Props) {
+export default function SalesforceCommand({
+  users,
+  customObjects,
+  sendTypedMessage,
+}: Props) {
   // const { resolvedTheme: theme } = useTheme();
   const orgId = getOrgIdFromDocument(document);
 
-  const ref = React.useRef<HTMLDivElement | null>(null);
-  const inputRef = React.useRef<HTMLInputElement | null>(null);
-  const listRef = React.useRef(null);
-  const containerElement = React.useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const listRef = useRef(null);
+  const containerElement = useRef(null);
 
-  const [loading, setLoading] = React.useState(false);
-  const [value, setValue] = React.useState("");
-  const [recordId, setRecordId] = React.useState("");
-  const [search, setSearch] = React.useState("");
-  const [isMetaKeyActive, setIsMetaKeyActive] = React.useState(false);
-  const [notification, setNotification] = React.useState("");
+  const [loading, setLoading] = useState(false);
+  const [value, setValue] = useState("");
+  const [recordId, setRecordId] = useState("");
+  const [search, setSearch] = useState("");
+  const [isMetaKeyActive, setIsMetaKeyActive] = useState(false);
+  const [notification, setNotification] = useState("");
 
   const CommandValue = {
     INSPECT_RECORD: "ins inspect record",
     LIST_OBJECT: "lis list object",
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.addEventListener(
       "salesforce-command-palette-opened",
       paletteOpened
@@ -109,13 +114,13 @@ export default function SalesforceCommand({ users, customObjects }: Props) {
         value={value}
         filter={filter}
         onValueChange={(v) => setValue(v)}
-        onKeyDown={(e: React.KeyboardEvent) => {
+        onKeyDown={(e: KeyboardEvent) => {
           setIsMetaKeyActive(e.metaKey);
           if (e.key === "Enter") {
             bounce();
           }
         }}
-        onKeyUp={(e: React.KeyboardEvent) => {
+        onKeyUp={(e: KeyboardEvent) => {
           setIsMetaKeyActive(e.metaKey);
         }}
       >

@@ -1,5 +1,5 @@
 import { RequestMap } from ".";
-import { MessageResponse, MessageRequest } from "./types";
+import { MessageRequest, MessageResponse } from "./types";
 
 export function sendTypedMessage<T extends keyof RequestMap>(
   type: T,
