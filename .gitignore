@@ -1,11 +1,11 @@
 # dependencies
-/node_modules
+**/node_modules
 
 # testing
-/coverage
+**/coverage
 
 # build
-/dist
+**/dist
 
 # etc
 .DS_Store
@@ -13,6 +13,6 @@
 .idea
 
 # compiled
-utils/reload/*.js
-utils/reload/injections/*.js
-public/manifest.json
+packages/extension/utils/reload/*.js
+packages/extension/utils/reload/injections/*.js
+packages/extension/public/manifest.json
