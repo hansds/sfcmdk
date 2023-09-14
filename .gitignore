@@ -18,3 +18,4 @@ packages/extension/utils/reload/injections/*.js
 packages/extension/public/manifest.json
 
 **/.next
+**/.rollup.cache
