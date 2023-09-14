@@ -176,7 +176,7 @@ export default function SalesforceCommand({
                   key={index}
                   value={`List ${customObject.PluralLabel}`}
                   className="cmdk-item--with-aside"
-                  onSelect={(e) => {
+                  onSelect={() => {
                     sendTypedMessage(MessageType.OpenObjectList, {
                       orgId,
                       apiName: customObject.QualifiedApiName as string,
@@ -245,7 +245,7 @@ export default function SalesforceCommand({
                   key={index}
                   value={`Manage object ${customObject.Label}`}
                   className="cmdk-item--with-aside"
-                  onSelect={(e) => {
+                  onSelect={() => {
                     sendTypedMessage(MessageType.ManageObject, {
                       orgId,
                       objectId: customObject.DurableId as string,
@@ -336,25 +336,25 @@ export default function SalesforceCommand({
   );
 }
 
-const LoginAsItem = (props) => {
+const LoginAsItem = (props: any) => {
   const search = useCommandState((state) => state.search);
   if (!search || !search.startsWith("log")) return null;
   return <Command.Item {...props} />;
 };
 
-const CustomObjectItem = (props) => {
+const CustomObjectItem = (props: any) => {
   const search = useCommandState((state) => state.search);
   if (!search || !search.startsWith("obj")) return null;
   return <Command.Item {...props} />;
 };
 
-const ListObjectItem = (props) => {
+const ListObjectItem = (props: any) => {
   const search = useCommandState((state) => state.search);
   if (!search || !search.startsWith("lis")) return null;
   return <Command.Item {...props} />;
 };
 
-const SetupItem = (props) => {
+const SetupItem = (props: any) => {
   const search = useCommandState((state) => state.search);
   if (!search || !search.startsWith("set")) return null;
   return <Command.Item {...props} />;
