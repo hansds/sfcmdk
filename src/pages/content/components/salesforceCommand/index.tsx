@@ -20,7 +20,12 @@ import { SALESFORCE_COMMANDS } from "@src/shared/salesforce";
 import { setPaletteVisibility } from "../app";
 import { commandScore } from "@src/shared/content/command-score";
 
-export default function SalesforceCommand() {
+type Props = {
+  users: JSONArray;
+  customObjects: JSONArray;
+};
+
+export default function SalesforceCommand({ users, customObjects }: Props) {
   // const { resolvedTheme: theme } = useTheme();
   const orgId = getOrgIdFromDocument(document);
 
@@ -36,9 +41,6 @@ export default function SalesforceCommand() {
   const [isMetaKeyActive, setIsMetaKeyActive] = React.useState(false);
   const [notification, setNotification] = React.useState("");
 
-  const [users, setUsers] = useState<JSONArray>([]);
-  const [customObjects, setCustomObjects] = useState<JSONArray>([]);
-
   const CommandValue = {
     INSPECT_RECORD: "ins inspect record",
     LIST_OBJECT: "lis list object",
@@ -49,30 +51,6 @@ export default function SalesforceCommand() {
       "salesforce-command-palette-opened",
       paletteOpened
     );
-  }, []);
-
-  React.useEffect(() => {
-    const fetchUsers = async () => {
-      const response = await sendTypedMessage(MessageType.GetUsers, {
-        orgId,
-      });
-
-      setUsers(response.data.records);
-    };
-
-    fetchUsers();
-  }, []);
-
-  React.useEffect(() => {
-    const fetchCustomObjects = async () => {
-      const response = await sendTypedMessage(MessageType.GetCustomObjects, {
-        orgId,
-      });
-
-      setCustomObjects(response.data.records);
-    };
-
-    fetchCustomObjects();
   }, []);
 
   function bounce() {

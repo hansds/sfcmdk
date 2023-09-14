@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
-import SalesforceCommand from "@src/pages/content/components/salesforceCommand";
 import refreshOnUpdate from "virtual:reload-on-update-in-view";
+import SalesforceCommandContext from "../salesforceCommandContext";
 
 refreshOnUpdate("pages/content");
 init();
@@ -49,7 +49,7 @@ function createApp() {
     }
   });
 
-  createRoot(root).render(<SalesforceCommand />);
+  createRoot(root).render(<SalesforceCommandContext />);
 }
 
 function isSalesforceDomain() {

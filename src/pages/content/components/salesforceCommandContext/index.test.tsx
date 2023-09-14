@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import App from "@src/pages/content/components/salesforceCommand";
+import App from "@src/pages/content/components/salesforceCommandContext";
 
 describe("appTest", () => {
   test("render text", () => {
@@ -7,7 +7,7 @@ describe("appTest", () => {
     const text = "content view";
 
     // when
-    render(<App users={[]} customObjects={[]} />);
+    render(<App />);
 
     // then
     screen.getByText(text);
