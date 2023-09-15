@@ -34,7 +34,7 @@ export default function SalesforceCommandContext() {
         orgId,
       });
 
-      setUsers(response.data.records);
+      setUsers(response.data?.records ?? []);
     };
 
     fetchUsers();
@@ -46,7 +46,7 @@ export default function SalesforceCommandContext() {
         orgId,
       });
 
-      setCustomObjects(response.data.records);
+      setCustomObjects(response.data?.records ?? []);
     };
 
     fetchCustomObjects();

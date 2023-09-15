@@ -63,7 +63,7 @@ function togglePalette() {
     "salesforce-command-palette-content-view-root"
   );
 
-  if (paletteElement.style.display === "none") {
+  if (paletteElement && paletteElement.style.display === "none") {
     setPaletteVisibility(true);
   } else {
     setPaletteVisibility(false);
