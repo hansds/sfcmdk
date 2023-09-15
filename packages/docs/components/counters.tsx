@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 import styles from "./counters.module.css";
-import { EnshiftIcon } from "@sfcmdk/extension";
+import { SalesforceCommand } from "@sfcmdk/extension";
+
+import "@sfcmdk/extension/src/assets/style/theme.scss";
+import "@sfcmdk/extension/src/assets/style/raycast.scss";
 
 function MyButton() {
   const [count, setCount] = useState(0);
@@ -24,14 +27,13 @@ export default function MyApp() {
   return (
     <div>
       <MyButton />
-      {/* <SalesforceCommand
+      <SalesforceCommand
         users={[]}
         customObjects={[]}
         sendTypedMessage={() => {
           return null;
         }}
-      /> */}
-      <EnshiftIcon />
+      />
     </div>
   );
 }

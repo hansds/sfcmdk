@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import {
   getOrgIdFromDocument,
   isProbablySalesforceId,
-} from "@src/shared/content/utils";
-import { MessageType } from "@src/shared/messaging";
-import { sendTypedMessage } from "@src/shared/messaging/content";
-import { JSONArray } from "@src/shared/messaging/types";
+} from "../../../../shared/content/utils";
+import { MessageType } from "../../../../shared/messaging";
+import { sendTypedMessage } from "../../../../shared/messaging/content";
+import { JSONArray } from "../../../../shared/messaging/types";
 import SalesforceCommand from "../salesforceCommand";
 
 export default function SalesforceCommandContext() {

@@ -1,16 +1,16 @@
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
 // import { useTheme } from "next-themes";
-import { commandScore } from "@src/shared/content/command-score";
+import { commandScore } from "../../../../shared/content/command-score";
 import {
   getOrgIdFromDocument,
   isProbablySalesforceId,
-} from "@src/shared/content/utils";
-import { MessageType } from "@src/shared/messaging";
-import { sendTypedMessage } from "@src/shared/messaging/content";
-import { JSONArray, MessageResponse } from "@src/shared/messaging/types";
-import { SALESFORCE_COMMANDS } from "@src/shared/salesforce";
+} from "../../../../shared/content/utils";
+import { MessageType } from "../../../../shared/messaging";
+import { sendTypedMessage } from "../../../../shared/messaging/content";
+import { JSONArray, MessageResponse } from "../../../../shared/messaging/types";
+import { SALESFORCE_COMMANDS } from "../../../../shared/salesforce";
 import { Command, useCommandState } from "cmdk";
-import { setPaletteVisibility } from "../app";
+// import { setPaletteVisibility } from "../app";
 import {
   BookmarkIcon,
   DatabaseIcon,
@@ -32,7 +32,8 @@ export default function SalesforceCommand({
   sendTypedMessage,
 }: Props) {
   // const { resolvedTheme: theme } = useTheme();
-  const orgId = getOrgIdFromDocument(document);
+  // const orgId = getOrgIdFromDocument(document);
+  const orgId = "";
 
   const ref = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -102,7 +103,7 @@ export default function SalesforceCommand({
   function handleError(response: MessageResponse<any>) {
     if (response.error) {
       setNotification(response.error);
-      setPaletteVisibility(true);
+      // setPaletteVisibility(true);
       setLoading(false);
     }
   }

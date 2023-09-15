@@ -1,3 +1,3 @@
-import { EnshiftIcon } from "./pages/content/components/icons";
+import SalesforceCommand from "./pages/content/components/salesforceCommand";
 
-export { EnshiftIcon };
+export { SalesforceCommand };
