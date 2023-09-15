@@ -111,11 +111,11 @@ a {
   --lowContrast: #000000;
   --highContrast: #ffffff;
 
-  --gray1: hsl(0, 0%, 8.5%);
-  --gray2: hsl(0, 0%, 11%);
-  --gray3: hsl(0, 0%, 13.6%);
-  --gray4: hsl(0, 0%, 15.8%);
-  --gray5: hsl(0, 0%, 17.9%);
+  --gray1: hsla(0, 0%, 8.5%, 0.9);
+  --gray2: hsla(0, 0%, 11%, 0.9);
+  --gray3: hsla(0, 0%, 13.6%, 0.9);
+  --gray4: hsla(0, 0%, 15.8%, 0.9);
+  --gray5: hsla(0, 0%, 17.9%, 0.9);
   --gray6: hsl(0, 0%, 20.5%);
   --gray7: hsl(0, 0%, 24.3%);
   --gray8: hsl(0, 0%, 31.2%);

@@ -4,18 +4,24 @@ import "@sfcmdk/extension/src/assets/style/theme.scss";
 import "@sfcmdk/extension/src/assets/style/raycast.scss";
 
 import bg from "../../assets/images/hero-bg.jpg";
+import bgDark from "../../assets/images/hero-bg-dark.jpg";
+import { useTheme } from "nextra-theme-docs";
 
 export function Home() {
+  const darkMode = useTheme().resolvedTheme === "dark";
+
   return (
     <main
-      className="space-y-40 min-h-screen"
+      className="space-y-40 min-h-screen "
       style={{
-        background: `radial-gradient(circle at top, #fdfafc , #d7dff1), url(${bg.src})`,
-        backgroundBlendMode: "darken",
-        backgroundSize: "100%, 120%",
+        backgroundBlendMode: darkMode ? "lighten" : "darken",
         backgroundPositionX: "-100%",
-        backgroundPositionY: " 0, 50%",
+        backgroundPositionY: "0, 50%",
+        backgroundSize: "auto, 120%",
         backgroundRepeat: "no-repeat",
+        backgroundImage: darkMode
+          ? `radial-gradient(circle at top, #100036 , #030b1e), url(${bgDark.src})`
+          : `radial-gradient(circle at top, #fdfafc , #d7dff1), url(${bg.src})`,
       }}
     >
       <div>
