@@ -1,10 +1,7 @@
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
 // import { useTheme } from "next-themes";
 import { commandScore } from "../../../../shared/content/command-score";
-import {
-  getOrgIdFromDocument,
-  isProbablySalesforceId,
-} from "../../../../shared/content/utils";
+import { isProbablySalesforceId } from "../../../../shared/content/utils";
 import { MessageType } from "../../../../shared/messaging";
 import { sendTypedMessage } from "../../../../shared/messaging/content";
 import { JSONArray, MessageResponse } from "../../../../shared/messaging/types";
@@ -23,17 +20,17 @@ import {
 type Props = {
   users: JSONArray;
   customObjects: JSONArray;
+  orgId: string;
   sendTypedMessage: typeof sendTypedMessage;
 };
 
 export default function SalesforceCommand({
   users,
   customObjects,
+  orgId,
   sendTypedMessage,
 }: Props) {
   // const { resolvedTheme: theme } = useTheme();
-  // const orgId = getOrgIdFromDocument(document);
-  const orgId = "";
 
   const ref = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);

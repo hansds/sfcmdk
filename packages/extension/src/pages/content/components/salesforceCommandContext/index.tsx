@@ -63,6 +63,7 @@ export default function SalesforceCommandContext() {
     <SalesforceCommand
       users={users}
       customObjects={customObjects}
+      orgId={orgId}
       sendTypedMessage={sendTypedMessage}
     />
   );

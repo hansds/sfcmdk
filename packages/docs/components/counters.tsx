@@ -30,6 +30,7 @@ export default function MyApp() {
       <SalesforceCommand
         users={[]}
         customObjects={[]}
+        orgId="dummyOrgId"
         sendTypedMessage={() => {
           return null;
         }}
