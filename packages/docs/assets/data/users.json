@@ -1,0 +1,150 @@
+{
+    "totalSize": 9,
+    "done": true,
+    "records": [
+        {
+            "attributes": {
+                "type": "User",
+                "url": "/services/data/v50.0/sobjects/User/0051t000000a8oGAAQ"
+            },
+            "Id": "0051t000000a8oGAAQ",
+            "Name": "John Evans",
+            "Username": "john.evans@enshift.co",
+            "Profile": {
+                "attributes": {
+                    "type": "Profile",
+                    "url": "/services/data/v50.0/sobjects/Profile/00e1t000000dbUjAAI"
+                },
+                "Name": "Sales User"
+            }
+        },
+        {
+            "attributes": {
+                "type": "User",
+                "url": "/services/data/v50.0/sobjects/User/0051t000000a8oGAAA"
+            },
+            "Id": "0051t000000a8oGAAA",
+            "Name": "Jane Doe",
+            "Username": "jane.doe@enshift.co",
+            "Profile": {
+                "attributes": {
+                    "type": "Profile",
+                    "url": "/services/data/v50.0/sobjects/Profile/00e1t000000dbUjAAB"
+                },
+                "Name": "Marketing User"
+            }
+        },
+        {
+            "attributes": {
+                "type": "User",
+                "url": "/services/data/v50.0/sobjects/User/0051t000000a8oGAAB"
+            },
+            "Id": "0051t000000a8oGAAB",
+            "Name": "Bob Smith",
+            "Username": "bob.smith@enshift.co",
+            "Profile": {
+                "attributes": {
+                    "type": "Profile",
+                    "url": "/services/data/v50.0/sobjects/Profile/00e1t000000dbUjAAC"
+                },
+                "Name": "Support User"
+            }
+        },
+        {
+            "attributes": {
+                "type": "User",
+                "url": "/services/data/v50.0/sobjects/User/0051t000000a8oGAAC"
+            },
+            "Id": "0051t000000a8oGAAC",
+            "Name": "Alice Johnson",
+            "Username": "alice.johnson@enshift.co",
+            "Profile": {
+                "attributes": {
+                    "type": "Profile",
+                    "url": "/services/data/v50.0/sobjects/Profile/00e1t000000dbUjAAD"
+                },
+                "Name": "Admin User"
+            }
+        },
+        {
+            "attributes": {
+                "type": "User",
+                "url": "/services/data/v50.0/sobjects/User/0051t000000a8oGAAD"
+            },
+            "Id": "0051t000000a8oGAAD",
+            "Name": "David Lee",
+            "Username": "david.lee@enshift.co",
+            "Profile": {
+                "attributes": {
+                    "type": "Profile",
+                    "url": "/services/data/v50.0/sobjects/Profile/00e1t000000dbUjAAE"
+                },
+                "Name": "Sales User"
+            }
+        },
+        {
+            "attributes": {
+                "type": "User",
+                "url": "/services/data/v50.0/sobjects/User/0051t000000a8oGAAE"
+            },
+            "Id": "0051t000000a8oGAAE",
+            "Name": "Emily Chen",
+            "Username": "emily.chen@enshift.co",
+            "Profile": {
+                "attributes": {
+                    "type": "Profile",
+                    "url": "/services/data/v50.0/sobjects/Profile/00e1t000000dbUjAAF"
+                },
+                "Name": "Marketing User"
+            }
+        },
+        {
+            "attributes": {
+                "type": "User",
+                "url": "/services/data/v50.0/sobjects/User/0051t000000a8oGAAF"
+            },
+            "Id": "0051t000000a8oGAAF",
+            "Name": "Tom Wilson",
+            "Username": "tom.wilson@enshift.co",
+            "Profile": {
+                "attributes": {
+                    "type": "Profile",
+                    "url": "/services/data/v50.0/sobjects/Profile/00e1t000000dbUjAAG"
+                },
+                "Name": "Support User"
+            }
+        },
+        {
+            "attributes": {
+                "type": "User",
+                "url": "/services/data/v50.0/sobjects/User/0051t000000a8oGABG"
+            },
+            "Id": "0051t000000a8oGABG",
+            "Name": "Sarah Kim",
+            "Username": "sarah.kim@enshift.co",
+            "Profile": {
+                "attributes": {
+                    "type": "Profile",
+                    "url": "/services/data/v50.0/sobjects/Profile/00e1t000000dbUjAAH"
+                },
+                "Name": "Admin User"
+            }
+        },
+        {
+            "attributes": {
+                "type": "User",
+                "url": "/services/data/v50.0/sobjects/User/0051t000000a8oGABH"
+            },
+            "Id": "0051t000000a8oGABH",
+            "Name": "Michael Brown",
+            "Username": "michael.brown@enshift.co",
+            "Profile": {
+                "attributes": {
+                    "type": "Profile",
+                    "url": "/services/data/v50.0/sobjects/Profile/00e1t000000dbUjAAI"
+                },
+                "Name": "Sales User"
+            }
+        }
+    ]
+}

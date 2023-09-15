@@ -1,0 +1,750 @@
+{
+    "totalSize": 62,
+    "done": true,
+    "records": [
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Account"
+            },
+            "DurableId": "Account",
+            "NamespacePrefix": null,
+            "Label": "Account",
+            "PluralLabel": "Accounts",
+            "KeyPrefix": "001",
+            "QualifiedApiName": "Account"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/AccountContactRelation"
+            },
+            "DurableId": "AccountContactRelation",
+            "NamespacePrefix": null,
+            "Label": "Account Contact Relationship",
+            "PluralLabel": "Account Contact Relationships",
+            "KeyPrefix": "07k",
+            "QualifiedApiName": "AccountContactRelation"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Campaign"
+            },
+            "DurableId": "Campaign",
+            "NamespacePrefix": null,
+            "Label": "Campaign",
+            "PluralLabel": "Campaigns",
+            "KeyPrefix": "701",
+            "QualifiedApiName": "Campaign"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/CampaignInfluence"
+            },
+            "DurableId": "CampaignInfluence",
+            "NamespacePrefix": null,
+            "Label": "Campaign Influence",
+            "PluralLabel": "Campaign Influence",
+            "KeyPrefix": "0KK",
+            "QualifiedApiName": "CampaignInfluence"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/CampaignMember"
+            },
+            "DurableId": "CampaignMember",
+            "NamespacePrefix": null,
+            "Label": "Campaign Member",
+            "PluralLabel": "Campaign Members",
+            "KeyPrefix": "00v",
+            "QualifiedApiName": "CampaignMember"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Case"
+            },
+            "DurableId": "Case",
+            "NamespacePrefix": null,
+            "Label": "Case",
+            "PluralLabel": "Cases",
+            "KeyPrefix": "500",
+            "QualifiedApiName": "Case"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/CommSubscription"
+            },
+            "DurableId": "CommSubscription",
+            "NamespacePrefix": null,
+            "Label": "Communication Subscription",
+            "PluralLabel": "Communication Subscriptions",
+            "KeyPrefix": "0Xl",
+            "QualifiedApiName": "CommSubscription"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/CommSubscriptionChannelType"
+            },
+            "DurableId": "CommSubscriptionChannelType",
+            "NamespacePrefix": null,
+            "Label": "Communication Subscription Channel Type",
+            "PluralLabel": "Communication Subscription Channel Types",
+            "KeyPrefix": "0eB",
+            "QualifiedApiName": "CommSubscriptionChannelType"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/CommSubscriptionConsent"
+            },
+            "DurableId": "CommSubscriptionConsent",
+            "NamespacePrefix": null,
+            "Label": "Communication Subscription Consent",
+            "PluralLabel": "Communication Subscription Consents",
+            "KeyPrefix": "0dY",
+            "QualifiedApiName": "CommSubscriptionConsent"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/CommSubscriptionTiming"
+            },
+            "DurableId": "CommSubscriptionTiming",
+            "NamespacePrefix": null,
+            "Label": "Communication Subscription Timing",
+            "PluralLabel": "Communication Subscription Timings",
+            "KeyPrefix": "0al",
+            "QualifiedApiName": "CommSubscriptionTiming"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Contact"
+            },
+            "DurableId": "Contact",
+            "NamespacePrefix": null,
+            "Label": "Contact",
+            "PluralLabel": "Contacts",
+            "KeyPrefix": "003",
+            "QualifiedApiName": "Contact"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/ContactPointAddress"
+            },
+            "DurableId": "ContactPointAddress",
+            "NamespacePrefix": null,
+            "Label": "Contact Point Address",
+            "PluralLabel": "Contact Point Addresses",
+            "KeyPrefix": "8lW",
+            "QualifiedApiName": "ContactPointAddress"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/ContactPointConsent"
+            },
+            "DurableId": "ContactPointConsent",
+            "NamespacePrefix": null,
+            "Label": "Contact Point Consent",
+            "PluralLabel": "Contact Point Consents",
+            "KeyPrefix": "0ZX",
+            "QualifiedApiName": "ContactPointConsent"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/ContactPointEmail"
+            },
+            "DurableId": "ContactPointEmail",
+            "NamespacePrefix": null,
+            "Label": "Contact Point Email",
+            "PluralLabel": "Contact Point Emails",
+            "KeyPrefix": "9Vl",
+            "QualifiedApiName": "ContactPointEmail"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/ContactPointPhone"
+            },
+            "DurableId": "ContactPointPhone",
+            "NamespacePrefix": null,
+            "Label": "Contact Point Phone",
+            "PluralLabel": "Contact Point Phones",
+            "KeyPrefix": "0Ow",
+            "QualifiedApiName": "ContactPointPhone"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/ContactPointTypeConsent"
+            },
+            "DurableId": "ContactPointTypeConsent",
+            "NamespacePrefix": null,
+            "Label": "Contact Point Type Consent",
+            "PluralLabel": "Contact Point Type Consents",
+            "KeyPrefix": "0ZY",
+            "QualifiedApiName": "ContactPointTypeConsent"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/ContactRequest"
+            },
+            "DurableId": "ContactRequest",
+            "NamespacePrefix": null,
+            "Label": "Contact Request",
+            "PluralLabel": "Contact Requests",
+            "KeyPrefix": "0Tz",
+            "QualifiedApiName": "ContactRequest"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/ContentVersion"
+            },
+            "DurableId": "ContentVersion",
+            "NamespacePrefix": null,
+            "Label": "Content Version",
+            "PluralLabel": "Content Versions",
+            "KeyPrefix": "068",
+            "QualifiedApiName": "ContentVersion"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Contract"
+            },
+            "DurableId": "Contract",
+            "NamespacePrefix": null,
+            "Label": "Contract",
+            "PluralLabel": "Contracts",
+            "KeyPrefix": "800",
+            "QualifiedApiName": "Contract"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/DataUseLegalBasis"
+            },
+            "DurableId": "DataUseLegalBasis",
+            "NamespacePrefix": null,
+            "Label": "Data Use Legal Basis",
+            "PluralLabel": "Data Use Legal Bases",
+            "KeyPrefix": "0ZT",
+            "QualifiedApiName": "DataUseLegalBasis"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/DataUsePurpose"
+            },
+            "DurableId": "DataUsePurpose",
+            "NamespacePrefix": null,
+            "Label": "Data Use Purpose",
+            "PluralLabel": "Data Use Purposes",
+            "KeyPrefix": "0ZW",
+            "QualifiedApiName": "DataUsePurpose"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/DelegatedAccount"
+            },
+            "DurableId": "DelegatedAccount",
+            "NamespacePrefix": null,
+            "Label": "External Managed Account",
+            "PluralLabel": "External Managed Accounts",
+            "KeyPrefix": "0du",
+            "QualifiedApiName": "DelegatedAccount"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Idea"
+            },
+            "DurableId": "Idea",
+            "NamespacePrefix": null,
+            "Label": "Idea",
+            "PluralLabel": "Ideas",
+            "KeyPrefix": "087",
+            "QualifiedApiName": "Idea"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Image"
+            },
+            "DurableId": "Image",
+            "NamespacePrefix": null,
+            "Label": "Image",
+            "PluralLabel": "Images",
+            "KeyPrefix": "4YL",
+            "QualifiedApiName": "Image"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Individual"
+            },
+            "DurableId": "Individual",
+            "NamespacePrefix": null,
+            "Label": "Individual",
+            "PluralLabel": "Individuals",
+            "KeyPrefix": "0PK",
+            "QualifiedApiName": "Individual"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Lead"
+            },
+            "DurableId": "Lead",
+            "NamespacePrefix": null,
+            "Label": "Lead",
+            "PluralLabel": "Leads",
+            "KeyPrefix": "00Q",
+            "QualifiedApiName": "Lead"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Location"
+            },
+            "DurableId": "Location",
+            "NamespacePrefix": null,
+            "Label": "Location",
+            "PluralLabel": "Locations",
+            "KeyPrefix": "131",
+            "QualifiedApiName": "Location"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Macro"
+            },
+            "DurableId": "Macro",
+            "NamespacePrefix": null,
+            "Label": "Macro",
+            "PluralLabel": "Macros",
+            "KeyPrefix": "0JZ",
+            "QualifiedApiName": "Macro"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/MessagingEndUser"
+            },
+            "DurableId": "MessagingEndUser",
+            "NamespacePrefix": null,
+            "Label": "Messaging User",
+            "PluralLabel": "Messaging Users",
+            "KeyPrefix": "0PA",
+            "QualifiedApiName": "MessagingEndUser"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/MessagingSession"
+            },
+            "DurableId": "MessagingSession",
+            "NamespacePrefix": null,
+            "Label": "Messaging Session",
+            "PluralLabel": "Messaging Sessions",
+            "KeyPrefix": "0Mw",
+            "QualifiedApiName": "MessagingSession"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Opportunity"
+            },
+            "DurableId": "Opportunity",
+            "NamespacePrefix": null,
+            "Label": "Opportunity",
+            "PluralLabel": "Opportunities",
+            "KeyPrefix": "006",
+            "QualifiedApiName": "Opportunity"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/01IAU000000j1pZ"
+            },
+            "DurableId": "01IAU000000j1pZ",
+            "NamespacePrefix": null,
+            "Label": "Opportunity (Historical)",
+            "PluralLabel": "Opportunities (Historical)",
+            "KeyPrefix": "h01",
+            "QualifiedApiName": "Opportunity__hd"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/OpportunityContactRole"
+            },
+            "DurableId": "OpportunityContactRole",
+            "NamespacePrefix": null,
+            "Label": "Opportunity Contact Role",
+            "PluralLabel": "Opportunity Contact Role",
+            "KeyPrefix": "00K",
+            "QualifiedApiName": "OpportunityContactRole"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/OpportunityLineItem"
+            },
+            "DurableId": "OpportunityLineItem",
+            "NamespacePrefix": null,
+            "Label": "Opportunity Product",
+            "PluralLabel": "Opportunity Product",
+            "KeyPrefix": "00k",
+            "QualifiedApiName": "OpportunityLineItem"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/OpportunityTeamMember"
+            },
+            "DurableId": "OpportunityTeamMember",
+            "NamespacePrefix": null,
+            "Label": "Opportunity Team Member",
+            "PluralLabel": "Opportunity Team",
+            "KeyPrefix": "00q",
+            "QualifiedApiName": "OpportunityTeamMember"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Order"
+            },
+            "DurableId": "Order",
+            "NamespacePrefix": null,
+            "Label": "Order",
+            "PluralLabel": "Orders",
+            "KeyPrefix": "801",
+            "QualifiedApiName": "Order"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/OrderItem"
+            },
+            "DurableId": "OrderItem",
+            "NamespacePrefix": null,
+            "Label": "Order Product",
+            "PluralLabel": "Order Products",
+            "KeyPrefix": "802",
+            "QualifiedApiName": "OrderItem"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Pricebook2"
+            },
+            "DurableId": "Pricebook2",
+            "NamespacePrefix": null,
+            "Label": "Price Book",
+            "PluralLabel": "Price Books",
+            "KeyPrefix": "01s",
+            "QualifiedApiName": "Pricebook2"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/PricebookEntry"
+            },
+            "DurableId": "PricebookEntry",
+            "NamespacePrefix": null,
+            "Label": "Price Book Entry",
+            "PluralLabel": "Price Book Entries",
+            "KeyPrefix": "01u",
+            "QualifiedApiName": "PricebookEntry"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/ProcessException"
+            },
+            "DurableId": "ProcessException",
+            "NamespacePrefix": null,
+            "Label": "Process Exception",
+            "PluralLabel": "Process Exceptions",
+            "KeyPrefix": "2Pe",
+            "QualifiedApiName": "ProcessException"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Product2"
+            },
+            "DurableId": "Product2",
+            "NamespacePrefix": null,
+            "Label": "Product",
+            "PluralLabel": "Products",
+            "KeyPrefix": "01t",
+            "QualifiedApiName": "Product2"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/ProfileSkill"
+            },
+            "DurableId": "ProfileSkill",
+            "NamespacePrefix": null,
+            "Label": "Skill",
+            "PluralLabel": "Skills",
+            "KeyPrefix": "0Sk",
+            "QualifiedApiName": "ProfileSkill"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/ProfileSkillEndorsement"
+            },
+            "DurableId": "ProfileSkillEndorsement",
+            "NamespacePrefix": null,
+            "Label": "Endorsement",
+            "PluralLabel": "Endorsements",
+            "KeyPrefix": "0SE",
+            "QualifiedApiName": "ProfileSkillEndorsement"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/ProfileSkillUser"
+            },
+            "DurableId": "ProfileSkillUser",
+            "NamespacePrefix": null,
+            "Label": "Skill User",
+            "PluralLabel": "Skill Users",
+            "KeyPrefix": "0SM",
+            "QualifiedApiName": "ProfileSkillUser"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/QuickText"
+            },
+            "DurableId": "QuickText",
+            "NamespacePrefix": null,
+            "Label": "Quick Text",
+            "PluralLabel": "Quick Text",
+            "KeyPrefix": "574",
+            "QualifiedApiName": "QuickText"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Quote"
+            },
+            "DurableId": "Quote",
+            "NamespacePrefix": null,
+            "Label": "Quote",
+            "PluralLabel": "Quotes",
+            "KeyPrefix": "0Q0",
+            "QualifiedApiName": "Quote"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/QuoteLineItem"
+            },
+            "DurableId": "QuoteLineItem",
+            "NamespacePrefix": null,
+            "Label": "Quote Line Item",
+            "PluralLabel": "Quote Line Items",
+            "KeyPrefix": "0QL",
+            "QualifiedApiName": "QuoteLineItem"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Recommendation"
+            },
+            "DurableId": "Recommendation",
+            "NamespacePrefix": null,
+            "Label": "Recommendation",
+            "PluralLabel": "Recommendations",
+            "KeyPrefix": "0pr",
+            "QualifiedApiName": "Recommendation"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/RecordAction"
+            },
+            "DurableId": "RecordAction",
+            "NamespacePrefix": null,
+            "Label": "RecordAction",
+            "PluralLabel": "RecordActions",
+            "KeyPrefix": "0Rw",
+            "QualifiedApiName": "RecordAction"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/SharingRecordCollection"
+            },
+            "DurableId": "SharingRecordCollection",
+            "NamespacePrefix": null,
+            "Label": "Record Collection",
+            "PluralLabel": "Record Collections",
+            "KeyPrefix": "0iB",
+            "QualifiedApiName": "SharingRecordCollection"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/SocialPersona"
+            },
+            "DurableId": "SocialPersona",
+            "NamespacePrefix": null,
+            "Label": "Social Persona",
+            "PluralLabel": "Social Personas",
+            "KeyPrefix": "0SP",
+            "QualifiedApiName": "SocialPersona"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/SocialPost"
+            },
+            "DurableId": "SocialPost",
+            "NamespacePrefix": null,
+            "Label": "Social Post",
+            "PluralLabel": "Social Posts",
+            "KeyPrefix": "0ST",
+            "QualifiedApiName": "SocialPost"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Solution"
+            },
+            "DurableId": "Solution",
+            "NamespacePrefix": null,
+            "Label": "Solution",
+            "PluralLabel": "Solutions",
+            "KeyPrefix": "501",
+            "QualifiedApiName": "Solution"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/SurveyInvitation"
+            },
+            "DurableId": "SurveyInvitation",
+            "NamespacePrefix": null,
+            "Label": "Survey Invitation",
+            "PluralLabel": "Survey Invitations",
+            "KeyPrefix": "0Ki",
+            "QualifiedApiName": "SurveyInvitation"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/SurveySubject"
+            },
+            "DurableId": "SurveySubject",
+            "NamespacePrefix": null,
+            "Label": "Survey Subject",
+            "PluralLabel": "Survey Subjects",
+            "KeyPrefix": "0Vk",
+            "QualifiedApiName": "SurveySubject"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/Task"
+            },
+            "DurableId": "Task",
+            "NamespacePrefix": null,
+            "Label": "Task",
+            "PluralLabel": "Tasks",
+            "KeyPrefix": "00T",
+            "QualifiedApiName": "Task"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/User"
+            },
+            "DurableId": "User",
+            "NamespacePrefix": null,
+            "Label": "User",
+            "PluralLabel": "Users",
+            "KeyPrefix": "005",
+            "QualifiedApiName": "User"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/UserProvisioningRequest"
+            },
+            "DurableId": "UserProvisioningRequest",
+            "NamespacePrefix": null,
+            "Label": "User Provisioning Request",
+            "PluralLabel": "User Provisioning Requests",
+            "KeyPrefix": "0HP",
+            "QualifiedApiName": "UserProvisioningRequest"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/VoiceCall"
+            },
+            "DurableId": "VoiceCall",
+            "NamespacePrefix": null,
+            "Label": "Voice Call",
+            "PluralLabel": "Voice Calls",
+            "KeyPrefix": "0LQ",
+            "QualifiedApiName": "VoiceCall"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/WorkBadge"
+            },
+            "DurableId": "WorkBadge",
+            "NamespacePrefix": null,
+            "Label": "Badge Received",
+            "PluralLabel": "Badges Received",
+            "KeyPrefix": "0W2",
+            "QualifiedApiName": "WorkBadge"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/WorkBadgeDefinition"
+            },
+            "DurableId": "WorkBadgeDefinition",
+            "NamespacePrefix": null,
+            "Label": "Badge",
+            "PluralLabel": "Badges",
+            "KeyPrefix": "0W1",
+            "QualifiedApiName": "WorkBadgeDefinition"
+        },
+        {
+            "attributes": {
+                "type": "EntityDefinition",
+                "url": "/services/data/v50.0/sobjects/EntityDefinition/WorkThanks"
+            },
+            "DurableId": "WorkThanks",
+            "NamespacePrefix": null,
+            "Label": "Thanks",
+            "PluralLabel": "Thanks",
+            "KeyPrefix": "0W0",
+            "QualifiedApiName": "WorkThanks"
+        }
+    ]
+}

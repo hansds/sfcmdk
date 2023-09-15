@@ -7,6 +7,9 @@ import bg from "../../assets/images/hero-bg.jpg";
 import bgDark from "../../assets/images/hero-bg-dark.jpg";
 import { useTheme } from "nextra-theme-docs";
 
+import users from "../../assets/data/users.json";
+import customObjects from "../../assets/data/custom-objects.json";
+
 export function Home() {
   const darkMode = useTheme().resolvedTheme === "dark";
 
@@ -41,8 +44,8 @@ export function Home() {
           </div>
           <div className="overflow-hidden scale-50 sm:scale-75 md:scale-90 lg:scale-100 p-20">
             <SalesforceCommand
-              users={[]}
-              customObjects={[]}
+              users={users.records}
+              customObjects={customObjects.records}
               orgId="dummyOrgId"
               sendTypedMessage={() => {
                 return null;
