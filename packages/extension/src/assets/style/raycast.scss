@@ -79,6 +79,7 @@
     outline: none;
     background: var(--bg);
     color: var(--gray12);
+    box-shadow: none;
 
     &::placeholder {
       color: var(--gray9);
