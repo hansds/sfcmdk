@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Make header translucent for background by pushing content up */
+
+#__next .nextra-content {
+    padding-top: 4rem;
+}
+
+.nextra-nav-container > nav {
+    margin-bottom: -4rem;
+}

@@ -15,7 +15,7 @@ export function Home() {
 
   return (
     <main
-      className="space-y-40 min-h-screen "
+      className="space-y-40 min-h-screen"
       style={{
         backgroundBlendMode: darkMode ? "lighten" : "darken",
         backgroundPositionX: "-100%",
