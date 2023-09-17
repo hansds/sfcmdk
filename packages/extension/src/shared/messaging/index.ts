@@ -62,8 +62,8 @@ export interface RequestMap {
 
 export function receiveMessages(
   message: MessageRequest<keyof RequestMap>,
-  sender,
-  sendResponse: (response) => void
+  sender: chrome.runtime.MessageSender,
+  sendResponse: (response: MessageResponse<keyof RequestMap>) => void
 ) {
   const requestType = message.type;
 
@@ -81,8 +81,8 @@ export function receiveMessages(
 
 async function handleMessages(
   message: MessageRequest<keyof RequestMap>,
-  sender,
-  sendResponse: (response) => void
+  sender: chrome.runtime.MessageSender,
+  sendResponse: (response: MessageResponse<keyof RequestMap>) => void
 ) {
   const requestType = message.type;
   {
@@ -134,6 +134,10 @@ async function handleMessages(
 
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         const activeTab = tabs[0];
+
+        if (!activeTab || !activeTab.url || !activeTab.id)
+          throw new Error("Could not find active tab");
+
         const url = new URL(activeTab.url);
         const path = url.pathname;
         chrome.tabs.update(activeTab.id, {
