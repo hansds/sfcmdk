@@ -13,6 +13,11 @@ const config: DocsThemeConfig = {
   footer: {
     text: "Developed with 💙 by Enshift",
   },
+  useNextSeoProps() {
+    return {
+      titleTemplate: "%s | ⌘sfcmdk",
+    };
+  },
 };
 
 export default config;
