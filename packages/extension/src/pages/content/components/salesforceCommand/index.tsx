@@ -1,12 +1,16 @@
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
 // import { useTheme } from "next-themes";
+import { Command, useCommandState } from "cmdk";
 import { commandScore } from "../../../../shared/content/command-score";
 import { isProbablySalesforceId } from "../../../../shared/content/utils";
 import { MessageType } from "../../../../shared/messaging";
 import { sendTypedMessage } from "../../../../shared/messaging/content";
-import { JSONArray, MessageResponse } from "../../../../shared/messaging/types";
+import {
+  MessageResponse,
+  SfCustomObject,
+  SfUser,
+} from "../../../../shared/messaging/types";
 import { SALESFORCE_COMMANDS } from "../../../../shared/salesforce";
-import { Command, useCommandState } from "cmdk";
 // import { setPaletteVisibility } from "../app";
 import {
   BookmarkIcon,
@@ -18,8 +22,8 @@ import {
 } from "../icons";
 
 type Props = {
-  users: JSONArray;
-  customObjects: JSONArray;
+  users: SfUser[];
+  customObjects: SfCustomObject[];
   orgId: string;
   sendTypedMessage: typeof sendTypedMessage;
 };

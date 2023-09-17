@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { getOrgIdFromDocument } from "../../../../shared/content/utils";
 import { MessageType } from "../../../../shared/messaging";
 import { sendTypedMessage } from "../../../../shared/messaging/content";
-import { JSONArray } from "../../../../shared/messaging/types";
 import SalesforceCommand from "../salesforceCommand";
+import { SfCustomObject, SfUser } from "@src/shared/messaging/types";
 
 export default function SalesforceCommandContext() {
   const orgId = getOrgIdFromDocument(document);
 
-  const [users, setUsers] = useState<JSONArray>([]);
-  const [customObjects, setCustomObjects] = useState<JSONArray>([]);
+  const [users, setUsers] = useState<SfUser[]>([]);
+  const [customObjects, setCustomObjects] = useState<SfCustomObject[]>([]);
 
   React.useEffect(() => {
     const fetchUsers = async () => {

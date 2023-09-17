@@ -4,7 +4,6 @@ export interface GenericRequest {
   orgId: string;
 }
 
-// types.ts
 export interface MessageRequest<T extends keyof RequestMap> {
   type: T;
   data: RequestMap[T]["request"];
@@ -16,17 +15,29 @@ export interface MessageResponse<T extends keyof RequestMap> {
   error?: string;
 }
 
-export interface SalesforceReponse {
+export interface SalesforceReponse<T> {
   totalSize: number;
   done: boolean;
-  records: JSONArray;
+  records: T[];
 }
 
-type JSONValue = string | number | boolean | JSONObject | JSONArray;
+type SalesforceAttributes = { type: string; url: string };
+type SalesforceObject = {
+  attributes: SalesforceAttributes;
+};
 
-interface JSONObject {
-  [x: string]: JSONValue;
+export type SfUser = SalesforceObject & {
   Id: string;
-}
+  Name: string;
+  Username: string;
+  Profile: SalesforceObject & { Name: string };
+};
 
-export type JSONArray = Array<JSONObject>;
+export type SfCustomObject = SalesforceObject & {
+  DurableId: string;
+  NamespacePrefix: string;
+  Label: string;
+  PluralLabel: string;
+  KeyPrefix: string;
+  QualifiedApiName: string;
+};

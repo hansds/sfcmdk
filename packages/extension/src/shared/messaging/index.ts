@@ -10,6 +10,8 @@ import {
   MessageRequest,
   MessageResponse,
   SalesforceReponse,
+  SfCustomObject,
+  SfUser,
 } from "./types";
 
 export enum MessageType {
@@ -30,11 +32,11 @@ export interface RequestMap {
   };
   [MessageType.GetUsers]: {
     request: GenericRequest;
-    response: SalesforceReponse;
+    response: SalesforceReponse<SfUser>;
   };
   [MessageType.GetCustomObjects]: {
     request: GenericRequest;
-    response: SalesforceReponse;
+    response: SalesforceReponse<SfCustomObject>;
   };
   [MessageType.LoginAsUser]: {
     request: GenericRequest & { userId: string };
