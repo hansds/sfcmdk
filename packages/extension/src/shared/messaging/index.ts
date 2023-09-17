@@ -6,6 +6,7 @@ import {
   openInActiveOrNewTab,
 } from "../background/utils";
 import {
+  MessageType,
   GenericRequest,
   MessageRequest,
   MessageResponse,
@@ -13,17 +14,6 @@ import {
   SfCustomObject,
   SfUser,
 } from "./types";
-
-export enum MessageType {
-  RefreshMetadata,
-  GetUsers,
-  GetCustomObjects,
-  LoginAsUser,
-  ManageObject,
-  NavigateToSalesforcePath,
-  OpenRecord,
-  OpenObjectList,
-}
 
 export interface RequestMap {
   [MessageType.RefreshMetadata]: {

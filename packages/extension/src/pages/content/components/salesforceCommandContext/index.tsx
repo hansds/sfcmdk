@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { getOrgIdFromDocument } from "../../../../shared/content/utils";
-import { MessageType } from "../../../../shared/messaging";
 import { sendTypedMessage } from "../../../../shared/messaging/content";
 import SalesforceCommand from "../salesforceCommand";
-import { SfCustomObject, SfUser } from "@src/shared/messaging/types";
+import {
+  MessageType,
+  SfCustomObject,
+  SfUser,
+} from "@src/shared/messaging/types";
 
 export default function SalesforceCommandContext() {
   const orgId = getOrgIdFromDocument(document);

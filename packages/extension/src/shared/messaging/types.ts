@@ -1,5 +1,16 @@
 import { RequestMap } from ".";
 
+export enum MessageType {
+  RefreshMetadata,
+  GetUsers,
+  GetCustomObjects,
+  LoginAsUser,
+  ManageObject,
+  NavigateToSalesforcePath,
+  OpenRecord,
+  OpenObjectList,
+}
+
 export interface GenericRequest {
   orgId: string;
 }

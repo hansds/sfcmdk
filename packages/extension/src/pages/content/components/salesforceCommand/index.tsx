@@ -3,10 +3,10 @@ import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import { Command, useCommandState } from "cmdk";
 import { commandScore } from "../../../../shared/content/command-score";
 import { isProbablySalesforceId } from "../../../../shared/content/utils";
-import { MessageType } from "../../../../shared/messaging";
 import { sendTypedMessage } from "../../../../shared/messaging/content";
 import {
   MessageResponse,
+  MessageType,
   SfCustomObject,
   SfUser,
 } from "../../../../shared/messaging/types";

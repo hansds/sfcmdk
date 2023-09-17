@@ -1,9 +1,5 @@
-import { MessageType } from "../messaging";
+import { MessageType } from "../messaging/types";
 import { cacheInStorage } from "../storage";
-
-export function getOrgId(document: Document): string {
-  return document.cookie.match(/(?<=sid=)[A-Za-z0-9]{15}/)?.[0] || "";
-}
 
 interface SalesforceEnvironment {
   domain: string;
