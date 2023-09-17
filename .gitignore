@@ -19,3 +19,5 @@ packages/extension/public/manifest.json
 
 **/.next
 **/.rollup.cache
+
+*.log
