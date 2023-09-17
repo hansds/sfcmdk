@@ -47,7 +47,7 @@ export function Home() {
               users={users.records}
               customObjects={customObjects.records}
               orgId="dummyOrgId"
-              sendTypedMessage={() => {
+              sendMessage={() => {
                 return null;
               }}
             />

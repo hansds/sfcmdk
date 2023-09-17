@@ -1,17 +1,16 @@
-import { MessageType } from "../messaging";
-import { SalesforceReponse } from "../messaging/types";
+import { MessageType, SalesforceReponse } from "../messaging/types";
 
 const STORAGE_KEY_FETCHED_DATA = "fetchedData";
 
 type StorageData = {
-  data: SalesforceReponse;
+  data: SalesforceReponse<any>;
   lastUpdated: number;
 };
 
 export async function cacheInStorage(
   key: MessageType,
   orgId: string,
-  fetchFunction: () => Promise<SalesforceReponse>
+  fetchFunction: () => Promise<SalesforceReponse<any>>
 ) {
   const localStorage = await chrome.storage.local.get();
   const fetchedData = localStorage[STORAGE_KEY_FETCHED_DATA];

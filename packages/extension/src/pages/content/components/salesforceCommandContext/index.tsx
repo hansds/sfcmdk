@@ -16,9 +16,13 @@ export default function SalesforceCommandContext() {
 
   React.useEffect(() => {
     const fetchUsers = async () => {
-      const response = await sendTypedMessage(MessageType.GetUsers, {
-        orgId,
-      });
+      const response = await sendTypedMessage(
+        MessageType.GetUsers,
+        {
+          orgId,
+        },
+        chrome.runtime.sendMessage
+      );
 
       setUsers(response.data?.records ?? []);
     };
@@ -28,9 +32,13 @@ export default function SalesforceCommandContext() {
 
   React.useEffect(() => {
     const fetchCustomObjects = async () => {
-      const response = await sendTypedMessage(MessageType.GetCustomObjects, {
-        orgId,
-      });
+      const response = await sendTypedMessage(
+        MessageType.GetCustomObjects,
+        {
+          orgId,
+        },
+        chrome.runtime.sendMessage
+      );
 
       setCustomObjects(response.data?.records ?? []);
     };
@@ -43,7 +51,7 @@ export default function SalesforceCommandContext() {
       users={users}
       customObjects={customObjects}
       orgId={orgId}
-      sendTypedMessage={sendTypedMessage}
+      sendMessage={chrome.runtime.sendMessage}
     />
   );
 }

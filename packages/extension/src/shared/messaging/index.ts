@@ -1,54 +1,16 @@
-import { cacheInStorage } from "../storage";
 import {
   fetchAuthenticatedSalesforce,
   getObjectTypeFromId,
   getSalesforceEnvironment,
   openInActiveOrNewTab,
 } from "../background/utils";
+import { cacheInStorage } from "../storage";
 import {
-  MessageType,
-  GenericRequest,
   MessageRequest,
   MessageResponse,
-  SalesforceReponse,
-  SfCustomObject,
-  SfUser,
+  MessageType,
+  RequestMap,
 } from "./types";
-
-export interface RequestMap {
-  [MessageType.RefreshMetadata]: {
-    request: GenericRequest;
-    response: void;
-  };
-  [MessageType.GetUsers]: {
-    request: GenericRequest;
-    response: SalesforceReponse<SfUser>;
-  };
-  [MessageType.GetCustomObjects]: {
-    request: GenericRequest;
-    response: SalesforceReponse<SfCustomObject>;
-  };
-  [MessageType.LoginAsUser]: {
-    request: GenericRequest & { userId: string };
-    response: void;
-  };
-  [MessageType.ManageObject]: {
-    request: GenericRequest & { objectId: string; newTab: boolean };
-    response: void;
-  };
-  [MessageType.NavigateToSalesforcePath]: {
-    request: GenericRequest & { path: string; newTab: boolean };
-    response: void;
-  };
-  [MessageType.OpenRecord]: {
-    request: GenericRequest & { recordId: string; newTab: boolean };
-    response: void;
-  };
-  [MessageType.OpenObjectList]: {
-    request: GenericRequest & { apiName: string; newTab: boolean };
-    response: void;
-  };
-}
 
 export function receiveMessages(
   message: MessageRequest<keyof RequestMap>,

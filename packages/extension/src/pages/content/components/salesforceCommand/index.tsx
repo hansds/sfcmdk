@@ -25,14 +25,14 @@ type Props = {
   users: SfUser[];
   customObjects: SfCustomObject[];
   orgId: string;
-  sendTypedMessage: typeof sendTypedMessage;
+  sendMessage: Parameters<typeof sendTypedMessage>[2];
 };
 
 export default function SalesforceCommand({
   users,
   customObjects,
   orgId,
-  sendTypedMessage,
+  sendMessage,
 }: Props) {
   // const { resolvedTheme: theme } = useTheme();
 
@@ -155,7 +155,8 @@ export default function SalesforceCommand({
                     orgId,
                     recordId: recordId,
                     newTab: isMetaKeyActive,
-                  }
+                  },
+                  sendMessage
                 );
 
                 handleError(response);
@@ -179,11 +180,15 @@ export default function SalesforceCommand({
                   value={`List ${customObject.PluralLabel}`}
                   className="cmdk-item--with-aside"
                   onSelect={() => {
-                    sendTypedMessage(MessageType.OpenObjectList, {
-                      orgId,
-                      apiName: customObject.QualifiedApiName as string,
-                      newTab: isMetaKeyActive,
-                    });
+                    sendTypedMessage(
+                      MessageType.OpenObjectList,
+                      {
+                        orgId,
+                        apiName: customObject.QualifiedApiName as string,
+                        newTab: isMetaKeyActive,
+                      },
+                      sendMessage
+                    );
                   }}
                 >
                   <div cmdk-item-main="">
@@ -218,7 +223,8 @@ export default function SalesforceCommand({
                       {
                         orgId,
                         userId: user.Id,
-                      }
+                      },
+                      sendMessage
                     );
 
                     handleError(response);
@@ -248,11 +254,15 @@ export default function SalesforceCommand({
                   value={`Manage object ${customObject.Label}`}
                   className="cmdk-item--with-aside"
                   onSelect={() => {
-                    sendTypedMessage(MessageType.ManageObject, {
-                      orgId,
-                      objectId: customObject.DurableId as string,
-                      newTab: isMetaKeyActive,
-                    });
+                    sendTypedMessage(
+                      MessageType.ManageObject,
+                      {
+                        orgId,
+                        objectId: customObject.DurableId as string,
+                        newTab: isMetaKeyActive,
+                      },
+                      sendMessage
+                    );
                   }}
                 >
                   <div cmdk-item-main="">
@@ -276,11 +286,15 @@ export default function SalesforceCommand({
                   key={index}
                   value={`Setup ${setupItem.label}`}
                   onSelect={() => {
-                    sendTypedMessage(MessageType.NavigateToSalesforcePath, {
-                      orgId,
-                      path: setupItem.path,
-                      newTab: isMetaKeyActive,
-                    });
+                    sendTypedMessage(
+                      MessageType.NavigateToSalesforcePath,
+                      {
+                        orgId,
+                        path: setupItem.path,
+                        newTab: isMetaKeyActive,
+                      },
+                      sendMessage
+                    );
                   }}
                 >
                   <ToolIcon />
@@ -295,9 +309,13 @@ export default function SalesforceCommand({
             <Command.Item
               value="refresh metadata"
               onSelect={() => {
-                sendTypedMessage(MessageType.RefreshMetadata, {
-                  orgId,
-                });
+                sendTypedMessage(
+                  MessageType.RefreshMetadata,
+                  {
+                    orgId,
+                  },
+                  sendMessage
+                );
               }}
             >
               <RefreshIcon />
