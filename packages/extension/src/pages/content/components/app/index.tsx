@@ -5,15 +5,6 @@ import SalesforceCommandContext from "../salesforceCommandContext";
 refreshOnUpdate("pages/content");
 init();
 
-document.addEventListener("keydown", function (event) {
-  if (event.key === "k" && event.metaKey) {
-    togglePalette();
-  }
-  if (event.key === "Escape") {
-    setPaletteVisibility(false);
-  }
-});
-
 export function init() {
   if (isSalesforceDomain()) {
     createApp();
@@ -46,6 +37,15 @@ function createApp() {
 
     if (paletteElement.style.display !== "none") {
       document.dispatchEvent(new Event("salesforce-command-palette-opened"));
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "k" && event.metaKey) {
+      togglePalette();
+    }
+    if (event.key === "Escape") {
+      setPaletteVisibility(false);
     }
   });
 
