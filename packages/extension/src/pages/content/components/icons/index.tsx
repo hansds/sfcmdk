@@ -7,7 +7,7 @@ export function EnshiftIcon() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1_9)">
+      <g clipPath="url(#clip0_1_9)">
         <circle cx="16" cy="16" r="16" fill="url(#paint0_radial_1_9)" />
         <circle cx="16" cy="16" r="16" fill="url(#paint1_linear_1_9)" />
         <circle cx="16" cy="16" r="16" fill="url(#paint2_radial_1_9)" />
@@ -33,20 +33,20 @@ export function EnshiftIcon() {
           />
           <g filter="url(#filter0_f_1_9)">
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M12.3015 39.0652C8.12199 42.3387 7.17882 48.114 10.1948 51.9648C13.2109 55.8156 19.044 56.2835 23.2235 53.01C27.403 49.7365 28.3462 43.9612 25.3301 40.1104C22.3141 36.2597 16.481 35.7917 12.3015 39.0652Z"
               stroke="url(#paint3_radial_1_9)"
-              stroke-width="26.0155"
+              strokeWidth="26.0155"
             />
           </g>
           <g opacity="0.7" filter="url(#filter1_f_1_9)">
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M14.6001 52.7178C18.4285 51.2615 18.6717 42.5611 15.1432 33.2847C11.6147 24.0084 5.65079 17.669 1.82234 19.1252C-2.00611 20.5815 -2.24929 29.2819 1.27918 38.5583C4.80766 47.8346 10.7716 54.174 14.6001 52.7178Z"
               stroke="url(#paint4_radial_1_9)"
-              stroke-width="18.6986"
+              strokeWidth="18.6986"
             />
           </g>
           <path
@@ -71,9 +71,9 @@ export function EnshiftIcon() {
           width="59.3174"
           height="58.8803"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -92,9 +92,9 @@ export function EnshiftIcon() {
           width="52.1384"
           height="67.2981"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -114,8 +114,8 @@ export function EnshiftIcon() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(16 16) rotate(105.68) scale(15.7875 18.1358)"
         >
-          <stop offset="0.640625" stop-color="#2E7FFF" />
-          <stop offset="1" stop-color="#473DF6" />
+          <stop offset="0.640625" stopColor="#2E7FFF" />
+          <stop offset="1" stopColor="#473DF6" />
         </radialGradient>
         <linearGradient
           id="paint1_linear_1_9"
@@ -125,8 +125,8 @@ export function EnshiftIcon() {
           y2="32"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#923CFF" stop-opacity="0.69" />
-          <stop offset="1" stop-color="#2200F5" stop-opacity="0" />
+          <stop stopColor="#923CFF" stopOpacity="0.69" />
+          <stop offset="1" stopColor="#2200F5" stopOpacity="0" />
         </linearGradient>
         <radialGradient
           id="paint2_radial_1_9"
@@ -136,8 +136,8 @@ export function EnshiftIcon() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(-5.6 39.4667) rotate(-48.3019) scale(39.2861)"
         >
-          <stop stop-color="#00FFC2" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="#00FFC2" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </radialGradient>
         <radialGradient
           id="paint3_radial_1_9"
@@ -147,9 +147,9 @@ export function EnshiftIcon() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(23.2235 53.01) rotate(-97.8933) scale(21.0922 22.0187)"
         >
-          <stop stop-color="#C9C9C9" />
-          <stop offset="0.302083" stop-color="#F5D2B3" />
-          <stop offset="1" stop-color="#9D6FFF" />
+          <stop stopColor="#C9C9C9" />
+          <stop offset="0.302083" stopColor="#F5D2B3" />
+          <stop offset="1" stopColor="#9D6FFF" />
         </radialGradient>
         <radialGradient
           id="paint4_radial_1_9"
@@ -159,9 +159,9 @@ export function EnshiftIcon() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(1.82234 19.1252) rotate(69.1745) scale(35.6987 14.7333)"
         >
-          <stop stop-color="#CAC9FF" />
-          <stop offset="0.703125" stop-color="#E8ECF7" />
-          <stop offset="1" stop-color="#473DF6" stop-opacity="0.38" />
+          <stop stopColor="#CAC9FF" />
+          <stop offset="0.703125" stopColor="#E8ECF7" />
+          <stop offset="1" stopColor="#473DF6" stopOpacity="0.38" />
         </radialGradient>
         <clipPath id="clip0_1_9">
           <rect width="32" height="32" fill="white" />
@@ -262,9 +262,9 @@ export function ToolIcon() {
         rx="128"
         fill="url(#gradient-red)"
         stroke="#FFFFFF"
-        stroke-width="0"
-        stroke-opacity="100%"
-        paint-order="stroke"
+        strokeWidth="0"
+        strokeOpacity="100%"
+        paintOrder="stroke"
       ></rect>
       <clipPath id="clip">
         <use xlinkHref="#r4"></use>
@@ -276,8 +276,8 @@ export function ToolIcon() {
           gradientTransform="rotate(45)"
           style={{ transformOrigin: "center center" }}
         >
-          <stop stop-color="#EAAFC8"></stop>
-          <stop offset="1" stop-color="#EC2F4B"></stop>
+          <stop stopColor="#EAAFC8"></stop>
+          <stop offset="1" stopColor="#EC2F4B"></stop>
         </linearGradient>
         <radialGradient
           id="r6"
@@ -287,8 +287,8 @@ export function ToolIcon() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(256) rotate(90) scale(512)"
         >
-          <stop stop-color="white"></stop>
-          <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+          <stop stopColor="white"></stop>
+          <stop offset="1" stopColor="white" stopOpacity="0"></stop>
         </radialGradient>
       </defs>
       <svg
@@ -299,7 +299,7 @@ export function ToolIcon() {
         height="352"
         x="80"
         y="80"
-        alignment-baseline="middle"
+        alignmentBaseline="middle"
         style={{ color: "white" }}
       >
         <path
@@ -330,9 +330,9 @@ export function DatabaseIcon() {
         rx="128"
         fill="url(#gradient-blue)"
         stroke="#FFFFFF"
-        stroke-width="0"
-        stroke-opacity="100%"
-        paint-order="stroke"
+        strokeWidth="0"
+        strokeOpacity="100%"
+        paintOrder="stroke"
       ></rect>
       <clipPath id="clip">
         <use xlinkHref="#r4"></use>
@@ -344,8 +344,8 @@ export function DatabaseIcon() {
           gradientTransform="rotate(45)"
           style={{ transformOrigin: "center center" }}
         >
-          <stop stop-color="#396afc"></stop>
-          <stop offset="1" stop-color="#2948ff"></stop>
+          <stop stopColor="#396afc"></stop>
+          <stop offset="1" stopColor="#2948ff"></stop>
         </linearGradient>
         <radialGradient
           id="r6"
@@ -355,8 +355,8 @@ export function DatabaseIcon() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(256) rotate(90) scale(512)"
         >
-          <stop stop-color="white"></stop>
-          <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+          <stop stopColor="white"></stop>
+          <stop offset="1" stopColor="white" stopOpacity="0"></stop>
         </radialGradient>
       </defs>
       <svg
@@ -367,15 +367,15 @@ export function DatabaseIcon() {
         height="352"
         x="80"
         y="80"
-        alignment-baseline="middle"
+        alignmentBaseline="middle"
         style={{ color: "white" }}
       >
         <path
           d="M1.75 6v4c0 1.243 2.798 2.25 6.25 2.25s6.25-1.007 6.25-2.25V6M1.75 6c0 1.243 2.798 2.25 6.25 2.25S14.25 7.243 14.25 6M1.75 6c0-1.243 2.798-2.25 6.25-2.25S14.25 4.757 14.25 6"
           stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         ></path>
       </svg>
     </svg>
@@ -401,9 +401,9 @@ export function RefreshIcon() {
         rx="128"
         fill="url(#gradient-green)"
         stroke="#FFFFFF"
-        stroke-width="0"
-        stroke-opacity="100%"
-        paint-order="stroke"
+        strokeWidth="0"
+        strokeOpacity="100%"
+        paintOrder="stroke"
       ></rect>
       <clipPath id="clip">
         <use xlinkHref="#r4"></use>
@@ -415,8 +415,8 @@ export function RefreshIcon() {
           gradientTransform="rotate(45)"
           style={{ transformOrigin: "center center" }}
         >
-          <stop stop-color="#43cea2"></stop>
-          <stop offset="1" stop-color="#185a9d"></stop>
+          <stop stopColor="#43cea2"></stop>
+          <stop offset="1" stopColor="#185a9d"></stop>
         </linearGradient>
         <radialGradient
           id="r6"
@@ -426,8 +426,8 @@ export function RefreshIcon() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(256) rotate(90) scale(512)"
         >
-          <stop stop-color="white"></stop>
-          <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+          <stop stopColor="white"></stop>
+          <stop offset="1" stopColor="white" stopOpacity="0"></stop>
         </radialGradient>
       </defs>
       <svg
@@ -438,15 +438,15 @@ export function RefreshIcon() {
         height="352"
         x="80"
         y="80"
-        alignment-baseline="middle"
+        alignmentBaseline="middle"
         style={{ color: "white" }}
       >
         <path
           d="M7.75 1.75 10.25 4m0 0-2.5 2.25M10.25 4h-4.5a4 4 0 0 0-4 4v1.25m6.5 5L5.75 12m0 0 2.5-2.25M5.75 12h4.5a4 4 0 0 0 4-4V6.75"
           stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         ></path>
       </svg>
     </svg>
@@ -472,9 +472,9 @@ export function BookmarkIcon() {
         rx="128"
         fill="url(#r5)"
         stroke="#FFFFFF"
-        stroke-width="0"
-        stroke-opacity="100%"
-        paint-order="stroke"
+        strokeWidth="0"
+        strokeOpacity="100%"
+        paintOrder="stroke"
       ></rect>
       <clipPath id="clip">
         <use xlinkHref="#r4"></use>
@@ -486,8 +486,8 @@ export function BookmarkIcon() {
           gradientTransform="rotate(45)"
           style={{ transformOrigin: "center center" }}
         >
-          <stop stop-color="#FF9068"></stop>
-          <stop offset="1" stop-color="#FD746C"></stop>
+          <stop stopColor="#FF9068"></stop>
+          <stop offset="1" stopColor="#FD746C"></stop>
         </linearGradient>
         <radialGradient
           id="r6"
@@ -497,8 +497,8 @@ export function BookmarkIcon() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(256) rotate(90) scale(512)"
         >
-          <stop stop-color="white"></stop>
-          <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+          <stop stopColor="white"></stop>
+          <stop offset="1" stopColor="white" stopOpacity="0"></stop>
         </radialGradient>
       </defs>
       <svg
@@ -509,15 +509,15 @@ export function BookmarkIcon() {
         height="352"
         x="80"
         y="80"
-        alignment-baseline="middle"
+        alignmentBaseline="middle"
         style={{ color: "white" }}
       >
         <path
           d="M3.75 14.25V3.75a2 2 0 0 1 2-2h4.5a2 2 0 0 1 2 2v10.5L8 10.75l-4.25 3.5Z"
           stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         ></path>
       </svg>
     </svg>
