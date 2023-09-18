@@ -11,3 +11,9 @@
 .nextra-nav-container > nav {
     margin-bottom: -4rem;
 }
+
+/* Workaround for tailwind dark mode bg: see https: //github.com/tailwindlabs/tailwindcss/issues/2966 */
+:is(.dark .dark\:bg-black.bg-opacity-60) {
+    --tw-bg-opacity: .6;
+    background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
