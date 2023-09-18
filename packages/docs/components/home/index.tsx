@@ -1,35 +1,26 @@
-import { SalesforceCommand } from "@sfcmdk/extension";
+import SalesforceCommand from "@sfcmdk/extension";
 
 import "@sfcmdk/extension/src/assets/style/theme.scss";
 import "@sfcmdk/extension/src/assets/style/raycast.scss";
 
-import bg from "../../assets/images/hero-bg.jpg";
-import bgDark from "../../assets/images/hero-bg-dark.jpg";
-import { useTheme } from "nextra-theme-docs";
-
 import users from "../../assets/data/users.json";
 import customObjects from "../../assets/data/custom-objects.json";
 
-export function Home() {
-  const darkMode = useTheme().resolvedTheme === "dark";
+import Features from "./features";
 
+export function Home() {
   return (
     <main
-      className="space-y-40 min-h-screen"
+      className="space-y-16 min-h-screen bg-hero-light dark:bg-hero-dark bg-blend-darken dark:bg-blend-lighten bg-no-repeat"
       style={{
-        backgroundBlendMode: darkMode ? "lighten" : "darken",
         backgroundPositionX: "-100%",
         backgroundPositionY: "0, 50%",
         backgroundSize: "auto, 120%",
-        backgroundRepeat: "no-repeat",
-        backgroundImage: darkMode
-          ? `radial-gradient(circle at top, #100036 , #030b1e), url(${bgDark.src})`
-          : `radial-gradient(circle at top, #fdfafc , #d7dff1), url(${bg.src})`,
       }}
     >
       <div>
         <div className="grid place-items-center content-center overflow-hidden">
-          <div className="mt-32 mb-12 text-center">
+          <div className="mt-32 text-center">
             <h1 className="text-7xl font-bold mb-8">
               The command palette <br /> for Salesforce
             </h1>
@@ -53,6 +44,10 @@ export function Home() {
             />
           </div>
         </div>
+      </div>
+
+      <div className="pb-24">
+        <Features />
       </div>
     </main>
   );

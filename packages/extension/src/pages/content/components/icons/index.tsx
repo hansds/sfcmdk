@@ -1,5 +1,3 @@
-// import styles from "./icons.module.scss";
-
 export function EnshiftIcon() {
   return (
     <svg
@@ -175,363 +173,353 @@ export function EnshiftIcon() {
 
 export function UserIcon() {
   return (
-    <div cmdk-raycast-user-icon="">
-      <svg
+    <svg
+      width="512"
+      height="512"
+      viewBox="0 0 512 512"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    >
+      <rect
+        id="r4"
         width="512"
         height="512"
-        viewBox="0 0 512 512"
+        x="0"
+        y="0"
+        rx="128"
+        fill="url(#gradient-purple)"
+        stroke="#FFFFFF"
+        strokeWidth="0"
+        strokeOpacity="100%"
+        paintOrder="stroke"
+      ></rect>
+      <clipPath id="clip">
+        <use xlinkHref="#r4"></use>
+      </clipPath>
+      <defs>
+        <linearGradient
+          id="gradient-purple"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="rotate(45)"
+          style={{ transformOrigin: "center center" }}
+        >
+          <stop stopColor="#8E2DE2"></stop>
+          <stop offset="1" stopColor="#4A00E0"></stop>
+        </linearGradient>
+        <radialGradient
+          id="r6"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(256) rotate(90) scale(512)"
+        >
+          <stop stopColor="white"></stop>
+          <stop offset="1" stopColor="white" stopOpacity="0"></stop>
+        </radialGradient>
+      </defs>
+      <svg
+        viewBox="0 0 16 16"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
+        width="352"
+        height="352"
+        x="80"
+        y="80"
+        alignmentBaseline="middle"
+        style={{ color: "white" }}
       >
-        <rect
-          id="r4"
-          width="512"
-          height="512"
-          x="0"
-          y="0"
-          rx="128"
-          fill="url(#gradient-purple)"
-          stroke="#FFFFFF"
-          strokeWidth="0"
-          strokeOpacity="100%"
-          paintOrder="stroke"
-        ></rect>
-        <clipPath id="clip">
-          <use xlinkHref="#r4"></use>
-        </clipPath>
-        <defs>
-          <linearGradient
-            id="gradient-purple"
-            gradientUnits="userSpaceOnUse"
-            gradientTransform="rotate(45)"
-            style={{ transformOrigin: "center center" }}
-          >
-            <stop stopColor="#8E2DE2"></stop>
-            <stop offset="1" stopColor="#4A00E0"></stop>
-          </linearGradient>
-          <radialGradient
-            id="r6"
-            cx="0"
-            cy="0"
-            r="1"
-            gradientUnits="userSpaceOnUse"
-            gradientTransform="translate(256) rotate(90) scale(512)"
-          >
-            <stop stopColor="white"></stop>
-            <stop offset="1" stopColor="white" stopOpacity="0"></stop>
-          </radialGradient>
-        </defs>
-        <svg
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-          width="352"
-          height="352"
-          x="80"
-          y="80"
-          alignmentBaseline="middle"
-          style={{ color: "white" }}
-        >
-          <path
-            d="M10.5 4.25a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM8 9.25c-2.245 0-4.318 1.055-5.134 3.046-.419 1.022.529 1.954 1.633 1.954h7.002c1.104 0 2.052-.932 1.633-1.954C12.318 10.305 10.245 9.25 8 9.25Z"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></path>
-        </svg>
+        <path
+          d="M10.5 4.25a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM8 9.25c-2.245 0-4.318 1.055-5.134 3.046-.419 1.022.529 1.954 1.633 1.954h7.002c1.104 0 2.052-.932 1.633-1.954C12.318 10.305 10.245 9.25 8 9.25Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
       </svg>
-    </div>
+    </svg>
   );
 }
 
 export function ToolIcon() {
   return (
-    <div cmdk-raycast-tool-icon="">
-      <svg
+    <svg
+      width="512"
+      height="512"
+      viewBox="0 0 512 512"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    >
+      <rect
+        id="r4"
         width="512"
         height="512"
-        viewBox="0 0 512 512"
+        x="0"
+        y="0"
+        rx="128"
+        fill="url(#gradient-red)"
+        stroke="#FFFFFF"
+        stroke-width="0"
+        stroke-opacity="100%"
+        paint-order="stroke"
+      ></rect>
+      <clipPath id="clip">
+        <use xlinkHref="#r4"></use>
+      </clipPath>
+      <defs>
+        <linearGradient
+          id="gradient-red"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="rotate(45)"
+          style={{ transformOrigin: "center center" }}
+        >
+          <stop stop-color="#EAAFC8"></stop>
+          <stop offset="1" stop-color="#EC2F4B"></stop>
+        </linearGradient>
+        <radialGradient
+          id="r6"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(256) rotate(90) scale(512)"
+        >
+          <stop stop-color="white"></stop>
+          <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+        </radialGradient>
+      </defs>
+      <svg
+        viewBox="0 0 16 16"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        xmlnsXlink="http://www.w3.org/1999/xlink"
+        width="352"
+        height="352"
+        x="80"
+        y="80"
+        alignment-baseline="middle"
+        style={{ color: "white" }}
       >
-        <rect
-          id="r4"
-          width="512"
-          height="512"
-          x="0"
-          y="0"
-          rx="128"
-          fill="url(#gradient-red)"
-          stroke="#FFFFFF"
-          stroke-width="0"
-          stroke-opacity="100%"
-          paint-order="stroke"
-        ></rect>
-        <clipPath id="clip">
-          <use xlinkHref="#r4"></use>
-        </clipPath>
-        <defs>
-          <linearGradient
-            id="gradient-red"
-            gradientUnits="userSpaceOnUse"
-            gradientTransform="rotate(45)"
-            style={{ transformOrigin: "center center" }}
-          >
-            <stop stop-color="#EAAFC8"></stop>
-            <stop offset="1" stop-color="#EC2F4B"></stop>
-          </linearGradient>
-          <radialGradient
-            id="r6"
-            cx="0"
-            cy="0"
-            r="1"
-            gradientUnits="userSpaceOnUse"
-            gradientTransform="translate(256) rotate(90) scale(512)"
-          >
-            <stop stop-color="white"></stop>
-            <stop offset="1" stop-color="white" stop-opacity="0"></stop>
-          </radialGradient>
-        </defs>
-        <svg
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          width="352"
-          height="352"
-          x="80"
-          y="80"
-          alignment-baseline="middle"
-          style={{ color: "white" }}
-        >
-          <path
-            d="m1.9 3.65-.53-.53.53.53ZM3.65 1.9l.53.53-.53-.53Zm.704-.004.524-.537-.524.537Zm1.372 2.39a.75.75 0 1 0 1.048-1.072L5.726 4.286ZM3.214 6.774a.75.75 0 0 0 1.072-1.048L3.214 6.774Zm-1.318-2.42-.537.524.537-.524Zm11.272 2.244-.576-.48.576.48ZM14.1 5.48 13.524 5l.576.48Zm-3.047-2.586-.671-.335.67.335Zm.41-.82-.67-.336.67.336ZM10.52 1.9l.48.576-.48-.576Zm-1.118.932-.48-.577.48.577Zm.867 4.59-.238.712.237-.711Zm-1.692-1.69.712-.238-.712.238Zm5.481-1.174.53-.53-.53.53Zm-2.616-2.616-.53.53.53-.53ZM9.01 6.55a.75.75 0 0 0-1.02-1.1l1.02 1.1Zm-7.054 5.526-.51-.55.51.55Zm-.016.864-.53.53.53-.53Zm1.12 1.12-.53.53.53-.53Zm.864-.016-.55-.51.55.51ZM10.55 8.01a.75.75 0 1 0-1.1-1.02l1.1 1.02Zm.48 1.96a.75.75 0 1 0-1.06 1.06l1.06-1.06Zm3.095 4.155.53.53-.53-.53Zm-.132.12-.45.6.45-.6Zm.013-.001-.53-.53.53.53Zm.238-.238-.53-.53.53.53Zm0-.013.6-.45-.6.45Zm-.955-1.099-.335.671.335-.67ZM2.429 4.181 4.182 2.43 3.12 1.37 1.368 3.12l1.06 1.06Zm1.4-1.75 1.897 1.855 1.048-1.072-1.896-1.855-1.049 1.073Zm.457 3.295L2.432 3.829 1.359 4.878l1.855 1.896 1.072-1.048ZM4.181 2.43a.25.25 0 0 1-.352.002l1.049-1.073a1.25 1.25 0 0 0-1.758.01l1.06 1.06Zm-2.812.69a1.25 1.25 0 0 0-.01 1.758l1.073-1.049a.25.25 0 0 1-.002.352L1.37 3.12Zm12.376 3.958.931-1.118L13.524 5l-.932 1.118 1.153.96ZM11.75 4v-.882h-1.5V4h1.5Zm-.026-.77.41-.821-1.342-.67-.41.82 1.342.67Zm1.867.636-.82.41.67 1.342.82-.41-.67-1.342Zm-.709.384H12v1.5h.882v-1.5ZM10.04 1.324l-1.118.931.96 1.153L11 2.476l-.96-1.152Zm.466 5.387a1.924 1.924 0 0 1-1.217-1.217l-1.423.475a3.424 3.424 0 0 0 2.165 2.165l.475-1.423Zm2.264-2.435a.25.25 0 0 1 .112-.026v1.5c.194 0 .385-.045.559-.132l-.67-1.342Zm-1.02-1.158a.25.25 0 0 1-.026.112l-1.342-.671a1.25 1.25 0 0 0-.132.559h1.5Zm2.838.91a.864.864 0 0 0-.997-.162l.67 1.342a.636.636 0 0 1-.733-.12l1.06-1.06Zm-3.676-1.556a.636.636 0 0 1-.12-.734l1.342.67a.864.864 0 0 0-.162-.996l-1.06 1.06ZM10.25 4c0 .967.784 1.75 1.75 1.75v-1.5a.25.25 0 0 1-.25-.25h-1.5Zm4.426 1.96a1.434 1.434 0 0 0-.088-1.932l-1.06 1.06A.066.066 0 0 1 13.524 5l1.152.96Zm-2.084.158a1.924 1.924 0 0 1-2.086.593l-.475 1.423a3.424 3.424 0 0 0 3.714-1.056l-1.153-.96Zm-3.67-3.863A3.424 3.424 0 0 0 7.866 5.97l1.423-.475a1.924 1.924 0 0 1 .593-2.086l-.96-1.153Zm3.05-.843a1.434 1.434 0 0 0-1.932-.088L11 2.476a.066.066 0 0 1-.088-.004l1.06-1.06ZM7.99 5.45l-6.544 6.077 1.02 1.099L9.01 6.55l-1.02-1.1Zm-6.58 8.02 1.12 1.12 1.06-1.06-1.12-1.12-1.06 1.06Zm3.063 1.084L10.55 8.01l-1.1-1.02-6.076 6.543 1.1 1.021Zm-1.944.036a1.35 1.35 0 0 0 1.944-.036l-1.099-1.02a.15.15 0 0 1 .216-.005L2.53 14.59Zm-1.083-3.063a1.35 1.35 0 0 0-.036 1.944l1.06-1.061a.15.15 0 0 1-.003.216l-1.021-1.1Zm8.524-.497 2 2 1.06-1.06-2-2-1.06 1.06Zm2 2 1.625 1.625 1.06-1.06-1.625-1.625-1.06 1.06Zm-.14-.195.394.79 1.341-.671-.394-.79-1.342.671Zm.909 1.407.804.603.9-1.2-.804-.603-.9 1.2Zm1.797.532.12-.119-1.061-1.06-.12.118 1.062 1.061Zm.12-.119.118-.118-1.06-1.061-.12.119 1.061 1.06Zm.189-1.112-.603-.804-1.2.9.603.804 1.2-.9Zm-1.22-1.32-.79-.394-.67 1.342.789.394.67-1.341Zm.617.516a1.75 1.75 0 0 0-.618-.515l-.67 1.341a.25.25 0 0 1 .088.074l1.2-.9Zm.532 1.797a.76.76 0 0 0 .07-.993l-1.2.9a.74.74 0 0 1 .07-.967l1.06 1.06Zm-1.23.309a.76.76 0 0 0 .992-.07l-1.06-1.061a.74.74 0 0 1 .967-.07l-.9 1.2Zm-1.32-1.22c.121.242.297.454.515.617l.9-1.2a.25.25 0 0 1-.074-.088l-1.341.67Z"
-            fill="currentColor"
-          ></path>
-        </svg>
+        <path
+          d="m1.9 3.65-.53-.53.53.53ZM3.65 1.9l.53.53-.53-.53Zm.704-.004.524-.537-.524.537Zm1.372 2.39a.75.75 0 1 0 1.048-1.072L5.726 4.286ZM3.214 6.774a.75.75 0 0 0 1.072-1.048L3.214 6.774Zm-1.318-2.42-.537.524.537-.524Zm11.272 2.244-.576-.48.576.48ZM14.1 5.48 13.524 5l.576.48Zm-3.047-2.586-.671-.335.67.335Zm.41-.82-.67-.336.67.336ZM10.52 1.9l.48.576-.48-.576Zm-1.118.932-.48-.577.48.577Zm.867 4.59-.238.712.237-.711Zm-1.692-1.69.712-.238-.712.238Zm5.481-1.174.53-.53-.53.53Zm-2.616-2.616-.53.53.53-.53ZM9.01 6.55a.75.75 0 0 0-1.02-1.1l1.02 1.1Zm-7.054 5.526-.51-.55.51.55Zm-.016.864-.53.53.53-.53Zm1.12 1.12-.53.53.53-.53Zm.864-.016-.55-.51.55.51ZM10.55 8.01a.75.75 0 1 0-1.1-1.02l1.1 1.02Zm.48 1.96a.75.75 0 1 0-1.06 1.06l1.06-1.06Zm3.095 4.155.53.53-.53-.53Zm-.132.12-.45.6.45-.6Zm.013-.001-.53-.53.53.53Zm.238-.238-.53-.53.53.53Zm0-.013.6-.45-.6.45Zm-.955-1.099-.335.671.335-.67ZM2.429 4.181 4.182 2.43 3.12 1.37 1.368 3.12l1.06 1.06Zm1.4-1.75 1.897 1.855 1.048-1.072-1.896-1.855-1.049 1.073Zm.457 3.295L2.432 3.829 1.359 4.878l1.855 1.896 1.072-1.048ZM4.181 2.43a.25.25 0 0 1-.352.002l1.049-1.073a1.25 1.25 0 0 0-1.758.01l1.06 1.06Zm-2.812.69a1.25 1.25 0 0 0-.01 1.758l1.073-1.049a.25.25 0 0 1-.002.352L1.37 3.12Zm12.376 3.958.931-1.118L13.524 5l-.932 1.118 1.153.96ZM11.75 4v-.882h-1.5V4h1.5Zm-.026-.77.41-.821-1.342-.67-.41.82 1.342.67Zm1.867.636-.82.41.67 1.342.82-.41-.67-1.342Zm-.709.384H12v1.5h.882v-1.5ZM10.04 1.324l-1.118.931.96 1.153L11 2.476l-.96-1.152Zm.466 5.387a1.924 1.924 0 0 1-1.217-1.217l-1.423.475a3.424 3.424 0 0 0 2.165 2.165l.475-1.423Zm2.264-2.435a.25.25 0 0 1 .112-.026v1.5c.194 0 .385-.045.559-.132l-.67-1.342Zm-1.02-1.158a.25.25 0 0 1-.026.112l-1.342-.671a1.25 1.25 0 0 0-.132.559h1.5Zm2.838.91a.864.864 0 0 0-.997-.162l.67 1.342a.636.636 0 0 1-.733-.12l1.06-1.06Zm-3.676-1.556a.636.636 0 0 1-.12-.734l1.342.67a.864.864 0 0 0-.162-.996l-1.06 1.06ZM10.25 4c0 .967.784 1.75 1.75 1.75v-1.5a.25.25 0 0 1-.25-.25h-1.5Zm4.426 1.96a1.434 1.434 0 0 0-.088-1.932l-1.06 1.06A.066.066 0 0 1 13.524 5l1.152.96Zm-2.084.158a1.924 1.924 0 0 1-2.086.593l-.475 1.423a3.424 3.424 0 0 0 3.714-1.056l-1.153-.96Zm-3.67-3.863A3.424 3.424 0 0 0 7.866 5.97l1.423-.475a1.924 1.924 0 0 1 .593-2.086l-.96-1.153Zm3.05-.843a1.434 1.434 0 0 0-1.932-.088L11 2.476a.066.066 0 0 1-.088-.004l1.06-1.06ZM7.99 5.45l-6.544 6.077 1.02 1.099L9.01 6.55l-1.02-1.1Zm-6.58 8.02 1.12 1.12 1.06-1.06-1.12-1.12-1.06 1.06Zm3.063 1.084L10.55 8.01l-1.1-1.02-6.076 6.543 1.1 1.021Zm-1.944.036a1.35 1.35 0 0 0 1.944-.036l-1.099-1.02a.15.15 0 0 1 .216-.005L2.53 14.59Zm-1.083-3.063a1.35 1.35 0 0 0-.036 1.944l1.06-1.061a.15.15 0 0 1-.003.216l-1.021-1.1Zm8.524-.497 2 2 1.06-1.06-2-2-1.06 1.06Zm2 2 1.625 1.625 1.06-1.06-1.625-1.625-1.06 1.06Zm-.14-.195.394.79 1.341-.671-.394-.79-1.342.671Zm.909 1.407.804.603.9-1.2-.804-.603-.9 1.2Zm1.797.532.12-.119-1.061-1.06-.12.118 1.062 1.061Zm.12-.119.118-.118-1.06-1.061-.12.119 1.061 1.06Zm.189-1.112-.603-.804-1.2.9.603.804 1.2-.9Zm-1.22-1.32-.79-.394-.67 1.342.789.394.67-1.341Zm.617.516a1.75 1.75 0 0 0-.618-.515l-.67 1.341a.25.25 0 0 1 .088.074l1.2-.9Zm.532 1.797a.76.76 0 0 0 .07-.993l-1.2.9a.74.74 0 0 1 .07-.967l1.06 1.06Zm-1.23.309a.76.76 0 0 0 .992-.07l-1.06-1.061a.74.74 0 0 1 .967-.07l-.9 1.2Zm-1.32-1.22c.121.242.297.454.515.617l.9-1.2a.25.25 0 0 1-.074-.088l-1.341.67Z"
+          fill="currentColor"
+        ></path>
       </svg>
-    </div>
+    </svg>
   );
 }
 
 export function DatabaseIcon() {
   return (
-    <div cmdk-raycast-database-icon="">
-      <svg
+    <svg
+      width="512"
+      height="512"
+      viewBox="0 0 512 512"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    >
+      <rect
+        id="r4"
         width="512"
         height="512"
-        viewBox="0 0 512 512"
+        x="0"
+        y="0"
+        rx="128"
+        fill="url(#gradient-blue)"
+        stroke="#FFFFFF"
+        stroke-width="0"
+        stroke-opacity="100%"
+        paint-order="stroke"
+      ></rect>
+      <clipPath id="clip">
+        <use xlinkHref="#r4"></use>
+      </clipPath>
+      <defs>
+        <linearGradient
+          id="gradient-blue"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="rotate(45)"
+          style={{ transformOrigin: "center center" }}
+        >
+          <stop stop-color="#396afc"></stop>
+          <stop offset="1" stop-color="#2948ff"></stop>
+        </linearGradient>
+        <radialGradient
+          id="r6"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(256) rotate(90) scale(512)"
+        >
+          <stop stop-color="white"></stop>
+          <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+        </radialGradient>
+      </defs>
+      <svg
+        viewBox="0 0 16 16"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        xmlnsXlink="http://www.w3.org/1999/xlink"
+        width="352"
+        height="352"
+        x="80"
+        y="80"
+        alignment-baseline="middle"
+        style={{ color: "white" }}
       >
-        <rect
-          id="r4"
-          width="512"
-          height="512"
-          x="0"
-          y="0"
-          rx="128"
-          fill="url(#gradient-blue)"
-          stroke="#FFFFFF"
-          stroke-width="0"
-          stroke-opacity="100%"
-          paint-order="stroke"
-        ></rect>
-        <clipPath id="clip">
-          <use xlinkHref="#r4"></use>
-        </clipPath>
-        <defs>
-          <linearGradient
-            id="gradient-blue"
-            gradientUnits="userSpaceOnUse"
-            gradientTransform="rotate(45)"
-            style={{ transformOrigin: "center center" }}
-          >
-            <stop stop-color="#396afc"></stop>
-            <stop offset="1" stop-color="#2948ff"></stop>
-          </linearGradient>
-          <radialGradient
-            id="r6"
-            cx="0"
-            cy="0"
-            r="1"
-            gradientUnits="userSpaceOnUse"
-            gradientTransform="translate(256) rotate(90) scale(512)"
-          >
-            <stop stop-color="white"></stop>
-            <stop offset="1" stop-color="white" stop-opacity="0"></stop>
-          </radialGradient>
-        </defs>
-        <svg
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          width="352"
-          height="352"
-          x="80"
-          y="80"
-          alignment-baseline="middle"
-          style={{ color: "white" }}
-        >
-          <path
-            d="M1.75 6v4c0 1.243 2.798 2.25 6.25 2.25s6.25-1.007 6.25-2.25V6M1.75 6c0 1.243 2.798 2.25 6.25 2.25S14.25 7.243 14.25 6M1.75 6c0-1.243 2.798-2.25 6.25-2.25S14.25 4.757 14.25 6"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></path>
-        </svg>
+        <path
+          d="M1.75 6v4c0 1.243 2.798 2.25 6.25 2.25s6.25-1.007 6.25-2.25V6M1.75 6c0 1.243 2.798 2.25 6.25 2.25S14.25 7.243 14.25 6M1.75 6c0-1.243 2.798-2.25 6.25-2.25S14.25 4.757 14.25 6"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
       </svg>
-    </div>
+    </svg>
   );
 }
 
 export function RefreshIcon() {
   return (
-    <div cmdk-raycast-refresh-icon="">
-      <svg
+    <svg
+      width="512"
+      height="512"
+      viewBox="0 0 512 512"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    >
+      <rect
+        id="r4"
         width="512"
         height="512"
-        viewBox="0 0 512 512"
+        x="0"
+        y="0"
+        rx="128"
+        fill="url(#gradient-green)"
+        stroke="#FFFFFF"
+        stroke-width="0"
+        stroke-opacity="100%"
+        paint-order="stroke"
+      ></rect>
+      <clipPath id="clip">
+        <use xlinkHref="#r4"></use>
+      </clipPath>
+      <defs>
+        <linearGradient
+          id="gradient-green"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="rotate(45)"
+          style={{ transformOrigin: "center center" }}
+        >
+          <stop stop-color="#43cea2"></stop>
+          <stop offset="1" stop-color="#185a9d"></stop>
+        </linearGradient>
+        <radialGradient
+          id="r6"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(256) rotate(90) scale(512)"
+        >
+          <stop stop-color="white"></stop>
+          <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+        </radialGradient>
+      </defs>
+      <svg
+        viewBox="0 0 16 16"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        xmlnsXlink="http://www.w3.org/1999/xlink"
+        width="352"
+        height="352"
+        x="80"
+        y="80"
+        alignment-baseline="middle"
+        style={{ color: "white" }}
       >
-        <rect
-          id="r4"
-          width="512"
-          height="512"
-          x="0"
-          y="0"
-          rx="128"
-          fill="url(#gradient-green)"
-          stroke="#FFFFFF"
-          stroke-width="0"
-          stroke-opacity="100%"
-          paint-order="stroke"
-        ></rect>
-        <clipPath id="clip">
-          <use xlinkHref="#r4"></use>
-        </clipPath>
-        <defs>
-          <linearGradient
-            id="gradient-green"
-            gradientUnits="userSpaceOnUse"
-            gradientTransform="rotate(45)"
-            style={{ transformOrigin: "center center" }}
-          >
-            <stop stop-color="#43cea2"></stop>
-            <stop offset="1" stop-color="#185a9d"></stop>
-          </linearGradient>
-          <radialGradient
-            id="r6"
-            cx="0"
-            cy="0"
-            r="1"
-            gradientUnits="userSpaceOnUse"
-            gradientTransform="translate(256) rotate(90) scale(512)"
-          >
-            <stop stop-color="white"></stop>
-            <stop offset="1" stop-color="white" stop-opacity="0"></stop>
-          </radialGradient>
-        </defs>
-        <svg
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          width="352"
-          height="352"
-          x="80"
-          y="80"
-          alignment-baseline="middle"
-          style={{ color: "white" }}
-        >
-          <path
-            d="M7.75 1.75 10.25 4m0 0-2.5 2.25M10.25 4h-4.5a4 4 0 0 0-4 4v1.25m6.5 5L5.75 12m0 0 2.5-2.25M5.75 12h4.5a4 4 0 0 0 4-4V6.75"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></path>
-        </svg>
+        <path
+          d="M7.75 1.75 10.25 4m0 0-2.5 2.25M10.25 4h-4.5a4 4 0 0 0-4 4v1.25m6.5 5L5.75 12m0 0 2.5-2.25M5.75 12h4.5a4 4 0 0 0 4-4V6.75"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
       </svg>
-    </div>
+    </svg>
   );
 }
 
 export function BookmarkIcon() {
   return (
-    <div cmdk-raycast-bookmark-icon="">
-      <svg
+    <svg
+      width="512"
+      height="512"
+      viewBox="0 0 512 512"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    >
+      <rect
+        id="r4"
         width="512"
         height="512"
-        viewBox="0 0 512 512"
+        x="0"
+        y="0"
+        rx="128"
+        fill="url(#r5)"
+        stroke="#FFFFFF"
+        stroke-width="0"
+        stroke-opacity="100%"
+        paint-order="stroke"
+      ></rect>
+      <clipPath id="clip">
+        <use xlinkHref="#r4"></use>
+      </clipPath>
+      <defs>
+        <linearGradient
+          id="r5"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="rotate(45)"
+          style={{ transformOrigin: "center center" }}
+        >
+          <stop stop-color="#FF9068"></stop>
+          <stop offset="1" stop-color="#FD746C"></stop>
+        </linearGradient>
+        <radialGradient
+          id="r6"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(256) rotate(90) scale(512)"
+        >
+          <stop stop-color="white"></stop>
+          <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+        </radialGradient>
+      </defs>
+      <svg
+        viewBox="0 0 16 16"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        xmlnsXlink="http://www.w3.org/1999/xlink"
+        width="352"
+        height="352"
+        x="80"
+        y="80"
+        alignment-baseline="middle"
+        style={{ color: "white" }}
       >
-        <rect
-          id="r4"
-          width="512"
-          height="512"
-          x="0"
-          y="0"
-          rx="128"
-          fill="url(#r5)"
-          stroke="#FFFFFF"
-          stroke-width="0"
-          stroke-opacity="100%"
-          paint-order="stroke"
-        ></rect>
-        <clipPath id="clip">
-          <use xlinkHref="#r4"></use>
-        </clipPath>
-        <defs>
-          <linearGradient
-            id="r5"
-            gradientUnits="userSpaceOnUse"
-            gradientTransform="rotate(45)"
-            style={{ transformOrigin: "center center" }}
-          >
-            <stop stop-color="#FF9068"></stop>
-            <stop offset="1" stop-color="#FD746C"></stop>
-          </linearGradient>
-          <radialGradient
-            id="r6"
-            cx="0"
-            cy="0"
-            r="1"
-            gradientUnits="userSpaceOnUse"
-            gradientTransform="translate(256) rotate(90) scale(512)"
-          >
-            <stop stop-color="white"></stop>
-            <stop offset="1" stop-color="white" stop-opacity="0"></stop>
-          </radialGradient>
-        </defs>
-        <svg
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          width="352"
-          height="352"
-          x="80"
-          y="80"
-          alignment-baseline="middle"
-          style={{ color: "white" }}
-        >
-          <path
-            d="M3.75 14.25V3.75a2 2 0 0 1 2-2h4.5a2 2 0 0 1 2 2v10.5L8 10.75l-4.25 3.5Z"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></path>
-        </svg>
+        <path
+          d="M3.75 14.25V3.75a2 2 0 0 1 2-2h4.5a2 2 0 0 1 2 2v10.5L8 10.75l-4.25 3.5Z"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
       </svg>
-    </div>
+    </svg>
   );
 }
