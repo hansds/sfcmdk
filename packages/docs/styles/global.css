@@ -13,7 +13,33 @@
 }
 
 /* Workaround for tailwind dark mode bg: see https: //github.com/tailwindlabs/tailwindcss/issues/2966 */
-:is(.dark .dark\:bg-black.bg-opacity-60) {
+:is(.dark .dark\:bg-black.bg-opacity-60), :is(.dark .dark\:bg-zinc-900.bg-opacity-60){
     --tw-bg-opacity: .6;
-    background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+
+
+/* Animations */
+.window-fly {
+    animation: window-fly;
+    animation-duration: 1.3s;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+}
+
+@keyframes window-fly {
+    0% {
+        opacity: 0;
+        scale: .2;
+    }
+    60% {
+        opacity: 1;
+        scale: 1;
+        filter: blur(0);
+    }
+    100% {
+        opacity: 0;
+        scale: 2;
+        filter: blur(2rem);
+    }
 }

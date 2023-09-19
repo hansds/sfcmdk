@@ -16,5 +16,6 @@ module.exports = {
     },
   },
   plugins: [],
+  safelist: ["w-5", "inline-block", "mx-1"],
   darkMode: "class",
 };
