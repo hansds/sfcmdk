@@ -1,13 +1,16 @@
 import SalesforceCommand from "@sfcmdk/extension";
 
-import "@sfcmdk/extension/src/assets/style/theme.scss";
 import "@sfcmdk/extension/src/assets/style/raycast.scss";
+import "@sfcmdk/extension/src/assets/style/theme.scss";
 
-import users from "../../assets/data/users.json";
 import customObjects from "../../assets/data/custom-objects.json";
+import users from "../../assets/data/users.json";
 
-import Features from "./features";
+import { MessageType } from "@sfcmdk/extension/src/shared/messaging/types";
 import { useEffect, useRef, useState } from "react";
+import Features from "./features";
+
+const simulationRun = `␡ref⏎␡log john⏎`;
 
 // Fixes overflow scrolling when focus is on the command palette
 function OverflowFixer({ ...props }: any) {
@@ -36,6 +39,30 @@ function OverflowFixer({ ...props }: any) {
 
 export function Home() {
   const [commandsLaunched, setCommandsLaunched] = useState([]);
+  const [currentSimulationKeyIndex, setCurrentSimulationKeyIndex] = useState(0);
+
+  function randomNumberBetween(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  function simulateKey() {
+    setCurrentSimulationKeyIndex((currentSimulationKeyIndex) =>
+      currentSimulationKeyIndex + 1 == simulationRun.length
+        ? 0
+        : currentSimulationKeyIndex + 1
+    );
+  }
+
+  useEffect(() => {
+    const currentKey = simulationRun[currentSimulationKeyIndex];
+    const timeout = currentKey == "⏎" ? 2500 : randomNumberBetween(100, 800);
+
+    const timeoutId = setTimeout(simulateKey, timeout);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [currentSimulationKeyIndex]);
 
   return (
     <main
@@ -62,6 +89,9 @@ export function Home() {
       </div>
 
       <div className="relative grid place-items-center content-center">
+        <div className="absolute z-10 top-2 left-1/2 md:top-10 md:ml-64 md:scale-125 animate-wiggle rotate-6">
+          <Tooltip />
+        </div>
         <OverflowFixer className="overflow-hidden w-screen sm:w-auto p-20 -my-12">
           <div className="relative -left-12 sm:left-12 md:static">
             <SalesforceCommand
@@ -69,13 +99,16 @@ export function Home() {
               customObjects={customObjects.records}
               orgId="dummyOrgId"
               sendMessage={(message) => {
+                const commandType = MessageType[message.type];
+
                 setCommandsLaunched((commandsLaunched) => [
                   ...commandsLaunched,
-                  message.type,
+                  commandType,
                 ]);
 
-                return null;
+                return Promise.resolve({ type: message.type });
               }}
+              input={simulationRun[currentSimulationKeyIndex]}
             />
           </div>
         </OverflowFixer>
@@ -108,7 +141,7 @@ function CommandWindow({ command }: { command: string }) {
   return (
     isVisible && (
       <div
-        className="window-fly absolute
+        className="window-fly absolute z-10
        top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 origin-bottom-left  w-80 h-60 p-8 rounded-lg bg-white dark:bg-black bg-opacity-60 dark:border-zinc-900  border-solid border backdrop-filter backdrop-blur-lg drop-shadow-2xl"
       >
         <svg
@@ -136,14 +169,60 @@ function CommandWindow({ command }: { command: string }) {
         <p className="inline-block font-semibold">{command}</p>
 
         <p className="my-4 animate-pulse text-base text-neutral-700 dark:text-white">
-          <span className="inline-block min-h-[1em] mr-3 w-7/12 flex-auto cursor-wait bg-current align-middle opacity-20 rounded-sm"></span>
-          <span className="inline-block min-h-[1em] mr-3 w-4/12 flex-auto cursor-wait bg-current align-middle opacity-20 rounded-sm"></span>
-          <span className="inline-block min-h-[1em] mr-3 w-4/12 flex-auto cursor-wait bg-current align-middle opacity-20 rounded-sm"></span>
-          <span className="inline-block min-h-[1em] mr-3 w-6/12 flex-auto cursor-wait bg-current align-middle opacity-20 rounded-sm"></span>
-          <span className="inline-block min-h-[1em] mr-3 mt-4 w-8/12 flex-auto cursor-wait bg-current align-middle opacity-20 rounded-sm"></span>
-          <span className="inline-block min-h-[1em] mr-3 w-4/12 flex-auto cursor-wait bg-current align-middle opacity-20 rounded-sm"></span>
+          <span className="inline-block min-h-[1em] mr-3 w-7/12 flex-auto bg-current align-middle opacity-20 rounded-sm"></span>
+          <span className="inline-block min-h-[1em] mr-3 w-4/12 flex-auto bg-current align-middle opacity-20 rounded-sm"></span>
+          <span className="inline-block min-h-[1em] mr-3 w-4/12 flex-auto bg-current align-middle opacity-20 rounded-sm"></span>
+          <span className="inline-block min-h-[1em] mr-3 w-6/12 flex-auto bg-current align-middle opacity-20 rounded-sm"></span>
+          <span className="inline-block min-h-[1em] mr-3 mt-4 w-8/12 flex-auto bg-current align-middle opacity-20 rounded-sm"></span>
+          <span className="inline-block min-h-[1em] mr-3 w-4/12 flex-auto bg-current align-middle opacity-20 rounded-sm"></span>
         </p>
       </div>
     )
+  );
+}
+
+function Tooltip() {
+  return (
+    <div className="absolute ml-8 shadow-lg dark:bg-white bg-purple-600 px-4 py-2 rounded-md w-28 -rotate-6 opacity-90">
+      <p className="text-md font-semibold dark:text-zinc-800 text-white pb-1 -mb-1 tracking-tight">
+        Try me! <span className="text-xl relative left-1">🦦</span>
+      </p>
+      <svg
+        className="absolute left-0 -ml-2 bottom-0 top-0 h-full dark:text-white text-purple-600"
+        width="9px"
+        height="16px"
+        viewBox="0 0 9 16"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+      >
+        <g
+          id="Page-1"
+          stroke="none"
+          stroke-width="1"
+          fill="none"
+          fill-rule="evenodd"
+        >
+          <g
+            id="Tooltips-"
+            transform="translate(-874.000000, -1029.000000)"
+            fill="currentColor"
+          >
+            <g
+              id="Group-3-Copy-16"
+              transform="translate(850.000000, 975.000000)"
+            >
+              <g id="Group-2" transform="translate(24.000000, 0.000000)">
+                <polygon
+                  id="Triangle"
+                  transform="translate(4.500000, 62.000000) rotate(-90.000000) translate(-4.500000, -62.000000) "
+                  points="4.5 57.5 12.5 66.5 -3.5 66.5"
+                ></polygon>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
   );
 }

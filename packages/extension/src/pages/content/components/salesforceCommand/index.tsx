@@ -7,6 +7,7 @@ import { sendTypedMessage } from "../../../../shared/messaging/content";
 import {
   MessageResponse,
   MessageType,
+  RequestMap,
   SfCustomObject,
   SfUser,
 } from "../../../../shared/messaging/types";
@@ -26,6 +27,7 @@ type Props = {
   customObjects: SfCustomObject[];
   orgId: string;
   sendMessage: Parameters<typeof sendTypedMessage>[2];
+  input?: string;
 };
 
 export default function SalesforceCommand({
@@ -33,12 +35,13 @@ export default function SalesforceCommand({
   customObjects,
   orgId,
   sendMessage,
+  input,
 }: Props) {
   // const { resolvedTheme: theme } = useTheme();
 
   const ref = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const listRef = useRef(null);
+  const listRef = useRef<HTMLDivElement | null>(null);
   const containerElement = useRef(null);
 
   const [loading, setLoading] = useState(false);
@@ -101,13 +104,29 @@ export default function SalesforceCommand({
     return commandScore(value, search);
   }
 
-  function handleError(response: MessageResponse<any>) {
+  function handleError(response: MessageResponse<keyof RequestMap>) {
     if (response.error) {
       setNotification(response.error);
       // setPaletteVisibility(true);
       setLoading(false);
     }
   }
+
+  // Optionally simulate input unless the user wants to type
+  useEffect(() => {
+    if (!input || inputRef.current === document.activeElement) return;
+    else if (input === "⏎") {
+      const command = listRef.current?.querySelector(
+        'div[cmdk-item][role="option"]'
+      ) as HTMLDivElement | null;
+      if (command) command.click();
+      bounce();
+    } else if (input === "␡") {
+      setSearch("");
+    } else {
+      setSearch((value) => value + input);
+    }
+  }, [input]);
 
   return (
     <div className="raycast" ref={containerElement}>
