@@ -217,25 +217,14 @@ function Tooltip() {
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       >
-        <g
-          id="Page-1"
-          stroke="none"
-          stroke-width="1"
-          fill="none"
-          fill-rule="evenodd"
-        >
+        <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
           <g
-            id="Tooltips-"
             transform="translate(-874.000000, -1029.000000)"
             fill="currentColor"
           >
-            <g
-              id="Group-3-Copy-16"
-              transform="translate(850.000000, 975.000000)"
-            >
-              <g id="Group-2" transform="translate(24.000000, 0.000000)">
+            <g transform="translate(850.000000, 975.000000)">
+              <g transform="translate(24.000000, 0.000000)">
                 <polygon
-                  id="Triangle"
                   transform="translate(4.500000, 62.000000) rotate(-90.000000) translate(-4.500000, -62.000000) "
                   points="4.5 57.5 12.5 66.5 -3.5 66.5"
                 ></polygon>
