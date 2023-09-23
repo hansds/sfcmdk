@@ -1,4 +1,5 @@
 import SalesforceCommand from "@sfcmdk/extension";
+import { useInView } from "react-intersection-observer";
 
 import "@sfcmdk/extension/src/assets/style/raycast.scss";
 import "@sfcmdk/extension/src/assets/style/theme.scss";
@@ -38,14 +39,17 @@ function OverflowFixer({ ...props }: any) {
 }
 
 export function Home() {
+  const timeoutId = useRef(null);
   const [commandsLaunched, setCommandsLaunched] = useState([]);
   const [currentSimulationKeyIndex, setCurrentSimulationKeyIndex] = useState(0);
+  const [shouldRunSimulation, setShouldRunSimulation] = useState(true);
 
   function randomNumberBetween(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
   function simulateKey() {
+    if (!shouldRunSimulation) return;
     setCurrentSimulationKeyIndex((currentSimulationKeyIndex) =>
       currentSimulationKeyIndex + 1 == simulationRun.length
         ? 0
@@ -54,15 +58,29 @@ export function Home() {
   }
 
   useEffect(() => {
+    clearTimeout(timeoutId.current);
+
     const currentKey = simulationRun[currentSimulationKeyIndex];
     const timeout = currentKey == "⏎" ? 2500 : randomNumberBetween(100, 800);
 
-    const timeoutId = setTimeout(simulateKey, timeout);
+    timeoutId.current = setTimeout(simulateKey, timeout);
 
     return () => {
-      clearTimeout(timeoutId);
+      clearTimeout(timeoutId.current);
     };
-  }, [currentSimulationKeyIndex]);
+  }, [currentSimulationKeyIndex, shouldRunSimulation]);
+
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      setShouldRunSimulation(true);
+    } else {
+      setShouldRunSimulation(false);
+    }
+  }, [inView]);
 
   return (
     <main
@@ -89,7 +107,10 @@ export function Home() {
       </div>
 
       <div className="relative grid place-items-center content-center">
-        <div className="absolute z-10 top-2 left-1/2 md:top-10 md:ml-64 md:scale-125 animate-wiggle rotate-6">
+        <div
+          className="absolute z-10 top-2 left-1/2 md:top-10 md:ml-64 md:scale-125 animate-wiggle rotate-6"
+          ref={ref}
+        >
           <Tooltip />
         </div>
         <OverflowFixer className="overflow-hidden w-screen sm:w-auto p-20 -my-12">
