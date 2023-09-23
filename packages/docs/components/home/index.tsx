@@ -175,7 +175,7 @@ function CommandWindow({ command }: { command: string }) {
           <defs>
             <path id="a" d="m0.06 0.5h272v190h-272z" />
           </defs>
-          <g fill-rule="evenodd">
+          <g fillRule="evenodd">
             <mask id="b" fill="#fff">
               <use xlinkHref="#a" />
             </mask>
