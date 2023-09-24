@@ -1,0 +1,3 @@
+[submodule "packages/extension/src/cmdk"]
+	path = packages/extension/src/cmdk
+	url = https://github.com/hansds/cmdk

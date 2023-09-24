@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "description": "Salesforce Command Palette",
-  "repository": "git@github.com:enshift/salesforce-command-palette.git",
+  "repository": "git@github.com:enshift/sfcmdk.git",
   "author": "Hans De Smet <hello@hansdesmet.be>",
   "license": "MIT",
   "private": true,

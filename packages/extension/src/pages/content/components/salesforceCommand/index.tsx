@@ -1,6 +1,6 @@
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
 // import { useTheme } from "next-themes";
-import { Command, useCommandState } from "cmdk";
+import { Command, useCommandState } from "../../../../cmdk/cmdk/src/index";
 import { commandScore } from "../../../../shared/content/command-score";
 import { isProbablySalesforceId } from "../../../../shared/content/utils";
 import { sendTypedMessage } from "../../../../shared/messaging/content";
