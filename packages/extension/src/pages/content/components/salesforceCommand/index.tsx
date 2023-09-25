@@ -12,11 +12,12 @@ import {
 } from "../../../../shared/messaging/types";
 import { SALESFORCE_COMMANDS } from "../../../../shared/salesforce";
 // import { setPaletteVisibility } from "../app";
-import { commandScore } from "@src/cmdk/cmdk/src/command-score";
+import { commandScore } from "../../../../cmdk/cmdk/src/command-score";
 import {
   BookmarkIcon,
   DatabaseIcon,
   EnshiftIcon,
+  ListIcon,
   RefreshIcon,
   ToolIcon,
   UserIcon,
@@ -225,7 +226,7 @@ export default function SalesforceCommand({
                       }}
                     >
                       <div cmdk-item-main="">
-                        <DatabaseIcon />
+                        <ListIcon />
                         List {customObject.PluralLabel as string}
                       </div>
                       <div cmdk-item-aside="">
@@ -308,7 +309,6 @@ export default function SalesforceCommand({
           {/* Data */}
           <Command.Group heading="Data">
             <Command.Item
-              forceMount={true}
               value={CommandShortkey.INSPECT_RECORD}
               onSelect={async () => {
                 if (recordId === "") return;
@@ -333,7 +333,7 @@ export default function SalesforceCommand({
             </Command.Item>
 
             <Command.Item value={CommandShortkey.LIST_OBJECT}>
-              <DatabaseIcon />
+              <ListIcon />
               List object…
               <div cmdk-item-shortcut="">lis</div>
             </Command.Item>
