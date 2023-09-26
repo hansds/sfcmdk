@@ -12,6 +12,7 @@ import {
 } from "../../../../shared/messaging/types";
 import { SALESFORCE_COMMANDS } from "../../../../shared/salesforce";
 // import { setPaletteVisibility } from "../app";
+import { useDebounce } from "use-debounce";
 import { commandScore } from "../../../../cmdk/cmdk/src/command-score";
 import {
   BookmarkIcon,
@@ -54,9 +55,10 @@ export default function SalesforceCommand({
   const containerElement = useRef(null);
 
   const [loading, setLoading] = useState(false);
-  const [value, setValue] = useState("");
   const [recordId, setRecordId] = useState("");
   const [search, setSearch] = useState("");
+  const [debouncedSearch] = useDebounce(search, 250);
+
   const [isMetaKeyActive, setIsMetaKeyActive] = useState(false);
   const [notification, setNotification] = useState("");
 
@@ -143,9 +145,7 @@ export default function SalesforceCommand({
     <div className="raycast" ref={containerElement}>
       <Command
         ref={ref}
-        value={value}
         filter={filter}
-        onValueChange={(v) => setValue(v)}
         onKeyDown={(e: KeyboardEvent) => {
           setIsMetaKeyActive(e.metaKey);
           if (e.key === "Enter") {
@@ -160,6 +160,7 @@ export default function SalesforceCommand({
         <Command.Input
           ref={inputRef}
           autoFocus
+          value={search}
           onValueChange={(v) => {
             setSearch(v);
             setRecordIdFromSearch(v);
@@ -172,139 +173,140 @@ export default function SalesforceCommand({
           <Command.Empty>No results found.</Command.Empty>
 
           {/* Best Matches */}
-          {search.length >= 3 && (
-            <Command.Group heading="Best Matches">
-              {/* Setup Items */}
-              {isShortkeyMatchOrBestSuggestion(
-                CommandShortkey.SETUP_ITEM,
-                search
-              ) &&
-                SALESFORCE_COMMANDS.map((setupItem, index) => {
-                  return (
-                    <Command.Item
-                      key={index}
-                      value={`${CommandShortkey.SETUP_ITEM} ${setupItem.value}`}
-                      onSelect={() => {
-                        sendTypedMessage(
-                          MessageType.NavigateToSalesforcePath,
-                          {
-                            orgId,
-                            path: setupItem.path,
-                            newTab: isMetaKeyActive,
-                          },
-                          sendMessage
-                        );
-                      }}
-                    >
-                      <ToolIcon />
-                      Setup {setupItem.label as string}
-                    </Command.Item>
-                  );
-                })}
+          {debouncedSearch.length >= 3 &&
+            !isProbablySalesforceId(debouncedSearch) && (
+              <Command.Group heading="Best Matches">
+                {/* Setup Items */}
+                {isShortkeyMatchOrBestSuggestion(
+                  CommandShortkey.SETUP_ITEM,
+                  debouncedSearch
+                ) &&
+                  SALESFORCE_COMMANDS.map((setupItem, index) => {
+                    return (
+                      <Command.Item
+                        key={index}
+                        value={`${CommandShortkey.SETUP_ITEM} ${setupItem.value}`}
+                        onSelect={() => {
+                          sendTypedMessage(
+                            MessageType.NavigateToSalesforcePath,
+                            {
+                              orgId,
+                              path: setupItem.path,
+                              newTab: isMetaKeyActive,
+                            },
+                            sendMessage
+                          );
+                        }}
+                      >
+                        <ToolIcon />
+                        Setup {setupItem.label as string}
+                      </Command.Item>
+                    );
+                  })}
 
-              {/* List Objects */}
-              {isShortkeyMatchOrBestSuggestion(
-                CommandShortkey.LIST_OBJECT,
-                search
-              ) &&
-                customObjects.map((customObject, index) => {
-                  return (
-                    <Command.Item
-                      key={index}
-                      value={`${CommandShortkey.LIST_OBJECT} ${customObject.PluralLabel}`}
-                      className="cmdk-item--with-aside"
-                      onSelect={() => {
-                        sendTypedMessage(
-                          MessageType.OpenObjectList,
-                          {
-                            orgId,
-                            apiName: customObject.QualifiedApiName as string,
-                            newTab: isMetaKeyActive,
-                          },
-                          sendMessage
-                        );
-                      }}
-                    >
-                      <div cmdk-item-main="">
-                        <ListIcon />
-                        List {customObject.PluralLabel as string}
-                      </div>
-                      <div cmdk-item-aside="">
-                        {customObject.NamespacePrefix as string}
-                      </div>
-                    </Command.Item>
-                  );
-                })}
+                {/* List Objects */}
+                {isShortkeyMatchOrBestSuggestion(
+                  CommandShortkey.LIST_OBJECT,
+                  debouncedSearch
+                ) &&
+                  customObjects.map((customObject, index) => {
+                    return (
+                      <Command.Item
+                        key={index}
+                        value={`${CommandShortkey.LIST_OBJECT} ${customObject.PluralLabel}`}
+                        className="cmdk-item--with-aside"
+                        onSelect={() => {
+                          sendTypedMessage(
+                            MessageType.OpenObjectList,
+                            {
+                              orgId,
+                              apiName: customObject.QualifiedApiName as string,
+                              newTab: isMetaKeyActive,
+                            },
+                            sendMessage
+                          );
+                        }}
+                      >
+                        <div cmdk-item-main="">
+                          <ListIcon />
+                          List {customObject.PluralLabel as string}
+                        </div>
+                        <div cmdk-item-aside="">
+                          {customObject.NamespacePrefix as string}
+                        </div>
+                      </Command.Item>
+                    );
+                  })}
 
-              {/* Login As */}
-              {isShortkeyMatchOrBestSuggestion(
-                CommandShortkey.LOGIN_AS,
-                search
-              ) &&
-                users.map((user, index) => {
-                  return (
-                    <Command.Item
-                      key={index}
-                      value={`Login as ${user.Name}`}
-                      className="cmdk-item--with-aside"
-                      onSelect={async () => {
-                        setLoading(true);
-                        const response = await sendTypedMessage(
-                          MessageType.LoginAsUser,
-                          {
-                            orgId,
-                            userId: user.Id,
-                          },
-                          sendMessage
-                        );
+                {/* Login As */}
+                {isShortkeyMatchOrBestSuggestion(
+                  CommandShortkey.LOGIN_AS,
+                  debouncedSearch
+                ) &&
+                  users.map((user, index) => {
+                    return (
+                      <Command.Item
+                        key={index}
+                        value={`Login as ${user.Name}`}
+                        className="cmdk-item--with-aside"
+                        onSelect={async () => {
+                          setLoading(true);
+                          const response = await sendTypedMessage(
+                            MessageType.LoginAsUser,
+                            {
+                              orgId,
+                              userId: user.Id,
+                            },
+                            sendMessage
+                          );
 
-                        handleError(response);
-                      }}
-                    >
-                      <div cmdk-item-main="">
-                        <UserIcon />
-                        Login as {user.Name as string}
-                      </div>
-                      <div cmdk-item-aside="">{user.Username as string}</div>
-                    </Command.Item>
-                  );
-                })}
+                          handleError(response);
+                        }}
+                      >
+                        <div cmdk-item-main="">
+                          <UserIcon />
+                          Login as {user.Name as string}
+                        </div>
+                        <div cmdk-item-aside="">{user.Username as string}</div>
+                      </Command.Item>
+                    );
+                  })}
 
-              {/* Manage Objects */}
-              {isShortkeyMatchOrBestSuggestion(
-                CommandShortkey.MANAGE_OBJECT,
-                search
-              ) &&
-                customObjects.map((customObject, index) => {
-                  return (
-                    <Command.Item
-                      key={index}
-                      value={`${CommandShortkey.MANAGE_OBJECT} ${customObject.Label}`}
-                      className="cmdk-item--with-aside"
-                      onSelect={() => {
-                        sendTypedMessage(
-                          MessageType.ManageObject,
-                          {
-                            orgId,
-                            objectId: customObject.DurableId as string,
-                            newTab: isMetaKeyActive,
-                          },
-                          sendMessage
-                        );
-                      }}
-                    >
-                      <div cmdk-item-main="">
-                        <DatabaseIcon />
-                        Manage object {customObject.Label as string}
-                      </div>
-                      <div cmdk-item-aside="">
-                        {customObject.NamespacePrefix as string}
-                      </div>
-                    </Command.Item>
-                  );
-                })}
-            </Command.Group>
-          )}
+                {/* Manage Objects */}
+                {isShortkeyMatchOrBestSuggestion(
+                  CommandShortkey.MANAGE_OBJECT,
+                  debouncedSearch
+                ) &&
+                  customObjects.map((customObject, index) => {
+                    return (
+                      <Command.Item
+                        key={index}
+                        value={`${CommandShortkey.MANAGE_OBJECT} ${customObject.Label}`}
+                        className="cmdk-item--with-aside"
+                        onSelect={() => {
+                          sendTypedMessage(
+                            MessageType.ManageObject,
+                            {
+                              orgId,
+                              objectId: customObject.DurableId as string,
+                              newTab: isMetaKeyActive,
+                            },
+                            sendMessage
+                          );
+                        }}
+                      >
+                        <div cmdk-item-main="">
+                          <DatabaseIcon />
+                          Manage object {customObject.Label as string}
+                        </div>
+                        <div cmdk-item-aside="">
+                          {customObject.NamespacePrefix as string}
+                        </div>
+                      </Command.Item>
+                    );
+                  })}
+              </Command.Group>
+            )}
 
           {/* Data */}
           <Command.Group heading="Data">
