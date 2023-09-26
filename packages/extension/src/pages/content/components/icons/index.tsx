@@ -487,7 +487,7 @@ export function ListIcon() {
         x="0"
         y="0"
         rx="128"
-        fill="url(#gradient-list-icon)"
+        fill="url(#gradientList-icon)"
         stroke="#FFFFFF"
         strokeWidth="0"
         strokeOpacity="100%"
@@ -498,7 +498,7 @@ export function ListIcon() {
       </clipPath>
       <defs>
         <linearGradient
-          id="gradient-list-icon"
+          id="gradientList-icon"
           gradientUnits="userSpaceOnUse"
           gradientTransform="rotate(45)"
           style={{ transformOrigin: "center center" }}
@@ -531,6 +531,86 @@ export function ListIcon() {
       >
         <path
           d="M1.75 5.25h12.5m-9.5 6h6.5m-6.5-3h6.5m-7.5 6h8.5a2 2 0 0 0 2-2v-8.5a2 2 0 0 0-2-2h-8.5a2 2 0 0 0-2 2v8.5a2 2 0 0 0 2 2Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+      </svg>
+    </svg>
+  );
+}
+
+export function OpenRecordIcon() {
+  return (
+    <svg
+      width="512"
+      height="512"
+      viewBox="0 0 512 512"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    >
+      <rect
+        id="r4"
+        width="512"
+        height="512"
+        x="0"
+        y="0"
+        rx="128"
+        fill="url(#gradient-open-record-iconLinear)"
+        stroke="#FFFFFF"
+        strokeWidth="0"
+        strokeOpacity="100%"
+        paintOrder="stroke"
+      ></rect>
+      <rect
+        width="512"
+        height="512"
+        x="0"
+        y="0"
+        fill="url(#gradient-open-record-icon-gradient)"
+        rx="128"
+        style={{ mixBlendMode: "overlay" }}
+      ></rect>
+      <clipPath id="clip">
+        <use xlinkHref="#r4"></use>
+      </clipPath>
+      <defs>
+        <linearGradient
+          id="gradient-open-record-iconLinear"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="rotate(45)"
+          style={{ transformOrigin: "center center" }}
+        >
+          <stop stopColor="#F953C6"></stop>
+          <stop offset="1" stopColor="#B91D73"></stop>
+        </linearGradient>
+        <radialGradient
+          id="gradient-open-record-icon-gradient"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(256) rotate(90) scale(512)"
+        >
+          <stop stopColor="white"></stop>
+          <stop offset="1" stopColor="white" stop-opacity="0"></stop>
+        </radialGradient>
+      </defs>
+      <svg
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        width="352"
+        height="352"
+        x="80"
+        y="80"
+        alignmentBaseline="middle"
+        style={{ color: "white" }}
+      >
+        <path
+          d="m12.75 3.75 1.5 5.5V10m0 0a2.25 2.25 0 0 1-4.5 0m4.5 0a2.25 2.25 0 0 0-4.5 0m-6.5-6.25-1.5 5.5V10m0 0a2.25 2.25 0 0 0 4.5 0m-4.5 0a2.25 2.25 0 0 1 4.5 0m0 0S6.5 8.75 8 8.75 9.75 10 9.75 10"
           stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"

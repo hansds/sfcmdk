@@ -19,6 +19,7 @@ import {
   DatabaseIcon,
   EnshiftIcon,
   ListIcon,
+  OpenRecordIcon,
   RefreshIcon,
   ToolIcon,
   UserIcon,
@@ -340,7 +341,7 @@ export default function SalesforceCommand({
                   handleError(response);
                 }}
               >
-                <BookmarkIcon />
+                <OpenRecordIcon />
                 Inspect record…
                 {recordId && <span cmdk-item-match="">{recordId}</span>}
                 <div cmdk-item-shortcut="">ins</div>
