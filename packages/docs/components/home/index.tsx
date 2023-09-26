@@ -11,7 +11,7 @@ import { MessageType } from "@sfcmdk/extension/src/shared/messaging/types";
 import { useEffect, useRef, useState } from "react";
 import Features from "./features";
 
-const simulationRun = `␡ref⏎␡log john⏎`;
+const simulationRun = `␡log john⏎␡sandbox⏎␡lis case⏎␡␠⏎`;
 
 // Fixes overflow scrolling when focus is on the command palette
 function OverflowFixer({ ...props }: any) {
@@ -61,7 +61,14 @@ export function Home() {
     clearTimeout(timeoutId.current);
 
     const currentKey = simulationRun[currentSimulationKeyIndex];
-    const timeout = currentKey == "⏎" ? 2500 : randomNumberBetween(100, 800);
+    const timeout =
+      currentKey == "⏎"
+        ? 1000
+        : currentKey == "␡"
+        ? 2000
+        : currentKey == "␠"
+        ? 1200
+        : randomNumberBetween(100, 800);
 
     timeoutId.current = setTimeout(simulateKey, timeout);
 

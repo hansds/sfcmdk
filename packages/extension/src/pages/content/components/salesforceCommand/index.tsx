@@ -148,6 +148,10 @@ export default function SalesforceCommand({
       bounce();
     } else if (input === "␡") {
       setSearch("");
+      setRecordId("");
+    } else if (input === "␠") {
+      setSearch("0063X000010ox1jQAA");
+      setRecordId("0063X000010ox1jQAA");
     } else {
       setSearch((value) => value + input);
     }

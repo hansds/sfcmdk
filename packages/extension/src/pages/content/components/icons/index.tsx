@@ -595,7 +595,7 @@ export function OpenRecordIcon() {
           gradientTransform="translate(256) rotate(90) scale(512)"
         >
           <stop stopColor="white"></stop>
-          <stop offset="1" stopColor="white" stop-opacity="0"></stop>
+          <stop offset="1" stopColor="white" stopOpacity="0"></stop>
         </radialGradient>
       </defs>
       <svg
