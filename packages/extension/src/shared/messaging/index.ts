@@ -123,8 +123,8 @@ async function handleMessages(
         `https://${environment.domain}/${typedMessage.data.path}`,
         typedMessage.data.newTab
       );
-    } else if (requestType == MessageType.OpenRecord) {
-      const typedMessage = message as MessageRequest<MessageType.OpenRecord>;
+    } else if (requestType == MessageType.InspectRecord) {
+      const typedMessage = message as MessageRequest<MessageType.InspectRecord>;
       const environment = await getSalesforceEnvironment(
         typedMessage.data.orgId
       );
@@ -153,6 +153,20 @@ async function handleMessages(
 
       openInActiveOrNewTab(
         `https://${environment.domain}/lightning/o/${typedMessage.data.apiName}/list`,
+        typedMessage.data.newTab
+      );
+    } else if (requestType == MessageType.OpenRecord) {
+      const typedMessage = message as MessageRequest<MessageType.OpenRecord>;
+      const environment = await getSalesforceEnvironment(
+        typedMessage.data.orgId
+      );
+
+      if (!typedMessage.data.recordId) {
+        throw new Error("You must pass a record id");
+      }
+
+      openInActiveOrNewTab(
+        `https://${environment.domain}/${typedMessage.data.recordId}`,
         typedMessage.data.newTab
       );
     }

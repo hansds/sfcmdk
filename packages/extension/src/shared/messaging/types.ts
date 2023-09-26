@@ -27,6 +27,10 @@ export interface RequestMap {
     request: GenericRequest & { recordId: string; newTab: boolean };
     response: void;
   };
+  [MessageType.InspectRecord]: {
+    request: GenericRequest & { recordId: string; newTab: boolean };
+    response: void;
+  };
   [MessageType.OpenObjectList]: {
     request: GenericRequest & { apiName: string; newTab: boolean };
     response: void;
@@ -41,6 +45,7 @@ export enum MessageType {
   ManageObject,
   NavigateToSalesforcePath,
   OpenRecord,
+  InspectRecord,
   OpenObjectList,
 }
 

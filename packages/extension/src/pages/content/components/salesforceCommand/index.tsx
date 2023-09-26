@@ -19,6 +19,7 @@ import {
   DatabaseIcon,
   EnshiftIcon,
   ListIcon,
+  OpenRecordIcon,
   RefreshIcon,
   ToolIcon,
   UserIcon,
@@ -36,6 +37,8 @@ const CommandShortkey = {
   LOGIN_AS: "log",
   MANAGE_OBJECT: "obj",
   INSPECT_RECORD: "ins",
+  OPEN_RECORD: "rec",
+  INSPECT_CURRENT_RECORD: "inc",
   LIST_OBJECT: "lis",
   SETUP_ITEM: "set",
 };
@@ -56,6 +59,7 @@ export default function SalesforceCommand({
 
   const [loading, setLoading] = useState(false);
   const [recordId, setRecordId] = useState("");
+  const [currentRecordId, setCurrentRecordId] = useState("");
   const [search, setSearch] = useState("");
   const [debouncedSearch] = useDebounce(search, 250);
 
@@ -86,12 +90,16 @@ export default function SalesforceCommand({
   function paletteOpened() {
     inputRef?.current?.focus();
 
+    setCurrentRecordIdFromLocation();
+  }
+
+  function setCurrentRecordIdFromLocation() {
     const recordId =
       window.location.pathname.split("/").pop() === "view"
         ? window.location.pathname.split("/").slice(-2)[0]
         : "";
 
-    setRecordId(recordId);
+    setCurrentRecordId(recordId);
   }
 
   function setRecordIdFromSearch(search: string): void {
@@ -103,7 +111,11 @@ export default function SalesforceCommand({
 
   function filter(value: string, search: string): number {
     // If a record id is entered, we want to make sure it's the first result
-    if (value === CommandShortkey.INSPECT_RECORD && recordId) {
+    if (
+      (value === CommandShortkey.INSPECT_RECORD && recordId) ||
+      (value === CommandShortkey.INSPECT_RECORD && currentRecordId) ||
+      (value === CommandShortkey.OPEN_RECORD && recordId)
+    ) {
       return 9999999;
     }
 
@@ -136,6 +148,10 @@ export default function SalesforceCommand({
       bounce();
     } else if (input === "␡") {
       setSearch("");
+      setRecordId("");
+    } else if (input === "␠") {
+      setSearch("0063X000010ox1jQAA");
+      setRecordId("0063X000010ox1jQAA");
     } else {
       setSearch((value) => value + input);
     }
@@ -310,29 +326,83 @@ export default function SalesforceCommand({
 
           {/* Data */}
           <Command.Group heading="Data">
-            <Command.Item
-              value={CommandShortkey.INSPECT_RECORD}
-              onSelect={async () => {
-                if (recordId === "") return;
+            {recordId && (
+              <Command.Item
+                value={CommandShortkey.INSPECT_RECORD}
+                onSelect={async () => {
+                  if (recordId === "") return;
 
-                const response = await sendTypedMessage(
-                  MessageType.OpenRecord,
-                  {
-                    orgId,
-                    recordId: recordId,
-                    newTab: isMetaKeyActive,
-                  },
-                  sendMessage
-                );
+                  const response = await sendTypedMessage(
+                    MessageType.OpenRecord,
+                    {
+                      orgId,
+                      recordId: recordId,
+                      newTab: isMetaKeyActive,
+                    },
+                    sendMessage
+                  );
 
-                handleError(response);
-              }}
-            >
-              <BookmarkIcon />
-              Inspect record…
-              {recordId && <span cmdk-item-match="">{recordId}</span>}
-              <div cmdk-item-shortcut="">ins</div>
-            </Command.Item>
+                  handleError(response);
+                }}
+              >
+                <OpenRecordIcon />
+                Inspect record…
+                {recordId && <span cmdk-item-match="">{recordId}</span>}
+                <div cmdk-item-shortcut="">ins</div>
+              </Command.Item>
+            )}
+            {currentRecordId && (
+              <Command.Item
+                value={CommandShortkey.INSPECT_CURRENT_RECORD}
+                onSelect={async () => {
+                  if (currentRecordId === "") return;
+
+                  const response = await sendTypedMessage(
+                    MessageType.InspectRecord,
+                    {
+                      orgId,
+                      recordId: currentRecordId,
+                      newTab: isMetaKeyActive,
+                    },
+                    sendMessage
+                  );
+
+                  handleError(response);
+                }}
+              >
+                <BookmarkIcon />
+                Inspect current record…
+                <span cmdk-item-match="">{currentRecordId}</span>
+                <div cmdk-item-shortcut="">
+                  {CommandShortkey.INSPECT_CURRENT_RECORD}
+                </div>
+              </Command.Item>
+            )}
+            {recordId && (
+              <Command.Item
+                value={CommandShortkey.OPEN_RECORD}
+                onSelect={async () => {
+                  if (recordId === "") return;
+
+                  const response = await sendTypedMessage(
+                    MessageType.OpenRecord,
+                    {
+                      orgId,
+                      recordId: recordId,
+                      newTab: isMetaKeyActive,
+                    },
+                    sendMessage
+                  );
+
+                  handleError(response);
+                }}
+              >
+                <BookmarkIcon />
+                Open record…
+                <span cmdk-item-match="">{recordId}</span>
+                <div cmdk-item-shortcut="">{CommandShortkey.OPEN_RECORD}</div>
+              </Command.Item>
+            )}
 
             <Command.Item value={CommandShortkey.LIST_OBJECT}>
               <ListIcon />
