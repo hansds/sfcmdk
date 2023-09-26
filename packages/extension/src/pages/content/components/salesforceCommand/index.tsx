@@ -1,7 +1,6 @@
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
 // import { useTheme } from "next-themes";
-import { Command, useCommandState } from "cmdk";
-import { commandScore } from "../../../../shared/content/command-score";
+import { Command } from "../../../../cmdk/cmdk/src/index";
 import { isProbablySalesforceId } from "../../../../shared/content/utils";
 import { sendTypedMessage } from "../../../../shared/messaging/content";
 import {
@@ -13,10 +12,13 @@ import {
 } from "../../../../shared/messaging/types";
 import { SALESFORCE_COMMANDS } from "../../../../shared/salesforce";
 // import { setPaletteVisibility } from "../app";
+import { useDebounce } from "use-debounce";
+import { commandScore } from "../../../../cmdk/cmdk/src/command-score";
 import {
   BookmarkIcon,
   DatabaseIcon,
   EnshiftIcon,
+  ListIcon,
   RefreshIcon,
   ToolIcon,
   UserIcon,
@@ -28,6 +30,14 @@ type Props = {
   orgId: string;
   sendMessage: Parameters<typeof sendTypedMessage>[2];
   input?: string;
+};
+
+const CommandShortkey = {
+  LOGIN_AS: "log",
+  MANAGE_OBJECT: "obj",
+  INSPECT_RECORD: "ins",
+  LIST_OBJECT: "lis",
+  SETUP_ITEM: "set",
 };
 
 export default function SalesforceCommand({
@@ -45,16 +55,12 @@ export default function SalesforceCommand({
   const containerElement = useRef(null);
 
   const [loading, setLoading] = useState(false);
-  const [value, setValue] = useState("");
   const [recordId, setRecordId] = useState("");
   const [search, setSearch] = useState("");
+  const [debouncedSearch] = useDebounce(search, 250);
+
   const [isMetaKeyActive, setIsMetaKeyActive] = useState(false);
   const [notification, setNotification] = useState("");
-
-  const CommandValue = {
-    INSPECT_RECORD: "ins inspect record",
-    LIST_OBJECT: "lis list object",
-  };
 
   useEffect(() => {
     document.addEventListener(
@@ -97,11 +103,18 @@ export default function SalesforceCommand({
 
   function filter(value: string, search: string): number {
     // If a record id is entered, we want to make sure it's the first result
-    if (value === CommandValue.INSPECT_RECORD && recordId) {
+    if (value === CommandShortkey.INSPECT_RECORD && recordId) {
       return 9999999;
     }
 
     return commandScore(value, search);
+  }
+
+  function isShortkeyMatchOrBestSuggestion(
+    key: string,
+    search: string
+  ): boolean {
+    return search.startsWith(key) || (search.length >= 4 && search[3] !== " ");
   }
 
   function handleError(response: MessageResponse<keyof RequestMap>) {
@@ -132,9 +145,7 @@ export default function SalesforceCommand({
     <div className="raycast" ref={containerElement}>
       <Command
         ref={ref}
-        value={value}
         filter={filter}
-        onValueChange={(v) => setValue(v)}
         onKeyDown={(e: KeyboardEvent) => {
           setIsMetaKeyActive(e.metaKey);
           if (e.key === "Enter") {
@@ -161,10 +172,146 @@ export default function SalesforceCommand({
         <Command.List ref={listRef}>
           <Command.Empty>No results found.</Command.Empty>
 
+          {/* Best Matches */}
+          {debouncedSearch.length >= 3 &&
+            !isProbablySalesforceId(debouncedSearch) && (
+              <Command.Group heading="Best Matches">
+                {/* Setup Items */}
+                {isShortkeyMatchOrBestSuggestion(
+                  CommandShortkey.SETUP_ITEM,
+                  debouncedSearch
+                ) &&
+                  SALESFORCE_COMMANDS.map((setupItem, index) => {
+                    return (
+                      <Command.Item
+                        key={index}
+                        value={`${CommandShortkey.SETUP_ITEM} ${setupItem.value}`}
+                        onSelect={() => {
+                          sendTypedMessage(
+                            MessageType.NavigateToSalesforcePath,
+                            {
+                              orgId,
+                              path: setupItem.path,
+                              newTab: isMetaKeyActive,
+                            },
+                            sendMessage
+                          );
+                        }}
+                      >
+                        <ToolIcon />
+                        Setup {setupItem.label as string}
+                      </Command.Item>
+                    );
+                  })}
+
+                {/* List Objects */}
+                {isShortkeyMatchOrBestSuggestion(
+                  CommandShortkey.LIST_OBJECT,
+                  debouncedSearch
+                ) &&
+                  customObjects.map((customObject, index) => {
+                    return (
+                      <Command.Item
+                        key={index}
+                        value={`${CommandShortkey.LIST_OBJECT} ${customObject.PluralLabel}`}
+                        className="cmdk-item--with-aside"
+                        onSelect={() => {
+                          sendTypedMessage(
+                            MessageType.OpenObjectList,
+                            {
+                              orgId,
+                              apiName: customObject.QualifiedApiName as string,
+                              newTab: isMetaKeyActive,
+                            },
+                            sendMessage
+                          );
+                        }}
+                      >
+                        <div cmdk-item-main="">
+                          <ListIcon />
+                          List {customObject.PluralLabel as string}
+                        </div>
+                        <div cmdk-item-aside="">
+                          {customObject.NamespacePrefix as string}
+                        </div>
+                      </Command.Item>
+                    );
+                  })}
+
+                {/* Login As */}
+                {isShortkeyMatchOrBestSuggestion(
+                  CommandShortkey.LOGIN_AS,
+                  debouncedSearch
+                ) &&
+                  users.map((user, index) => {
+                    return (
+                      <Command.Item
+                        key={index}
+                        value={`Login as ${user.Name}`}
+                        className="cmdk-item--with-aside"
+                        onSelect={async () => {
+                          setLoading(true);
+                          const response = await sendTypedMessage(
+                            MessageType.LoginAsUser,
+                            {
+                              orgId,
+                              userId: user.Id,
+                            },
+                            sendMessage
+                          );
+
+                          handleError(response);
+                        }}
+                      >
+                        <div cmdk-item-main="">
+                          <UserIcon />
+                          Login as {user.Name as string}
+                        </div>
+                        <div cmdk-item-aside="">{user.Username as string}</div>
+                      </Command.Item>
+                    );
+                  })}
+
+                {/* Manage Objects */}
+                {isShortkeyMatchOrBestSuggestion(
+                  CommandShortkey.MANAGE_OBJECT,
+                  debouncedSearch
+                ) &&
+                  customObjects.map((customObject, index) => {
+                    return (
+                      <Command.Item
+                        key={index}
+                        value={`${CommandShortkey.MANAGE_OBJECT} ${customObject.Label}`}
+                        className="cmdk-item--with-aside"
+                        onSelect={() => {
+                          sendTypedMessage(
+                            MessageType.ManageObject,
+                            {
+                              orgId,
+                              objectId: customObject.DurableId as string,
+                              newTab: isMetaKeyActive,
+                            },
+                            sendMessage
+                          );
+                        }}
+                      >
+                        <div cmdk-item-main="">
+                          <DatabaseIcon />
+                          Manage object {customObject.Label as string}
+                        </div>
+                        <div cmdk-item-aside="">
+                          {customObject.NamespacePrefix as string}
+                        </div>
+                      </Command.Item>
+                    );
+                  })}
+              </Command.Group>
+            )}
+
           {/* Data */}
           <Command.Group heading="Data">
             <Command.Item
-              value={CommandValue.INSPECT_RECORD}
+              value={CommandShortkey.INSPECT_RECORD}
               onSelect={async () => {
                 if (recordId === "") return;
 
@@ -187,39 +334,11 @@ export default function SalesforceCommand({
               <div cmdk-item-shortcut="">ins</div>
             </Command.Item>
 
-            <Command.Item value={CommandValue.LIST_OBJECT}>
-              <DatabaseIcon />
+            <Command.Item value={CommandShortkey.LIST_OBJECT}>
+              <ListIcon />
               List object…
               <div cmdk-item-shortcut="">lis</div>
             </Command.Item>
-            {customObjects.map((customObject, index) => {
-              return (
-                <ListObjectItem
-                  key={index}
-                  value={`List ${customObject.PluralLabel}`}
-                  className="cmdk-item--with-aside"
-                  onSelect={() => {
-                    sendTypedMessage(
-                      MessageType.OpenObjectList,
-                      {
-                        orgId,
-                        apiName: customObject.QualifiedApiName as string,
-                        newTab: isMetaKeyActive,
-                      },
-                      sendMessage
-                    );
-                  }}
-                >
-                  <div cmdk-item-main="">
-                    <DatabaseIcon />
-                    List {customObject.PluralLabel as string}
-                  </div>
-                  <div cmdk-item-aside="">
-                    {customObject.NamespacePrefix as string}
-                  </div>
-                </ListObjectItem>
-              );
-            })}
           </Command.Group>
 
           {/* Users */}
@@ -229,34 +348,6 @@ export default function SalesforceCommand({
               Login as…
               <div cmdk-item-shortcut="">log</div>
             </Command.Item>
-            {users.map((user, index) => {
-              return (
-                <LoginAsItem
-                  key={index}
-                  value={`Login as ${user.Name}`}
-                  className="cmdk-item--with-aside"
-                  onSelect={async () => {
-                    setLoading(true);
-                    const response = await sendTypedMessage(
-                      MessageType.LoginAsUser,
-                      {
-                        orgId,
-                        userId: user.Id,
-                      },
-                      sendMessage
-                    );
-
-                    handleError(response);
-                  }}
-                >
-                  <div cmdk-item-main="">
-                    <UserIcon />
-                    Login as {user.Name as string}
-                  </div>
-                  <div cmdk-item-aside="">{user.Username as string}</div>
-                </LoginAsItem>
-              );
-            })}
           </Command.Group>
 
           {/* Setup */}
@@ -266,61 +357,11 @@ export default function SalesforceCommand({
               Manage object…
               <div cmdk-item-shortcut="">obj</div>
             </Command.Item>
-            {customObjects.map((customObject, index) => {
-              return (
-                <CustomObjectItem
-                  key={index}
-                  value={`Manage object ${customObject.Label}`}
-                  className="cmdk-item--with-aside"
-                  onSelect={() => {
-                    sendTypedMessage(
-                      MessageType.ManageObject,
-                      {
-                        orgId,
-                        objectId: customObject.DurableId as string,
-                        newTab: isMetaKeyActive,
-                      },
-                      sendMessage
-                    );
-                  }}
-                >
-                  <div cmdk-item-main="">
-                    <DatabaseIcon />
-                    Manage object {customObject.Label as string}
-                  </div>
-                  <div cmdk-item-aside="">
-                    {customObject.NamespacePrefix as string}
-                  </div>
-                </CustomObjectItem>
-              );
-            })}
             <Command.Item value="setup">
               <ToolIcon />
               Setup…
               <div cmdk-item-shortcut="">set</div>
             </Command.Item>
-            {SALESFORCE_COMMANDS.map((setupItem, index) => {
-              return (
-                <SetupItem
-                  key={index}
-                  value={`Setup ${setupItem.label}`}
-                  onSelect={() => {
-                    sendTypedMessage(
-                      MessageType.NavigateToSalesforcePath,
-                      {
-                        orgId,
-                        path: setupItem.path,
-                        newTab: isMetaKeyActive,
-                      },
-                      sendMessage
-                    );
-                  }}
-                >
-                  <ToolIcon />
-                  Setup {setupItem.label as string}
-                </SetupItem>
-              );
-            })}
           </Command.Group>
 
           {/* Command Palette */}
@@ -374,27 +415,3 @@ export default function SalesforceCommand({
     </div>
   );
 }
-
-const LoginAsItem = (props: any) => {
-  const search = useCommandState((state) => state.search);
-  if (!search || !search.startsWith("log")) return null;
-  return <Command.Item {...props} />;
-};
-
-const CustomObjectItem = (props: any) => {
-  const search = useCommandState((state) => state.search);
-  if (!search || !search.startsWith("obj")) return null;
-  return <Command.Item {...props} />;
-};
-
-const ListObjectItem = (props: any) => {
-  const search = useCommandState((state) => state.search);
-  if (!search || !search.startsWith("lis")) return null;
-  return <Command.Item {...props} />;
-};
-
-const SetupItem = (props: any) => {
-  const search = useCommandState((state) => state.search);
-  if (!search || !search.startsWith("set")) return null;
-  return <Command.Item {...props} />;
-};

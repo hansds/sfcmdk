@@ -189,7 +189,7 @@ export function UserIcon() {
         x="0"
         y="0"
         rx="128"
-        fill="url(#gradient-purple)"
+        fill="url(#gradient-user-icon)"
         stroke="#FFFFFF"
         strokeWidth="0"
         strokeOpacity="100%"
@@ -200,7 +200,7 @@ export function UserIcon() {
       </clipPath>
       <defs>
         <linearGradient
-          id="gradient-purple"
+          id="gradient-user-icon"
           gradientUnits="userSpaceOnUse"
           gradientTransform="rotate(45)"
           style={{ transformOrigin: "center center" }}
@@ -208,17 +208,6 @@ export function UserIcon() {
           <stop stopColor="#8E2DE2"></stop>
           <stop offset="1" stopColor="#4A00E0"></stop>
         </linearGradient>
-        <radialGradient
-          id="r6"
-          cx="0"
-          cy="0"
-          r="1"
-          gradientUnits="userSpaceOnUse"
-          gradientTransform="translate(256) rotate(90) scale(512)"
-        >
-          <stop stopColor="white"></stop>
-          <stop offset="1" stopColor="white" stopOpacity="0"></stop>
-        </radialGradient>
       </defs>
       <svg
         viewBox="0 0 16 16"
@@ -261,7 +250,7 @@ export function ToolIcon() {
         x="0"
         y="0"
         rx="128"
-        fill="url(#gradient-red)"
+        fill="url(#gradient-tool-icon)"
         stroke="#FFFFFF"
         strokeWidth="0"
         strokeOpacity="100%"
@@ -272,7 +261,7 @@ export function ToolIcon() {
       </clipPath>
       <defs>
         <linearGradient
-          id="gradient-red"
+          id="gradient-tool-icon"
           gradientUnits="userSpaceOnUse"
           gradientTransform="rotate(45)"
           style={{ transformOrigin: "center center" }}
@@ -280,17 +269,6 @@ export function ToolIcon() {
           <stop stopColor="#EAAFC8"></stop>
           <stop offset="1" stopColor="#EC2F4B"></stop>
         </linearGradient>
-        <radialGradient
-          id="r6"
-          cx="0"
-          cy="0"
-          r="1"
-          gradientUnits="userSpaceOnUse"
-          gradientTransform="translate(256) rotate(90) scale(512)"
-        >
-          <stop stopColor="white"></stop>
-          <stop offset="1" stopColor="white" stopOpacity="0"></stop>
-        </radialGradient>
       </defs>
       <svg
         viewBox="0 0 16 16"
@@ -329,7 +307,7 @@ export function DatabaseIcon() {
         x="0"
         y="0"
         rx="128"
-        fill="url(#gradient-blue)"
+        fill="url(#gradient-database-icon)"
         stroke="#FFFFFF"
         strokeWidth="0"
         strokeOpacity="100%"
@@ -340,7 +318,7 @@ export function DatabaseIcon() {
       </clipPath>
       <defs>
         <linearGradient
-          id="gradient-blue"
+          id="gradient-database-icon"
           gradientUnits="userSpaceOnUse"
           gradientTransform="rotate(45)"
           style={{ transformOrigin: "center center" }}
@@ -348,17 +326,6 @@ export function DatabaseIcon() {
           <stop stopColor="#396afc"></stop>
           <stop offset="1" stopColor="#2948ff"></stop>
         </linearGradient>
-        <radialGradient
-          id="r6"
-          cx="0"
-          cy="0"
-          r="1"
-          gradientUnits="userSpaceOnUse"
-          gradientTransform="translate(256) rotate(90) scale(512)"
-        >
-          <stop stopColor="white"></stop>
-          <stop offset="1" stopColor="white" stopOpacity="0"></stop>
-        </radialGradient>
       </defs>
       <svg
         viewBox="0 0 16 16"
@@ -394,24 +361,24 @@ export function RefreshIcon() {
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
       <rect
-        id="r4"
+        id="r4-refresh-icon"
         width="512"
         height="512"
         x="0"
         y="0"
         rx="128"
-        fill="url(#gradient-green)"
+        fill="url(#gradient-refresh-icon)"
         stroke="#FFFFFF"
         strokeWidth="0"
         strokeOpacity="100%"
         paintOrder="stroke"
       ></rect>
       <clipPath id="clip">
-        <use xlinkHref="#r4"></use>
+        <use xlinkHref="#r4-refresh-icon"></use>
       </clipPath>
       <defs>
         <linearGradient
-          id="gradient-green"
+          id="gradient-refresh-icon"
           gradientUnits="userSpaceOnUse"
           gradientTransform="rotate(45)"
           style={{ transformOrigin: "center center" }}
@@ -419,17 +386,6 @@ export function RefreshIcon() {
           <stop stopColor="#43cea2"></stop>
           <stop offset="1" stopColor="#185a9d"></stop>
         </linearGradient>
-        <radialGradient
-          id="r6"
-          cx="0"
-          cy="0"
-          r="1"
-          gradientUnits="userSpaceOnUse"
-          gradientTransform="translate(256) rotate(90) scale(512)"
-        >
-          <stop stopColor="white"></stop>
-          <stop offset="1" stopColor="white" stopOpacity="0"></stop>
-        </radialGradient>
       </defs>
       <svg
         viewBox="0 0 16 16"
@@ -471,7 +427,7 @@ export function BookmarkIcon() {
         x="0"
         y="0"
         rx="128"
-        fill="url(#r5)"
+        fill="url(#gradientBookmark-icon)"
         stroke="#FFFFFF"
         strokeWidth="0"
         strokeOpacity="100%"
@@ -482,13 +438,73 @@ export function BookmarkIcon() {
       </clipPath>
       <defs>
         <linearGradient
-          id="r5"
+          id="gradientBookmark-icon"
           gradientUnits="userSpaceOnUse"
           gradientTransform="rotate(45)"
           style={{ transformOrigin: "center center" }}
         >
           <stop stopColor="#FF9068"></stop>
           <stop offset="1" stopColor="#FD746C"></stop>
+        </linearGradient>
+      </defs>
+      <svg
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        width="352"
+        height="352"
+        x="80"
+        y="80"
+        alignmentBaseline="middle"
+        style={{ color: "white" }}
+      >
+        <path
+          d="M3.75 14.25V3.75a2 2 0 0 1 2-2h4.5a2 2 0 0 1 2 2v10.5L8 10.75l-4.25 3.5Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+      </svg>
+    </svg>
+  );
+}
+
+export function ListIcon() {
+  return (
+    <svg
+      width="512"
+      height="512"
+      viewBox="0 0 512 512"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    >
+      <rect
+        id="r4"
+        width="512"
+        height="512"
+        x="0"
+        y="0"
+        rx="128"
+        fill="url(#gradient-list-icon)"
+        stroke="#FFFFFF"
+        strokeWidth="0"
+        strokeOpacity="100%"
+        paintOrder="stroke"
+      ></rect>
+      <clipPath id="clip">
+        <use xlinkHref="#r4"></use>
+      </clipPath>
+      <defs>
+        <linearGradient
+          id="gradient-list-icon"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="rotate(45)"
+          style={{ transformOrigin: "center center" }}
+        >
+          <stop stopColor="#FEB47B"></stop>
+          <stop offset="1" stopColor="#FF7E5F"></stop>
         </linearGradient>
         <radialGradient
           id="r6"
@@ -514,7 +530,7 @@ export function BookmarkIcon() {
         style={{ color: "white" }}
       >
         <path
-          d="M3.75 14.25V3.75a2 2 0 0 1 2-2h4.5a2 2 0 0 1 2 2v10.5L8 10.75l-4.25 3.5Z"
+          d="M1.75 5.25h12.5m-9.5 6h6.5m-6.5-3h6.5m-7.5 6h8.5a2 2 0 0 0 2-2v-8.5a2 2 0 0 0-2-2h-8.5a2 2 0 0 0-2 2v8.5a2 2 0 0 0 2 2Z"
           stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"

@@ -159,6 +159,7 @@ export default {
   testPathIgnorePatterns: [
     "<rootDir>/node_modules/",
     "<rootDir>/test-utils/",
+    "<rootDir>/src/cmdk",
     "<rootDir>/vite.config.ts",
     "<rootDir>/jest.config.js",
   ],

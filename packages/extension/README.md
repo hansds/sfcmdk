@@ -92,10 +92,15 @@ menuItems.forEach((e) => {
   const labels = getLabels(e.ariaLevel);
   const label = labels.join(" > ");
 
-  if (anchor) {
+  const path = anchor ? anchor.href.split("/").slice(3).join("/") : null;
+  if (path) {
     setupItems.push({
       label: label,
-      path: anchor.href.split("/").slice(3).join("/"),
+      value:
+        labels.length > 3
+          ? labels.slice(-2).join(" > ")
+          : labels[labels.length - 1],
+      path: path,
     });
   }
 });
