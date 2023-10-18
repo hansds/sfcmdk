@@ -328,12 +328,37 @@ export default function SalesforceCommand({
           <Command.Group heading="Data">
             {recordId && (
               <Command.Item
-                value={CommandShortkey.INSPECT_RECORD}
+                value={CommandShortkey.OPEN_RECORD}
                 onSelect={async () => {
                   if (recordId === "") return;
 
                   const response = await sendTypedMessage(
                     MessageType.OpenRecord,
+                    {
+                      orgId,
+                      recordId: recordId,
+                      newTab: isMetaKeyActive,
+                    },
+                    sendMessage
+                  );
+
+                  handleError(response);
+                }}
+              >
+                <BookmarkIcon />
+                Open record…
+                <span cmdk-item-match="">{recordId}</span>
+                <div cmdk-item-shortcut="">{CommandShortkey.OPEN_RECORD}</div>
+              </Command.Item>
+            )}
+            {recordId && (
+              <Command.Item
+                value={CommandShortkey.INSPECT_RECORD}
+                onSelect={async () => {
+                  if (recordId === "") return;
+
+                  const response = await sendTypedMessage(
+                    MessageType.InspectRecord,
                     {
                       orgId,
                       recordId: recordId,
@@ -376,31 +401,6 @@ export default function SalesforceCommand({
                 <div cmdk-item-shortcut="">
                   {CommandShortkey.INSPECT_CURRENT_RECORD}
                 </div>
-              </Command.Item>
-            )}
-            {recordId && (
-              <Command.Item
-                value={CommandShortkey.OPEN_RECORD}
-                onSelect={async () => {
-                  if (recordId === "") return;
-
-                  const response = await sendTypedMessage(
-                    MessageType.OpenRecord,
-                    {
-                      orgId,
-                      recordId: recordId,
-                      newTab: isMetaKeyActive,
-                    },
-                    sendMessage
-                  );
-
-                  handleError(response);
-                }}
-              >
-                <BookmarkIcon />
-                Open record…
-                <span cmdk-item-match="">{recordId}</span>
-                <div cmdk-item-shortcut="">{CommandShortkey.OPEN_RECORD}</div>
               </Command.Item>
             )}
 
