@@ -21,15 +21,16 @@ export async function getSalesforceEnvironment(
           (c) => c.name == "sid" && c.value.startsWith(orgId)
         );
 
-        if (!cookie || !cookie.domain || !cookie.value)
+        if (!cookie || !cookie.domain || !cookie.value) {
           reject(Error("No session cookie found"));
+        } else {
+          const env = {
+            domain: cookie.domain,
+            sessionId: cookie.value,
+          };
 
-        const env = {
-          domain: cookie.domain,
-          sessionId: cookie.value,
-        };
-
-        resolve(env);
+          resolve(env);
+        }
       }
     });
   });
@@ -63,6 +64,8 @@ async function getActiveOrNewTab(newTab: boolean) {
 
 export async function openInActiveOrNewTab(url: string, newTab: boolean) {
   const tab = await getActiveOrNewTab(newTab);
+
+  if (!tab || !tab.id) return;
 
   return await chrome.tabs.update(tab.id, { url });
 }
