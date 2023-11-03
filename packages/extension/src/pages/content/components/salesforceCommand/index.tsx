@@ -35,7 +35,7 @@ type Props = {
 
 const CommandShortkey = {
   LOGIN_AS: "log",
-  MANAGE_OBJECT: "obj",
+  MANAGE_OBJECT: "man",
   INSPECT_RECORD: "ins",
   OPEN_RECORD: "rec",
   INSPECT_CURRENT_RECORD: "inc",
