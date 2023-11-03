@@ -110,6 +110,10 @@ export function Home() {
             is a Chrome Extension that supercharges your Salesforce admin and
             developer capabilities
           </h3>
+          <div className="h-0">
+            {/* honeypot for focus to autostart animation */}
+            <input type="text" className="opacity-0" autoFocus />
+          </div>
         </div>
       </div>
 
