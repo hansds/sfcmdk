@@ -12,6 +12,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
+    "isolatedModules": false,
     "types": ["vite/client"],
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
@@ -26,5 +27,6 @@
       "virtual:reload-on-update-in-view": ["./src/global.d.ts"]
     }
   },
-  "include": ["src", "utils", "vite.config.ts", "node_modules/@types"]
+  "include": ["src", "utils", "vite.config.ts", "node_modules/@types"],
+  "exclude": ["src/cmdk"]
 }
