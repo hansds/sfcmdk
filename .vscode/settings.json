@@ -1,0 +1,5 @@
+{
+  "files.exclude": {
+    "packages/extension/src/cmdk": true
+  }
+}
