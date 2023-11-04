@@ -183,7 +183,7 @@ export function UserIcon() {
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
       <rect
-        id="r4"
+        id="r4-user-icon"
         width="512"
         height="512"
         x="0"
@@ -195,8 +195,8 @@ export function UserIcon() {
         strokeOpacity="100%"
         paintOrder="stroke"
       ></rect>
-      <clipPath id="clip">
-        <use xlinkHref="#r4"></use>
+      <clipPath>
+        <use xlinkHref="#r4-user-icon"></use>
       </clipPath>
       <defs>
         <linearGradient
@@ -244,7 +244,7 @@ export function ToolIcon() {
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
       <rect
-        id="r4"
+        id="r4-tool-icon"
         width="512"
         height="512"
         x="0"
@@ -256,8 +256,8 @@ export function ToolIcon() {
         strokeOpacity="100%"
         paintOrder="stroke"
       ></rect>
-      <clipPath id="clip">
-        <use xlinkHref="#r4"></use>
+      <clipPath>
+        <use xlinkHref="#r4-tool-icon"></use>
       </clipPath>
       <defs>
         <linearGradient
@@ -301,7 +301,7 @@ export function DatabaseIcon() {
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
       <rect
-        id="r4"
+        id="r4-database-icon"
         width="512"
         height="512"
         x="0"
@@ -313,8 +313,8 @@ export function DatabaseIcon() {
         strokeOpacity="100%"
         paintOrder="stroke"
       ></rect>
-      <clipPath id="clip">
-        <use xlinkHref="#r4"></use>
+      <clipPath>
+        <use xlinkHref="#r4-database-icon"></use>
       </clipPath>
       <defs>
         <linearGradient
@@ -373,7 +373,7 @@ export function RefreshIcon() {
         strokeOpacity="100%"
         paintOrder="stroke"
       ></rect>
-      <clipPath id="clip">
+      <clipPath>
         <use xlinkHref="#r4-refresh-icon"></use>
       </clipPath>
       <defs>
@@ -421,7 +421,7 @@ export function BookmarkIcon() {
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
       <rect
-        id="r4"
+        id="r4-bookmark-icon"
         width="512"
         height="512"
         x="0"
@@ -433,8 +433,8 @@ export function BookmarkIcon() {
         strokeOpacity="100%"
         paintOrder="stroke"
       ></rect>
-      <clipPath id="clip">
-        <use xlinkHref="#r4"></use>
+      <clipPath>
+        <use xlinkHref="#r4-bookmark-icon"></use>
       </clipPath>
       <defs>
         <linearGradient
@@ -481,24 +481,24 @@ export function ListIcon() {
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
       <rect
-        id="r4"
+        id="r4-list-icon"
         width="512"
         height="512"
         x="0"
         y="0"
         rx="128"
-        fill="url(#gradientList-icon)"
+        fill="url(#gradient-list-icon)"
         stroke="#FFFFFF"
         strokeWidth="0"
         strokeOpacity="100%"
         paintOrder="stroke"
       ></rect>
-      <clipPath id="clip">
-        <use xlinkHref="#r4"></use>
+      <clipPath>
+        <use xlinkHref="#r4-list-icon"></use>
       </clipPath>
       <defs>
         <linearGradient
-          id="gradientList-icon"
+          id="gradient-list-icon"
           gradientUnits="userSpaceOnUse"
           gradientTransform="rotate(45)"
           style={{ transformOrigin: "center center" }}
@@ -507,7 +507,7 @@ export function ListIcon() {
           <stop offset="1" stopColor="#FF7E5F"></stop>
         </linearGradient>
         <radialGradient
-          id="r6"
+          id="r6-gradient-list-icon"
           cx="0"
           cy="0"
           r="1"
@@ -552,13 +552,13 @@ export function OpenRecordIcon() {
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
       <rect
-        id="r4"
+        id="r4-open-record-icon"
         width="512"
         height="512"
         x="0"
         y="0"
         rx="128"
-        fill="url(#gradient-open-record-iconLinear)"
+        fill="url(#gradient-open-record-icon-linear)"
         stroke="#FFFFFF"
         strokeWidth="0"
         strokeOpacity="100%"
@@ -573,12 +573,12 @@ export function OpenRecordIcon() {
         rx="128"
         style={{ mixBlendMode: "overlay" }}
       ></rect>
-      <clipPath id="clip">
-        <use xlinkHref="#r4"></use>
+      <clipPath>
+        <use xlinkHref="#r4-open-record-icon"></use>
       </clipPath>
       <defs>
         <linearGradient
-          id="gradient-open-record-iconLinear"
+          id="gradient-open-record-icon-linear"
           gradientUnits="userSpaceOnUse"
           gradientTransform="rotate(45)"
           style={{ transformOrigin: "center center" }}
