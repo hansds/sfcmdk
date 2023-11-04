@@ -1,8 +1,8 @@
 {
   "name": "@sfcmdk/extension",
-  "long_name": "Salesforce Command Palette",
-  "version": "0.0.1",
-  "description": "Salesforce Command Palette",
+  "long_name": "⌘sfcmdk: Salesforce Command Palette",
+  "version": "1.0.0",
+  "description": "The command palette for Salesforce",
   "license": "private",
   "main": "src/index.ts",
   "scripts": {
