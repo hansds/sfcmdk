@@ -1,4 +1,4 @@
-import { BookmarkIcon, DatabaseIcon, ToolIcon } from "@sfcmdk/extension";
+import { BookmarkIcon, UserIcon, ListIcon } from "@sfcmdk/extension";
 
 export default function Features() {
   return (
@@ -11,19 +11,26 @@ export default function Features() {
       </p>
       <div className="relative mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <FeatureCard
-          title="Automatic Code Splitting"
-          description="Automatically split code into smaller chunks so users don’t have to download code they don’t need."
+          title="Faster navigation"
+          description="Quickly access all setup items, objects and more from a single shortcut. Inspect records and metadata with ease."
           icon={<BookmarkIcon />}
         ></FeatureCard>
         <FeatureCard
-          title="Automatic Code Splitting"
-          description="Automatically split code into smaller chunks so users don’t have to download code they don’t need."
-          icon={<DatabaseIcon />}
+          title="Login as users"
+          description="Easily login as other users without having to look them up in the user list."
+          icon={<UserIcon />}
         ></FeatureCard>
         <FeatureCard
-          title="Automatic Code Splitting"
-          description="Automatically split code into smaller chunks so users don’t have to download code they don’t need."
-          icon={<ToolIcon />}
+          title={
+            <span>
+              <span>Integrate your docs</span>
+              <span className="bg-purple-600 text-gray-100 text-xs font-medium mr-2 px-2.5 py-1 rounded ml-2">
+                Coming soon
+              </span>
+            </span>
+          }
+          description="Soon you'll be able to build your own Salesforce documentation. Users will be able to search for documentation and get help right from the command palette."
+          icon={<ListIcon />}
         ></FeatureCard>
       </div>
     </div>
@@ -35,8 +42,8 @@ function FeatureCard({
   description,
   icon,
 }: {
-  title: string;
-  description: string;
+  title: string | JSX.Element;
+  description: string | JSX.Element;
   icon?: JSX.Element;
 }) {
   return (
