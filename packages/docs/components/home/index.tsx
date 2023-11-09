@@ -110,6 +110,26 @@ export function Home() {
             is a Chrome Extension that supercharges your Salesforce admin and
             developer capabilities
           </h3>
+
+          <a
+            href="https://chrome.google.com/webstore/detail/%E2%8C%98sfcmdk-salesforce-comman/bmgfnhdlojiieehhdlfmngfhnnhhgeml"
+            target="_blank"
+            className="inline-flex items-center text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:to-purple-400 focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-md px-5 py-4 text-center mt-8 mb-2"
+            rel="noreferrer"
+          >
+            <svg
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              className="w-3 h-3 text-white mr-2"
+              fill="currentColor"
+            >
+              {" "}
+              <path d="M 12 2 C 8.728 2 5.8318125 3.5778125 4.0078125 6.0078125 L 7.6269531 9.6269531 C 8.4739531 8.0699531 10.103 7 12 7 C 13.118 7 14.139656 7.38 14.972656 8 L 21 8 L 16.474609 9.8105469 C 16.800609 10.474547 17 11.211 17 12 C 17 13.643 16.195656 15.089 14.972656 16 L 15 16 L 11.033203 21.951172 C 11.351203 21.982172 11.673 22 12 22 C 17.523 22 22 17.523 22 12 C 22 6.477 17.523 2 12 2 z M 4.0058594 6.0117188 C 2.7528594 7.6827188 2 9.75 2 12 C 2 17.191 5.9565781 21.455219 11.017578 21.949219 L 12.689453 16.929688 C 12.461453 16.961688 12.236 17 12 17 C 9.239 17 7 14.761 7 12 L 4.0058594 6.0117188 z M 12 9 A 3 3 0 0 0 9 12 A 3 3 0 0 0 12 15 A 3 3 0 0 0 15 12 A 3 3 0 0 0 12 9 z" />
+            </svg>
+            Get it on the Chrome Web Store
+          </a>
+
           <div className="h-0">
             {/* honeypot for focus to autostart animation */}
             <input type="text" className="opacity-0" autoFocus />
