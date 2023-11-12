@@ -53,9 +53,7 @@ function createApp() {
 }
 
 function isSalesforceDomain() {
-  return !!document.URL.match(
-    "https?://([a-z0-9]+[-]*[a-z0-9]*[.])*force[.]com"
-  );
+  return !!document.URL.match("(?:https?://)?(?:w+.)?force.com/.*$");
 }
 
 function togglePalette() {
