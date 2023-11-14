@@ -8,15 +8,15 @@ const manifest: chrome.runtime.ManifestV3 = {
   name: packageJson.long_name,
   version: packageJson.version,
   description: packageJson.description,
-  options_page: "src/pages/options/index.html",
+  // options_page: "src/pages/options/index.html",
   background: {
     service_worker: "src/pages/background/index.js",
     type: "module",
   },
-  action: {
-    default_popup: "src/pages/popup/index.html",
-    default_icon: "logo-app-gradient-square@32.png",
-  },
+  // action: {
+  //   default_popup: "src/pages/popup/index.html",
+  //   default_icon: "logo-app-gradient-square@32.png",
+  // },
   // chrome_url_overrides: {
   //   newtab: "src/pages/newtab/index.html",
   // },
@@ -32,7 +32,7 @@ const manifest: chrome.runtime.ManifestV3 = {
       all_frames: true,
     },
   ],
-  devtools_page: "src/pages/devtools/index.html",
+  // devtools_page: "src/pages/devtools/index.html",
   web_accessible_resources: [
     {
       resources: [
@@ -45,7 +45,7 @@ const manifest: chrome.runtime.ManifestV3 = {
     },
   ],
   host_permissions: ["*://*.force.com/", "*://*.salesforce.com/"],
-  permissions: ["cookies", "storage", "tabs", "activeTab"],
+  permissions: ["cookies", "storage", "tabs", "activeTab", "management"],
 };
 
 export default manifest;
