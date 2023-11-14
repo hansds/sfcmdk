@@ -1,4 +1,9 @@
 import {
+  EXTENSIONS,
+  getInstalledExtensions,
+  isExtensionInstalled,
+} from "../background/extensions";
+import {
   fetchAuthenticatedSalesforce,
   getObjectTypeFromId,
   getSalesforceEnvironment,
@@ -134,6 +139,16 @@ async function handleMessages(
         typedMessage.data.orgId
       );
 
+      const isSalesforceInspectorInstalled = await isExtensionInstalled(
+        EXTENSIONS.SalesforceInspector.id
+      );
+
+      if (!isSalesforceInspectorInstalled) {
+        openInActiveOrNewTab(EXTENSIONS.SalesforceInspector.url, true);
+
+        throw new Error("Salesforce Inspector is not installed.");
+      }
+
       if (!typedMessage.data.recordId) {
         throw new Error("You must pass a record id");
       }
@@ -141,7 +156,7 @@ async function handleMessages(
         throw new Error("Could not determine object type from record id");
 
       openInActiveOrNewTab(
-        `chrome-extension://aodjmnfhjibkcdimpodiifdjnnncaafh/inspect.html?host=${environment.domain}&objectType=${objectType}&recordId=${typedMessage.data.recordId}`,
+        `chrome-extension://${EXTENSIONS.SalesforceInspector.id}/inspect.html?host=${environment.domain}&objectType=${objectType}&recordId=${typedMessage.data.recordId}`,
         typedMessage.data.newTab
       );
     } else if (requestType == MessageType.OpenObjectList) {
