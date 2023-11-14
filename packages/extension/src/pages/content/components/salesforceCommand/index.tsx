@@ -407,7 +407,7 @@ export default function SalesforceCommand({
             <Command.Item value={CommandShortkey.LIST_OBJECT}>
               <ListIcon />
               List object…
-              <div cmdk-item-shortcut="">lis</div>
+              <div cmdk-item-shortcut="">{CommandShortkey.LIST_OBJECT}</div>
             </Command.Item>
           </Command.Group>
 
@@ -416,7 +416,7 @@ export default function SalesforceCommand({
             <Command.Item value="login as">
               <UserIcon />
               Login as…
-              <div cmdk-item-shortcut="">log</div>
+              <div cmdk-item-shortcut="">{CommandShortkey.LOGIN_AS}</div>
             </Command.Item>
           </Command.Group>
 
@@ -425,12 +425,12 @@ export default function SalesforceCommand({
             <Command.Item value="manage object">
               <DatabaseIcon />
               Manage object…
-              <div cmdk-item-shortcut="">obj</div>
+              <div cmdk-item-shortcut="">{CommandShortkey.MANAGE_OBJECT}</div>
             </Command.Item>
             <Command.Item value="setup">
               <ToolIcon />
               Setup…
-              <div cmdk-item-shortcut="">set</div>
+              <div cmdk-item-shortcut="">{CommandShortkey.SETUP_ITEM}</div>
             </Command.Item>
           </Command.Group>
 
