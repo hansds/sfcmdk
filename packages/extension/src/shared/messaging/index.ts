@@ -1,8 +1,4 @@
-import {
-  EXTENSIONS,
-  getInstalledExtensions,
-  isExtensionInstalled,
-} from "../background/extensions";
+import { EXTENSIONS, isExtensionInstalled } from "../background/extensions";
 import {
   fetchAuthenticatedSalesforce,
   getObjectTypeFromId,
