@@ -36,9 +36,7 @@ type Props = {
 const CommandShortkey = {
   LOGIN_AS: "log",
   MANAGE_OBJECT: "man",
-  INSPECT_RECORD: "ins",
   OPEN_RECORD: "rec",
-  INSPECT_CURRENT_RECORD: "inc",
   LIST_OBJECT: "lis",
   SETUP_ITEM: "set",
 };
@@ -111,11 +109,7 @@ export default function SalesforceCommand({
 
   function filter(value: string, search: string): number {
     // If a record id is entered, we want to make sure it's the first result
-    if (
-      (value === CommandShortkey.INSPECT_RECORD && recordId) ||
-      (value === CommandShortkey.INSPECT_RECORD && currentRecordId) ||
-      (value === CommandShortkey.OPEN_RECORD && recordId)
-    ) {
+    if (value === CommandShortkey.OPEN_RECORD && recordId) {
       return 9999999;
     }
 
@@ -349,58 +343,6 @@ export default function SalesforceCommand({
                 Open record…
                 <span cmdk-item-match="">{recordId}</span>
                 <div cmdk-item-shortcut="">{CommandShortkey.OPEN_RECORD}</div>
-              </Command.Item>
-            )}
-            {recordId && (
-              <Command.Item
-                value={CommandShortkey.INSPECT_RECORD}
-                onSelect={async () => {
-                  if (recordId === "") return;
-
-                  const response = await sendTypedMessage(
-                    MessageType.InspectRecord,
-                    {
-                      orgId,
-                      recordId: recordId,
-                      newTab: isMetaKeyActive,
-                    },
-                    sendMessage
-                  );
-
-                  handleError(response);
-                }}
-              >
-                <OpenRecordIcon />
-                Inspect record…
-                {recordId && <span cmdk-item-match="">{recordId}</span>}
-                <div cmdk-item-shortcut="">ins</div>
-              </Command.Item>
-            )}
-            {currentRecordId && (
-              <Command.Item
-                value={CommandShortkey.INSPECT_CURRENT_RECORD}
-                onSelect={async () => {
-                  if (currentRecordId === "") return;
-
-                  const response = await sendTypedMessage(
-                    MessageType.InspectRecord,
-                    {
-                      orgId,
-                      recordId: currentRecordId,
-                      newTab: isMetaKeyActive,
-                    },
-                    sendMessage
-                  );
-
-                  handleError(response);
-                }}
-              >
-                <BookmarkIcon />
-                Inspect current record…
-                <span cmdk-item-match="">{currentRecordId}</span>
-                <div cmdk-item-shortcut="">
-                  {CommandShortkey.INSPECT_CURRENT_RECORD}
-                </div>
               </Command.Item>
             )}
 

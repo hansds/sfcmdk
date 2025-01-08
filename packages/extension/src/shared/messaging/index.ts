@@ -123,27 +123,6 @@ async function handleMessages(
         `https://${environment.domain}/${typedMessage.data.path}`,
         typedMessage.data.newTab
       );
-    } else if (requestType == MessageType.InspectRecord) {
-      const typedMessage = message as MessageRequest<MessageType.InspectRecord>;
-      const environment = await getSalesforceEnvironment(
-        typedMessage.data.orgId
-      );
-
-      const objectType = await getObjectTypeFromId(
-        typedMessage.data.recordId,
-        typedMessage.data.orgId
-      );
-
-      if (!typedMessage.data.recordId) {
-        throw new Error("You must pass a record id");
-      }
-      if (!objectType)
-        throw new Error("Could not determine object type from record id");
-
-      openInActiveOrNewTab(
-        `chrome-extension://aodjmnfhjibkcdimpodiifdjnnncaafh/inspect.html?host=${environment.domain}&objectType=${objectType}&recordId=${typedMessage.data.recordId}`,
-        typedMessage.data.newTab
-      );
     } else if (requestType == MessageType.OpenObjectList) {
       const typedMessage =
         message as MessageRequest<MessageType.OpenObjectList>;

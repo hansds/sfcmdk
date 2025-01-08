@@ -17,7 +17,6 @@ _Setup_
 
 _Data_
 
-- View record by Id [depends on Salesforce Inspector]
 - Copy current record Id
 
 _Command Palette_
