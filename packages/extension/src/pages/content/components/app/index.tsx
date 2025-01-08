@@ -53,7 +53,9 @@ function createApp() {
 }
 
 function isSalesforceDomain() {
-  return !!document.URL.match("(?:https?://)?(?:w+.)?force.com/.*$");
+  return !!document.URL.match(
+    "(?:https?://)?(?:w+.)?(force.com|salesforce-setup.com)/.*$"
+  );
 }
 
 function togglePalette() {

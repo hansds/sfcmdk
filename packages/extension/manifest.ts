@@ -25,7 +25,7 @@ const manifest: chrome.runtime.ManifestV3 = {
   },
   content_scripts: [
     {
-      matches: ["*://*.force.com/*", "*://*.salesforce.com/*"],
+      matches: ["*://*.force.com/*", "*://*.salesforce.com/*", "*://*.salesforce-setup.com/*"],
       js: ["src/pages/content/index.js"],
       // KEY for cache invalidation
       css: ["assets/css/contentStyle<KEY>.chunk.css"],
@@ -44,7 +44,7 @@ const manifest: chrome.runtime.ManifestV3 = {
       matches: ["*://*/*"],
     },
   ],
-  host_permissions: ["*://*.force.com/", "*://*.salesforce.com/"],
+  host_permissions: ["*://*.force.com/", "*://*.salesforce.com/", "*://*.salesforce-setup.com/"],
   permissions: ["cookies", "storage", "tabs", "activeTab", "management"],
 };
 
